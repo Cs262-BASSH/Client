@@ -1,6 +1,7 @@
 import Homepage from './Homepage';
 import Settings from './Settings';
 import Profile from './Profile';
+import Search from './Search';
 
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -21,10 +22,14 @@ export default function Tabs() {
         /* Needs to be Rework: ios-list-box is not a valid icon name */
         if (route.name === 'Home') {
           iconName = focused
-            ? 'ios-information-circle'
-            : 'ios-information-circle-outline';
+            ? 'ios-home'
+            : 'ios-home';
         } else if (route.name === 'Settings') {
-          iconName = focused ? 'ios-list-box' : 'ios-list';
+          iconName = focused ? 'ios-settings' : 'ios-settings';
+        } else if (route.name === 'Search') {
+          iconName = focused ? 'ios-search' : 'ios-search';
+        } else if (route.name === 'Profile') {
+          iconName = focused ? 'ios-person' : 'ios-person';
         }
 
         return <Ionicons name={iconName} size={size} color={color} />;
@@ -36,6 +41,7 @@ export default function Tabs() {
       {/* List of tabs */}
       <Tab.Screen name="Home" component={Homepage} options={{ tabBarBadge: 1 }} />
       {/* Profile does not have an icon yet */}
+      <Tab.Screen name="Search" component={Search} />
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
