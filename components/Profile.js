@@ -1,7 +1,7 @@
-import Settings from './Settings';
-import History from './profile_item/History'
-import Likes from './profile_item/Likes'
-import SavedItems from './profile_item/SavedItems'
+import Settings from './profile_item/Settings';
+import History from './profile_item/History';
+import Likes from './profile_item/Likes';
+import SavedItems from './profile_item/SavedItems';
 
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
