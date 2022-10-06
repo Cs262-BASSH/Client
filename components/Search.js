@@ -2,14 +2,21 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import SearchBar from './SearchBar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Profile from './Profile';
+import Example from './search_item_category/example'
 
 
-export default function Search({ navigation }) {
+
+
+function SearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState();
   return (
     <View style={styles.container}>
+
+
       <View>
         <SearchBar searchText={searchText} setSearchText={setSearchText} />
       </View>
@@ -17,21 +24,21 @@ export default function Search({ navigation }) {
 
       <View>
         <ScrollView style={styles.Iconsview}>
-
+          <View  style={styles.IconsRawsContainer}>
           <View style={styles.buttonraw}>
-            <TouchableOpacity style={styles.buttonView} onPress={() => navigation.navigate('Profile')}>
-              <Icon name="floor-lamp" size={50} color="#900" />
+            <TouchableOpacity style={styles.buttonView} onPress={() => navigation.navigate('Example')}>
+              <Icon name="floor-lamp" size={50} color="#000" />
               <Text style={styles.icontext}>lamp</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonView}>
-              <Icon name="chair-rolling" size={50} color="#900" />
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
+              <Icon name="chair-rolling" size={50} color="#000" />
               <Text style={styles.icontext}>chair</Text>
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={styles.buttonView}>
-              <Icon name="table-furniture" size={50} color="#900" />
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
+              <Icon name="table-furniture" size={50} color="#000" />
               <Text style={styles.icontext}>Desk</Text>
             </TouchableOpacity>
 
@@ -39,19 +46,19 @@ export default function Search({ navigation }) {
 
           <View style={styles.buttonraw}>
 
-            <TouchableOpacity style={styles.buttonView}>
-              <Icon name="tablet-android" size={50} color="#900" />
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
+              <Icon name="tablet-android" size={50} color="#000" />
               <Text style={styles.icontext}>electronics</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonView}>
-              <Icon name="laptop" size={50} color="#900" />
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
+              <Icon name="laptop" size={50} color="#000" />
               <Text style={styles.icontext}>laptop and computer</Text>
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={styles.buttonView}>
-              <Icon name="sofa" size={50} color="#900" />
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
+              <Icon name="sofa" size={50} color="#000" />
               <Text style={styles.icontext}>sofa</Text>
             </TouchableOpacity>
 
@@ -60,14 +67,14 @@ export default function Search({ navigation }) {
 
           <View style={styles.buttonraw}>
 
-            <TouchableOpacity style={styles.buttonView}>
-              <Icon name="dots-horizontal-circle" size={50} color="#900" />
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
+              <Icon name="dots-horizontal-circle" size={50} color="#000" />
               <Text style={styles.icontext}>etc</Text>
             </TouchableOpacity>
 
 
           </View>
-
+          </View>
 
         </ScrollView>
       </View>
@@ -75,15 +82,38 @@ export default function Search({ navigation }) {
   );
 }
 
+const Stack = createNativeStackNavigator();
+export default function Search() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false,}}/>
+      <Stack.Screen name="Example" component={Example} options={{ title: "example Item list"}} />
+    </Stack.Navigator>
+  );
+}
+
+
+
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: '#FFF',
+    marginTop: 40,
+    // flexDirection: 'column',
+    // justifyContent: 'space-evenly',
+    // alignItems: 'center'
+  },
+  IconsRawsContainer: {
+    // flexDirection: 'column',
+    // justifyContent: 'space-between',
+    // alignItems: 'center'
   },
 
   buttonraw: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginTop: 30,
   },
 
   buttonView: {

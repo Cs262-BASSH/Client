@@ -41,9 +41,10 @@ export default function Tabs() {
       {/* List of tabs */}
       <Tab.Screen name="Home" component={Homepage} options={{ tabBarBadge: 1 }} />
       {/* Profile does not have an icon yet */}
-      <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="Search" component={Search} options={{headerShown: false,}}/>
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Settings" component={Settings} />
+      
     </Tab.Navigator>
   )
 }

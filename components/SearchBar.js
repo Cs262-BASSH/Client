@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const SearchBar = (props) => {
     return(
+        <View style={styles.searchBarContainer}>
         <ScrollView>
         <View style={styles.container}>
             <TextInput 
@@ -14,15 +15,21 @@ const SearchBar = (props) => {
             />
         </View>
         <View style={styles.sortBtn}>
-            <Icon name="tune" color='white' size={40}></Icon>
+            <Icon name="tune" color='white' size={35}></Icon>
         </View>
         </ScrollView>
+        </View>
     )
 }
 
 export default SearchBar;
 
 const styles = StyleSheet.create({
+    searchBarContainer: {
+        marginTop: 0,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+    },
     container: {
         margin: 10,
         backgroundColor: '#CBCCC3',
@@ -36,11 +43,13 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     sortBtn : {
+
         backgroundColor: 'black',
-        height: 45,
-        width: 45,
+        height: 35,
+        width: 35,
         borderRadius: 10,
-        marginTop: -50,
-        marginLeft: 320,
+        marginTop: -46,
+        marginLeft: 310,
+        
     }
 })
