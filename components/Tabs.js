@@ -1,5 +1,4 @@
 import Homepage from './Homepage';
-import Settings from './Settings';
 import Profile from './Profile';
 import Search from './Search';
 
@@ -24,8 +23,6 @@ export default function Tabs() {
             iconName = focused
               ? 'ios-home'
               : 'ios-home';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'ios-settings' : 'ios-settings';
           } else if (route.name === 'Search') {
             iconName = focused ? 'ios-search' : 'ios-search';
           } else if (route.name === 'Profile') {
@@ -43,7 +40,6 @@ export default function Tabs() {
       {/* Profile does not have an icon yet */}
       <Tab.Screen name="Search" component={Search} options={{headerShown: false,}}/>
       <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="Settings" component={Settings} />
       
     </Tab.Navigator>
   )
