@@ -33,6 +33,7 @@ export default function Tabs() {
         },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
+        shifting: true
       })}
     >
       {/* List of tabs */}

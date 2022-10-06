@@ -86,8 +86,8 @@ const Stack = createNativeStackNavigator();
 export default function Search() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false,}}/>
-      <Stack.Screen name="Example" component={Example} options={{ title: "example Item list"}} />
+      <Stack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false, gestureDirection: 'horizontal'} }/>
+      <Stack.Screen name="Example" component={Example} options={{ title: "example Item list" , gestureDirection: 'horizontal'}} />
     </Stack.Navigator>
   );
 }
@@ -95,6 +95,7 @@ export default function Search() {
 
 
 const styles = StyleSheet.create({
+
 
   container: {
     flex: 1,
