@@ -1,7 +1,7 @@
-import Settings from './Settings';
-import History from './profile_item/History'
-import Likes from './profile_item/Likes'
-import SavedItems from './profile_item/SavedItems'
+import Settings from './profile_item/Settings';
+import History from './profile_item/History';
+import Likes from './profile_item/Likes';
+import SavedItems from './profile_item/SavedItems';
 
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,13 +15,13 @@ function ProfileScreen({ navigation }) {
 
     <View style={styles.container}>
       <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}> -Hmm</Text>
+        <Text style={styles.sectionTitle}> -User screen</Text>
         <View style={styles.itemsList}>
 
           {/* Touch Event */}
           <TouchableOpacity>
             <Text style={styles.items} onPress={() => navigation.navigate('Settings')}>Setting</Text>
-            <Text style={styles.items} onPress={() => navigation.navigate('History')}>Hisory</Text>
+            <Text style={styles.items} onPress={() => navigation.navigate('History')}>History</Text>
             <Text style={styles.items} onPress={() => navigation.navigate('Likes')}>Likes</Text>
             <Text style={styles.items} onPress={() => navigation.navigate('Saved Items')}>Saved Items</Text>
           </TouchableOpacity>
@@ -39,7 +39,7 @@ const Stack = createNativeStackNavigator();
 export default function Profile() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Stack.Screen name="Profile." component={ProfileScreen} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="History" component={History} />
       <Stack.Screen name="Likes" component={Likes} />

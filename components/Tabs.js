@@ -1,5 +1,4 @@
 import Homepage from './Homepage';
-import Settings from './Settings';
 import Profile from './Profile';
 import Search from './Search';
 
@@ -14,6 +13,7 @@ const Tab = createBottomTabNavigator();
 export default function Tabs() {
 
   return (
+
     <Tab.Navigator style={styles.container}
       screenOptions={
         ({ route }) => ({
@@ -48,9 +48,9 @@ export default function Tabs() {
     >
       {/* List of tabs */}
       <Tab.Screen name="Home" component={Homepage} options={{ tabBarBadge: 1 }} />
-      <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Search" component={Search} options={{headerShown: false,}}/>
+      <Tab.Screen name="Profile" component={Profile} options={{headerShown: false,}}/>
+
     </Tab.Navigator>
   )
 }
