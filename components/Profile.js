@@ -39,7 +39,7 @@ const Stack = createNativeStackNavigator();
 export default function Profile() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{headerShown: false,}}/>
+      <Stack.Screen name="Profile." component={ProfileScreen} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="History" component={History} />
       <Stack.Screen name="Likes" component={Likes} />
