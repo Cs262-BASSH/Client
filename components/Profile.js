@@ -15,13 +15,13 @@ function ProfileScreen({ navigation }) {
 
     <View style={styles.container}>
       <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}> -Hmm</Text>
+        <Text style={styles.sectionTitle}> -User screen</Text>
         <View style={styles.itemsList}>
 
           {/* Touch Event */}
           <TouchableOpacity>
             <Text style={styles.items} onPress={() => navigation.navigate('Settings')}>Setting</Text>
-            <Text style={styles.items} onPress={() => navigation.navigate('History')}>Hisory</Text>
+            <Text style={styles.items} onPress={() => navigation.navigate('History')}>History</Text>
             <Text style={styles.items} onPress={() => navigation.navigate('Likes')}>Likes</Text>
             <Text style={styles.items} onPress={() => navigation.navigate('Saved Items')}>Saved Items</Text>
           </TouchableOpacity>
