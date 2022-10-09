@@ -1,6 +1,7 @@
+import Tabs from './Tabs';
+
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
-import Tabs from '../components/Tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 

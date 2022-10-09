@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import SearchBar from '../components/SearchBar';
+
+import { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import SearchBar from './SearchBar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Profile from './Profile';
-import Example from './search_item_category/example'
-
-
-
+import Example from '../components/search_item_category/example'
 
 function SearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState();

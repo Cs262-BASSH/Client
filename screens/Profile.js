@@ -1,10 +1,8 @@
-import Settings from './profile_item/Settings';
-import History from './profile_item/History';
-import Likes from './profile_item/Likes';
-import SavedItems from './profile_item/SavedItems';
+import Settings from '../components/profile_item/Settings';
+import History from '../components/profile_item/History';
+import Likes from '../components/profile_item/Likes';
+import SavedItems from '../components/profile_item/SavedItems';
 
-import React, { useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, Keyboard, ScrollView, Button, TouchableOpacity, FlatList } from 'react-native';
 

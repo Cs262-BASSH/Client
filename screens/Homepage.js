@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable } from 'react-native';
 import lavaLamp from '../assets/lavalamp.jpg'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useState } from 'react';
 
 /*
 Fixes:

@@ -3,7 +3,7 @@
 
 import {  StyleSheet } from "react-native";
 
-import Home from "./components/Home";
+import Home from "./screens/Home";
 
 /* sell, search, buy */
 export default function App() {
