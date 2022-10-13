@@ -3,8 +3,7 @@
 
 import {  StyleSheet } from "react-native";
 
-import Home from "./components/Home";
-import Login from "./components/Login";
+import Home from "./screens/Home";
 
 /* sell, search, buy */
 export default function App() {
@@ -21,4 +20,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });

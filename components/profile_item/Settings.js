@@ -17,7 +17,7 @@ const Settings = () => {
         onValueChange={toggleSwitch}
         value={isEnabled}
       />
-      
+
       <Text style={styles.item}>Password and Security</Text>
       <Text style={styles.item}>Payments</Text>
       <Text style={styles.item}>Help</Text></View>
