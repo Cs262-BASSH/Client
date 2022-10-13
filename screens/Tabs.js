@@ -47,7 +47,7 @@ export default function Tabs() {
         })} />
         {/* Profile does not have an icon yet */}
         <Tab.Screen name="Search" component={Search} options={{headerShown: false,}}/>
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Profile" component={Profile}/>
         <Tab.Screen name="Upload" component={Upload}
         options={{tabBarButton: () => null,
                   tabBarVisible:false}} />

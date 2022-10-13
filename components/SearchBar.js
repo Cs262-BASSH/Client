@@ -4,52 +4,50 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const SearchBar = (props) => {
     return(
-        <View style={styles.searchBarContainer}>
-        <ScrollView>
-        <View style={styles.container}>
-            <TextInput 
-            placeholder="Search" 
+
+    <View style={styles.searchSection}>
+        <Icon style={styles.searchIcon} name="search" size={20} color="#000"/>
+        <TextInput
             style={styles.input}
-            value={props.searcText}
-            onChangeText={(text)=>props.setSearchText(text)}
-            />
+            placeholder="Search for an Item!"
+            onChangeText={(searchString) => {this.setState({searchString})}}
+            underlineColorAndroid="transparent"
+        />
         </View>
-        <View style={styles.sortBtn}>
-            <Icon name="tune" color='white' size={35}></Icon>
-        </View>
-        </ScrollView>
-        </View>
+
+
+        
     )
 }
 
 export default SearchBar;
 
 const styles = StyleSheet.create({
-    searchBarContainer: {
-        marginTop: 0,
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-    },
-    container: {
-        margin: 10,
-        backgroundColor: '#CBCCC3',
-        borderRadius: 10,
-        marginRight: 60,
-    },
-    input : {
-        padding: 10,
-        borderRadius: 10,
-        color: '#000',
-        borderWidth: 1,
-    },
-    sortBtn : {
+    searchSection: {
 
-        backgroundColor: 'black',
-        height: 35,
-        width: 35,
-        borderRadius: 10,
-        marginTop: -46,
-        marginLeft: 310,
-        
-    }
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f5f5f5',
+        borderRadius: 20,
+        borderWidth: 1,
+        marginRight: 20,
+        marginLeft: 10,
+        height: 40,
+    },
+    searchIcon: {
+        padding: 10,
+    },
+    input: {
+        flex: 1,
+        paddingTop: 10,
+        paddingRight: 20,
+        paddingBottom: 10,
+        paddingLeft: 0,
+        backgroundColor: '#f5f5f5',
+        color: '#424242',
+        borderRadius: 20,
+    },
+
+
 })
