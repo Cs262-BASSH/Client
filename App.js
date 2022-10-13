@@ -4,6 +4,7 @@
 import {  StyleSheet } from "react-native";
 
 import Home from "./components/Home";
+import Login from "./components/Login";
 
 /* sell, search, buy */
 export default function App() {

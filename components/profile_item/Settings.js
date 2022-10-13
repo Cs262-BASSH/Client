@@ -30,7 +30,7 @@ const Settings = () => {
       </View>
       <TouchableOpacity
         onPress={() => alert('If you delete this, your account cannot be recovered')}
-        style={{ backgroundColor: 'grey', padding: 20, borderRadius: 15,  }}>
+        style={{ backgroundColor: 'tomato', padding: 20, borderRadius: 15,  }}>
         <Text style={{ fontSize: 20, color: '#fff' }}>Delete Account</Text>
       </TouchableOpacity>
     </View>
