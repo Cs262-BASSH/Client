@@ -44,6 +44,7 @@ export default function Tabs() {
         })}
       >
         {/* List of tabs */}
+
         <Tab.Screen name="Home" component={Homepage}
           options={({ navigation }) => ({
             headerRight: () => (
@@ -65,6 +66,7 @@ export default function Tabs() {
         />
 
         <Tab.Screen name="Profile" component={Profile} />
+
 
         <Tab.Screen name="Upload" component={Upload}
           options={{

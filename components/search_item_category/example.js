@@ -1,149 +1,33 @@
 import React from 'react';
 import { Text, View, TouchableOpacity,StyleSheet ,ScrollView} from 'react-native';
+import { useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import SmallSell from '../smallSell';
+import SearchBar from '../SearchBar';
 
 export default function Example() {
+    const [searchText, setSearchText] = useState();   
   return (
+
+
     <View style={{ flex: 1, margintop: 50, marginLeft: 10 }}>
+        <View>
+        <SearchBar searchText={searchText} setSearchText={setSearchText} />
+      </View>
+
+
         <ScrollView> 
-        <View style={styles.container}>
-
-        
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
-
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star-outline" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
 
 
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star-outline" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
-
-
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star-outline" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
-
-
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star-outline" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
-
-
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star-outline" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
-
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star-outline" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
-
-
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star-outline" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
-
-
-         <TouchableOpacity style={styles.buttonView}>
-            <View style={styles.boxContainer}>
-                <Icon name="floor-lamp" size={50} color="#000" />
-
-                <View style = {styles.textContainer}>
-                    <Text style={styles.itemName}>name of product</Text>
-                    <Text>the detail description of product</Text>
-                </View>
-                <View style = {styles.starcontainer}>
-                    <Icon name="star-outline" size={30} color="#000" />
-                </View>
-            </View>
-         </TouchableOpacity>
+        <SmallSell></SmallSell>
+        <SmallSell></SmallSell>
+        <SmallSell></SmallSell>
+        <SmallSell></SmallSell>
+        <SmallSell></SmallSell>
+        <SmallSell></SmallSell>
 
 
 
-         </View>
          </ScrollView>
     </View>
     
