@@ -2,7 +2,7 @@ import Homepage from './Homepage';
 import Profile from './Profile';
 import Search from './Search';
 
-import React from 'react';
+import { View, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Header from '../shared/header';
@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 export default function Tabs() {
 
   return (
-      <Tab.Navigator
+      <Tab.Navigator style={styles.container}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -33,25 +33,53 @@ export default function Tabs() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
-          shifting: true
+          tabBarActiveTintColor: "gold",
+          tabBarInactiveTintColor: 'maroon',
+          shifting: true,
+          tabBarStyle: {
+            backgroundColor: "#121212",
+            paddingBottom: 5,
+            height: 55,
+          },
         })}
       >
         {/* List of tabs */}
-        <Tab.Screen name="Home" component={Homepage} 
-        options={({ navigation }) => ({
-          headerRight: () => (
-            <Header navigation={navigation}/>
-          )
-        })} />
-        {/* Profile does not have an icon yet */}
-        <Tab.Screen name="Search" component={Search} options={{headerShown: false,}}/>
-        <Tab.Screen name="Profile" component={Profile}/>
+
+        <Tab.Screen name="Home" component={Homepage}
+          options={({ navigation }) => ({
+            headerRight: () => (
+              <Header navigation={navigation}/>
+            ),
+            headerStyle: {
+              backgroundColor: '#121212',
+            },
+            headerTitleStyle: {
+              color: 'white',
+            }
+          })}
+        />
+
+        <Tab.Screen name="Search" component={Search}
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        <Tab.Screen name="Profile" component={Profile} />
+
+
         <Tab.Screen name="Upload" component={Upload}
-        options={{tabBarButton: () => null,
-                  tabBarVisible:false}} />
-        
+          options={{
+            tabBarButton: () => null,
+            tabBarVisible: false,
+          }}
+        />
+
       </Tab.Navigator>
   )
 }
+
+const styles = StyleSheet.create ({
+  container: {
+  }
+})

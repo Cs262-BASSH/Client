@@ -27,7 +27,7 @@ export default function Upload() {
     <View>
       <TouchableOpacity onPress={openImagePickerAsync}>
 				<Image source={UploadImageTemp} style={styles.defautlImage}/>
-				<Image source={{uri: selectedImage.localUri}} 
+				<Image source={{uri: selectedImage.localUri}}
 				style={styles.image}/>
 
       </TouchableOpacity>
@@ -48,7 +48,7 @@ export default function Upload() {
 			</TextInput>
 
 			<Text style={styles.heading}>(Submit button currently does nothing...)</Text>
-			
+
 			<TouchableOpacity onPress={() => null} style={styles.button}>
       	<Text style={styles.buttonText}> Submit</Text>
       </TouchableOpacity>

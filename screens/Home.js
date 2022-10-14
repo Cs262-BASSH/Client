@@ -11,10 +11,10 @@ export default function Home(){
 
     return (
     <View style={styles.container}>
-    <NavigationContainer>
-        <StatusBar style="auto"/>
-      <Tabs/>
-    </NavigationContainer>
+        <NavigationContainer>
+            <StatusBar barStyle='light-content'/>
+            <Tabs/>
+        </NavigationContainer>
     </View>
     );
 }
@@ -26,6 +26,9 @@ const styles = StyleSheet.create ({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: 'maroon',
+        // marginTop: 20, // shows statusbar clearly
+    },
+    statusbar: {
+        backgroundColor: 'white'
     }
 })
