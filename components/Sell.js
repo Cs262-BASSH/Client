@@ -3,6 +3,16 @@ import lavaLamp from '../assets/lavalamp.jpg'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useState } from 'react';
 
+/*
+Fixes:
+- Maybe use TouchableHighlight instead of TouchableOpacity
+- Title needs to wraps down
+- Description needs to wrap down
+- Move bookmark icon to bottom left
+- When size gets big, change layout
+- white lines
+*/
+
 const Sell = (props) => {
   const [bookmark, setBookmark] = useState("bookmark-outline");
   const [size, setSize] = useState(true)
@@ -33,11 +43,15 @@ const Sell = (props) => {
           <Text style={styles.titleSmall}>Lava Lamp</Text>
 
           <View style={styles.priceAndBookmark}>
-            <Text style={styles.priceSmall}>$99.99</Text>
+            <View>
+              <Text style={styles.priceSmall}>$99.99</Text>
+            </View>
 
-            <Pressable onPress={() => changeBookmark()}>
-              <Icon name={bookmark} size= {65} style={styles.bookmark}/>
-            </Pressable>
+            <View style={styles.pressBookmark}>
+              <Pressable onPress={() => changeBookmark()}>
+                <Icon name={bookmark} size= {65} style={styles.bookmark}/>
+              </Pressable>
+            </View>
           </View>
           <Text style={description ? styles.descriptionHide : styles.descriptionShow}>This is a cool lava lamp. You should buy it! Contact me @ ...</Text>
         </View>
@@ -50,7 +64,7 @@ export default Sell;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#c19a6b',
+    backgroundColor: 'black',
   },
 
   Sell: {
@@ -66,12 +80,12 @@ const styles = StyleSheet.create({
 
   imageSmall: {
     height: 125,
-    width: 75,
+    width: 100,
   },
 
   imageBig: {
     height: 200,
-    width: 75,
+    width: 100,
   },
 
   titleSmall: {
@@ -84,20 +98,22 @@ const styles = StyleSheet.create({
   priceAndBookmark: {
     flexDirection: 'row',
     alignItems: 'center'
-
   },
 
   priceSmall: {
     fontWeight: 'normal',
     fontSize: 30,
-    color: '#900',
+    color: 'maroon',
     alignItems: 'center',
+  },
+
+  pressBookmark: {
+    marginLeft: 110,
+    marginTop: 20,
   },
 
   bookmark: {
     color: "gold",
-    // paddingLeft: 85,
-    // paddingTop: 20,
   },
 
   descriptionHide: {
