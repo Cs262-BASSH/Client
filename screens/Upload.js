@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
 
@@ -24,7 +24,8 @@ export default function Upload() {
 		};
 
   return (
-    <View>
+    <ScrollView>
+		<View>
       <TouchableOpacity onPress={openImagePickerAsync}>
 				<Image source={UploadImageTemp} style={styles.defautlImage}/>
 				<Image source={{uri: selectedImage.localUri}} 
@@ -44,7 +45,8 @@ export default function Upload() {
 
 			<Text style={styles.heading}>Description</Text>
 			<TextInput style={styles.typeInput}
-			placeholder = "Description...">
+			placeholder = "Description..."
+			multiline={true}>
 			</TextInput>
 
 			<Text style={styles.heading}>(Submit button currently does nothing...)</Text>
@@ -52,8 +54,8 @@ export default function Upload() {
 			<TouchableOpacity onPress={() => null} style={styles.button}>
       	<Text style={styles.buttonText}> Submit</Text>
       </TouchableOpacity>
-
     </View>
+		</ScrollView>
   );
 }
 
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "maroon",
 		padding: 15,
 		borderRadius: 5,
-		marginTop: 130,
+		//marginTop: 130,
 	},
 	buttonText: {
 		paddingLeft: 130,
