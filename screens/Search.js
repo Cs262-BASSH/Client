@@ -12,11 +12,9 @@ function SearchScreen({ navigation }) {
   return (
     <View style={styles.container}>
 
-
       <View>
         <SearchBar searchText={searchText} setSearchText={setSearchText} />
       </View>
-
 
       <View>
         <ScrollView style={styles.Iconsview}>
