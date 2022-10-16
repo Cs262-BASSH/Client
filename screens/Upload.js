@@ -2,10 +2,19 @@ import React from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
+import blank from "../assets/black.png"
+
+global.control = 0;
 
 export default function Upload() {
   const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
-
+	const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
+	
+	if (control === 0) {
+		setDefaultImage(UploadImageTemp);
+		control = 1;
+	}
+	
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
@@ -21,58 +30,59 @@ export default function Upload() {
 		}
 
       setSelectedImage({ localUri: pickerResult.uri });
+			setDefaultImage(blank);
 		};
 
   return (
     <ScrollView>
 		<View>
       <TouchableOpacity onPress={openImagePickerAsync}>
-				<Image source={UploadImageTemp} style={styles.defautlImage}/>
+				<Image source={defaultImage} style={styles.defaultImage}/>
 				<Image source={{uri: selectedImage.localUri}}
-				style={styles.image}/>
-
+					style={styles.image}/>
       </TouchableOpacity>
 
-			<Text style={styles.heading}>Item Name</Text>
-			<TextInput style={styles.typeInput}
-			placeholder = "Name...">
+			<Text style={styles.firstHeading}>Item Name</Text>
+				<TextInput style={styles.typeInput}
+					placeholder = "Name...">
 			</TextInput>
 
 			<Text style={styles.heading}>Price</Text>
-			<TextInput style={styles.typeInput}
-			placeholder = "Price...">
+				<TextInput style={styles.typeInput}
+					placeholder = "Price...">
 			</TextInput>
 
 			<Text style={styles.heading}>Description</Text>
-			<TextInput style={styles.typeInput}
-			placeholder = "Description..."
-			multiline={true}>
+					<TextInput style={styles.typeInput}
+						placeholder = "Description..." multiline={true}>
 			</TextInput>
 
-			<Text style={styles.heading}>(Submit button currently does nothing...)</Text>
-
+			<Text></Text>
 			<TouchableOpacity onPress={() => null} style={styles.button}>
       	<Text style={styles.buttonText}> Submit</Text>
       </TouchableOpacity>
-    </View>
+		</View>
 		</ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  defautlImage: {
-		width: 375,
-    height: 250,
-    justifyContent: 'center',
-    alignItems: 'center',
+  defaultImage: {
+		width: "100%",
+    height: 300,
 		position: "absolute",
 	},
 	image: {
-    width: 375,
-    height: 250,
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    height: 300,
+		resizeMode: "contain",
   },
+	firstHeading: {
+		padding: 10,
+		paddingLeft: 20,
+		fontSize: 16,
+		fontWeight: "bold",
+	},
 	heading: {
 		padding: 10,
 		paddingLeft: 20,
@@ -80,6 +90,7 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 	},
 	typeInput: {
+		fontSize: 18,
 		paddingLeft: 20,
 		backgroundColor: "white",
 		borderWidth: 1,
@@ -92,7 +103,6 @@ const styles = StyleSheet.create({
 		backgroundColor: "maroon",
 		padding: 15,
 		borderRadius: 5,
-		//marginTop: 130,
 	},
 	buttonText: {
 		paddingLeft: 130,
