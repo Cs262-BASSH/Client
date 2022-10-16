@@ -5,7 +5,6 @@ import Search from './Search';
 import { View, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Header from '../shared/header';
 import Upload from './Upload';
 
 /* This is where the tabs are added */
@@ -29,8 +28,10 @@ export default function Tabs() {
               iconName = focused ? 'ios-search' : 'ios-search';
             } else if (route.name === 'Profile') {
               iconName = focused ? 'ios-person' : 'ios-person';
-            }
-
+            } else if (route.name === 'Sell') {
+              iconName = focused ? 'logo-usd' : 'logo-usd';}
+            
+            
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: "gold",
@@ -47,9 +48,6 @@ export default function Tabs() {
 
         <Tab.Screen name="Home" component={Homepage}
           options={({ navigation }) => ({
-            headerRight: () => (
-              <Header navigation={navigation}/>
-            ),
             headerStyle: {
               backgroundColor: '#121212',
             },
@@ -59,6 +57,8 @@ export default function Tabs() {
           })}
         />
 
+        <Tab.Screen name="Sell" component={Upload} />
+
         <Tab.Screen name="Search" component={Search}
           options={{
             headerShown: false,
@@ -66,14 +66,6 @@ export default function Tabs() {
         />
 
         <Tab.Screen name="Profile" component={Profile} />
-
-
-        <Tab.Screen name="Upload" component={Upload}
-          options={{
-            tabBarButton: () => null,
-            tabBarVisible: false,
-          }}
-        />
 
       </Tab.Navigator>
   )
