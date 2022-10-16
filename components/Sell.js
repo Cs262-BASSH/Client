@@ -53,7 +53,9 @@ const Sell = (props) => {
               </Pressable>
             </View>
           </View>
+          <View>
           <Text style={description ? styles.descriptionHide : styles.descriptionShow}>This is a cool lava lamp. You should buy it! Contact me @ ...</Text>
+          </View>
         </View>
       </TouchableOpacity>
     </View>
