@@ -5,6 +5,7 @@ import { View, StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
+/* This is the home */
 
 
 export default function Home(){
@@ -12,7 +13,7 @@ export default function Home(){
     return (
     <View style={styles.container}>
         <NavigationContainer>
-            <StatusBar barStyle='light-content'/>
+            <StatusBar barStyle='light-content' hidden={true}/>
             <Tabs/>
         </NavigationContainer>
     </View>
@@ -28,7 +29,4 @@ const styles = StyleSheet.create ({
         right: 0,
         // marginTop: 20, // shows statusbar clearly
     },
-    statusbar: {
-        backgroundColor: 'white'
-    }
 })
