@@ -53,10 +53,6 @@ const smallSell = (props) => {
 export default smallSell;
 
 const styles = StyleSheet.create({
-  container: {
-    
-  },
-
   Sell: {
     backgroundColor: 'white',
     marginLeft: 15,

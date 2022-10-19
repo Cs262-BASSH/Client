@@ -15,8 +15,9 @@ Fixes:
 
 const Sell = (props) => {
   const [bookmark, setBookmark] = useState("bookmark-outline");
-  const [size, setSize] = useState(true)
-  const [description, setDescription] = useState(true)
+  const [size, setSize] = useState(true);
+  const [description, setDescription] = useState(true);
+  const [addToCart, setAddToCart] = useState(true)
 
   const changeBookmark = () => {
     if (bookmark === 'bookmark-outline') {
@@ -30,6 +31,7 @@ const Sell = (props) => {
   const changeSize = () => {
     setSize(!size);
     setDescription(!description);
+    setAddToCart(!addToCart);
   }
 
   return (
@@ -53,8 +55,12 @@ const Sell = (props) => {
               </Pressable>
             </View>
           </View>
+
           <View>
-          <Text style={description ? styles.descriptionHide : styles.descriptionShow}>This is a cool lava lamp. You should buy it! Contact me @ ...</Text>
+            <Text style={description ? styles.descriptionHide : styles.descriptionShow}>This is a cool lava lamp. You should buy it! Contact me @ ...</Text>
+              <TouchableOpacity style={addToCart ? styles.cartHide : styles.cartShow}>
+                <Text>Add to Cart</Text>
+              </TouchableOpacity>
           </View>
         </View>
       </TouchableOpacity>
@@ -110,8 +116,8 @@ const styles = StyleSheet.create({
   },
 
   pressBookmark: {
-    marginLeft: 110,
-    marginTop: 20,
+    marginTop: "5%",
+    marginLeft: "35%"
   },
 
   bookmark: {
@@ -127,5 +133,16 @@ const styles = StyleSheet.create({
   descriptionShow: {
     flexWrap: 'wrap',
     flexDirection: 'row',
+    width: "50%"
+  },
+
+  cartHide: {
+    display: "none",
+  },
+
+  cartShow: {
+    borderColor:'black',
+    backgroundColor: "red",
+    width: 50,
   },
 });
