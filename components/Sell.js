@@ -17,7 +17,9 @@ const Sell = (props) => {
   const [bookmark, setBookmark] = useState("bookmark-outline");
   const [size, setSize] = useState(true);
   const [description, setDescription] = useState(true);
-  const [addToCart, setAddToCart] = useState(true)
+  const [addToCart, setAddToCart] = useState(true);
+
+
 
   const changeBookmark = () => {
     if (bookmark === 'bookmark-outline') {
@@ -42,11 +44,11 @@ const Sell = (props) => {
         </View>
 
         <View>
-          <Text style={styles.titleSmall}>Lava Lamp</Text>
+          <Text style={styles.titleSmall}>{props.item}</Text>
 
           <View style={styles.priceAndBookmark}>
             <View>
-              <Text style={styles.priceSmall}>$99.99</Text>
+              <Text style={styles.priceSmall}>{props.price}$</Text>
             </View>
 
             <View style={styles.pressBookmark}>
@@ -57,7 +59,7 @@ const Sell = (props) => {
           </View>
 
           <View>
-            <Text style={description ? styles.descriptionHide : styles.descriptionShow}>This is a cool lava lamp. You should buy it! Contact me @ ...</Text>
+            <Text style={description ? styles.descriptionHide : styles.descriptionShow}>{props.description}</Text>
               <TouchableOpacity style={addToCart ? styles.cartHide : styles.cartShow}>
                 <Text>Add to Cart</Text>
               </TouchableOpacity>
