@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity,StyleSheet ,ScrollView} from 'react-native';
+import { Text, View, TouchableOpacity,StyleSheet ,ScrollView,SafeAreaView, FlatList} from 'react-native';
 import { useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import SmallSell from '../smallSell';
@@ -7,6 +7,37 @@ import SearchBar from '../SearchBar';
 
 export default function Example() {
     const [searchText, setSearchText] = useState();   
+    
+        const [items, setitems] = useState([
+        {
+          name: "lava lamp", price: 8.8,
+          description: "coool lava lamp"
+      },
+      {
+          name: "small lava lamp", price: 8.7, 
+          description: 'small lava lamp'
+      },
+      {
+          name: "big lava lamp", price: 8.9, 
+          description: 'ig lava lamp'
+      },
+      {
+        name: "big lava lamp", price: 8.9, 
+        description: 'ig lava lamp'
+      },
+      {
+        name: "big lava lamp", price: 8.9, 
+        description: 'ig lava lamp'
+      },
+      {
+        name: "big lava lamp", price: 8.9, 
+        description: 'ig lava lamp'
+      },
+      ]);
+
+
+
+
   return (
 
 
@@ -16,19 +47,21 @@ export default function Example() {
       </View>
 
 
-        <ScrollView> 
 
 
-        <SmallSell></SmallSell>
-        <SmallSell></SmallSell>
-        <SmallSell></SmallSell>
-        <SmallSell></SmallSell>
-        <SmallSell></SmallSell>
-        <SmallSell></SmallSell>
+        <SafeAreaView style={{flex: 1}}>
+
+
+        <FlatList data={items} renderItem={({item}) => (
+            <SmallSell item = {item.name}  price = {item.price} description = 'this is a cool lava lamp'></SmallSell>
+        )} />
+
+        </SafeAreaView>
 
 
 
-         </ScrollView>
+
+
     </View>
     
   )
