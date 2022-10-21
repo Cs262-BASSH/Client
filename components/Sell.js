@@ -86,7 +86,7 @@ const Sell = (props) => {
 
 
             setAddToCartState(!addToCartState);
-        }
+          }
         }
       ]
     );
