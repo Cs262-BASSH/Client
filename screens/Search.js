@@ -1,5 +1,5 @@
 import SearchBar from '../components/SearchBar';
-import Example from '../components/search_item_category/Example';
+import Example from '../components/search_item_category/example';
 import Lamp from "../components/search_item_category/Lamp";
 
 import { useState } from 'react';
