@@ -10,6 +10,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 function SearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState();
 
+  const [categoryTitle, setcategoryTitle] = useState();
+
+
+  const onPress = (props) => {
+    setcategoryTitle('lamp')
+    navigation.navigate('Example')
+  }
+
+
   return (
     <View style={styles.container}>
 
@@ -21,7 +30,7 @@ function SearchScreen({ navigation }) {
         <ScrollView style={styles.Iconsview}>
           <View  style={styles.IconsRawsContainer}>
           <View style={styles.buttonraw}>
-            <TouchableOpacity style={styles.buttonView} onPress={() => navigation.navigate('Lamp')}>
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Lamp')} >
               <Icon name="floor-lamp" size={50} color="#000" />
               <Text style={styles.icontext}>lamp</Text>
             </TouchableOpacity>
@@ -80,10 +89,16 @@ function SearchScreen({ navigation }) {
 const Stack = createNativeStackNavigator();
 
 export default function Search() {
+
+  const homepageOptions = ({}) => ({
+    headerTitle: 'exmple',
+    tabBarBadge: 4,
+  })
+
   return (
     <Stack.Navigator>
       <Stack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false, gestureDirection: 'horizontal'} }/>
-      <Stack.Screen name="Example" component={Example} options={{ title: "example Item list" , gestureDirection: 'horizontal'}} />
+      <Stack.Screen name="Example" component={Example} options={homepageOptions} />
       <Stack.Screen name="Lamp" component={Lamp} options={{ title: "Lamp" , gestureDirection: 'horizontal'}} />
     </Stack.Navigator>
   );

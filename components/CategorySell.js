@@ -37,13 +37,13 @@ const categorySell = (props) => {
         </View>
 
         <View>
-          <Text style={styles.titleSmall}>Lava Lamp</Text>
+          <Text style={styles.titleSmall}>{props.item}</Text>
 
           <View style={styles.priceAndBookmark}>
-            <Text style={styles.priceSmall}>$99.99</Text>
+            <Text style={styles.priceSmall}>${props.price}</Text>
           </View >
             <View style = {styles.textContainer}>
-             <Text style={description ? styles.descriptionHide : styles.descriptionShow}>This is a cool lava lamp. You should buy it! Contact me @ ...</Text>
+             <Text style={description ? styles.descriptionHide : styles.descriptionShow} >{props.description}</Text>
            </View>
 
           </View>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
 
   priceSmall: {
     fontWeight: 'normal',
-    fontSize: 15,
+    fontSize: 20,
     color: '#900',
     alignItems: 'center',
   },
