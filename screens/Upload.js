@@ -36,7 +36,7 @@ export default function Upload() {
 		};
 
   return (
-    <ScrollView>
+    <ScrollView automaticallyAdjustKeyboardInsets={true}>
 		<View>
       <TouchableOpacity onPress={openImagePickerAsync}>
 				<Image source={defaultImage} style={styles.defaultImage}/>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 		marginLeft: 20,
 	},
 	button: {
-		backgroundColor: "maroon",
+		backgroundColor: "black",
 		padding: 15,
 		borderRadius: 5,
 	},
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		fontWeight: "bold",
-		color: "white",
+		color: "red",
 		fontSize: 20,
 	},
 })
