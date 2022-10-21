@@ -4,17 +4,19 @@ import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
 import blank from "../assets/black.png"
 
+// TODO: item object push to database
+
 global.control = 0;
 
 export default function Upload() {
   const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
 	const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
-	
+
 	if (control === 0) {
 		setDefaultImage(UploadImageTemp);
 		control = 1;
 	}
-	
+
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 

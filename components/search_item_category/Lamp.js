@@ -1,48 +1,32 @@
-import React from 'react';
-import { Text, View, TouchableOpacity,StyleSheet ,ScrollView} from 'react-native';
-import { useState } from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Items from '../../data/homepage'
 import CategorySell from '../CategorySell';
-import SearchBar from '../SearchBar';
+
+import React from 'react';
+import { Text, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView} from 'react-native';
+import { useState } from 'react';
+
+// TODO: Add Image
 
 export default function Example() {
     const [searchText, setSearchText] = useState();
-  return (
 
-
-    <View style={{ flex: 1, margintop: 50, marginLeft: 10 }}>
-        <View>
-        <SearchBar searchText={searchText} setSearchText={setSearchText} />
-      </View>
-
-
-        <ScrollView>
-
-
-        <CategorySell></CategorySell>
-        <CategorySell></CategorySell>
-        <CategorySell></CategorySell>
-        <CategorySell></CategorySell>
-        <CategorySell></CategorySell>
-        <CategorySell></CategorySell>
-
-
-
-         </ScrollView>
-    </View>
-
+    return (
+        <SafeAreaView style={styles.container}>
+            <FlatList data={Items} renderItem={({item}) => (
+                <CategorySell item={item.name} price={item.price} description={item.description}></CategorySell>)}
+            />
+        </SafeAreaView>
   )
-
 }
-
 
 const styles = StyleSheet.create({
     container: {
         marginTop: 0,
         flexDirection: 'column',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        flex: 1,
+        backgroundColor: "#121212"
     },
-
 
     buttonView:{
         marginTop: 20,

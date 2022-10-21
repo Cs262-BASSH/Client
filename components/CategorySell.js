@@ -3,7 +3,9 @@ import lavaLamp from '../assets/lavalamp.jpg'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useState } from 'react';
 
-const smallSell = (props) => {
+// TODO: fix which item are fetch -> not outputted according to category
+
+const categorySell = (props) => {
   const [bookmark, setBookmark] = useState("bookmark-outline");
   const [size, setSize] = useState(true)
   const [description, setDescription] = useState(true)
@@ -50,7 +52,7 @@ const smallSell = (props) => {
   )
 }
 
-export default smallSell;
+export default categorySell;
 
 const styles = StyleSheet.create({
   Sell: {

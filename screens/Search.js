@@ -1,14 +1,15 @@
 import SearchBar from '../components/SearchBar';
+import Example from '../components/search_item_category/Example';
+import Lamp from "../components/search_item_category/Lamp";
 
 import { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Example from '../components/search_item_category/example'
-
 function SearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState();
+
   return (
     <View style={styles.container}>
 
@@ -20,7 +21,7 @@ function SearchScreen({ navigation }) {
         <ScrollView style={styles.Iconsview}>
           <View  style={styles.IconsRawsContainer}>
           <View style={styles.buttonraw}>
-            <TouchableOpacity style={styles.buttonView} onPress={() => navigation.navigate('Example')}>
+            <TouchableOpacity style={styles.buttonView} onPress={() => navigation.navigate('Lamp')}>
               <Icon name="floor-lamp" size={50} color="#000" />
               <Text style={styles.icontext}>lamp</Text>
             </TouchableOpacity>
@@ -77,11 +78,13 @@ function SearchScreen({ navigation }) {
 }
 
 const Stack = createNativeStackNavigator();
+
 export default function Search() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false, gestureDirection: 'horizontal'} }/>
       <Stack.Screen name="Example" component={Example} options={{ title: "example Item list" , gestureDirection: 'horizontal'}} />
+      <Stack.Screen name="Lamp" component={Lamp} options={{ title: "Lamp" , gestureDirection: 'horizontal'}} />
     </Stack.Navigator>
   );
 }

@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 
 
-export default function Cart() {
+export default function Cart(props) {
 
   return(
     <ScrollView style={styles.container}>
@@ -14,5 +14,6 @@ const styles = StyleSheet.create ({
   container: {
     backgroundColor: "#121212",
   },
-
 })
+
+
