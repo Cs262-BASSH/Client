@@ -41,7 +41,7 @@ const categorySell = (props) => {
 
           <View style={styles.priceAndBookmark}>
             <Text style={styles.priceSmall}>${props.price}</Text>
-          </View >
+          </View>
             <View style = {styles.textContainer}>
              <Text style={description ? styles.descriptionHide : styles.descriptionShow} >{props.description}</Text>
            </View>

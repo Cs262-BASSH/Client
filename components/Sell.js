@@ -1,11 +1,12 @@
-import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, Alert } from 'react-native';
 import lavaLamp from '../assets/lavalamp.jpg'
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useState } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, Alert } from 'react-native';
+import { useEffect, useState } from 'react';
 
 /*
 Fixes:
-- background color
 - Title needs to wraps down
 - Description needs to wrap down
 - Move bookmark icon to bottom left
@@ -16,22 +17,61 @@ Fixes:
 */
 
 const Sell = (props) => {
-  const [bookmarkState, setBookmarkState] = useState("bookmark-outline");
-  const [sizeState, setSizeState] = useState(true);
-  const [descriptionState, setDescriptionState] = useState(true);
-  const [cartState, setCartState] = useState(true);
+  const [sizeState, setSizeState] = useState(true); // True = small
+  const [bookmark, setBookmark] = useState("bookmark-outline"); // Set to not filled
+  const [bookmarkState, setBookmarkState] = useState(false); // False = item not in cart
+  const [descriptionState, setDescriptionState] = useState(true); // True = hidden
 
-  const [addToCartState, setAddToCartState] = useState(false);
+  const [bookmarkItems, setBookmarkItems] = useState([]); // List of items in bookmark
 
   const changeSize = () => {
     setSizeState(!sizeState);
     setDescriptionState(!descriptionState);
-    setCartState(!cartState);
   }
 
-  const changeBookmark = () => {
-    const title = (bookmarkState === "bookmark-outline") ? "Add to Bookmark" : "Remove From Bookmark";
-    const msg = (bookmarkState === "bookmark-outline") ? "Do you wish to add this item to your bookmark?" : "Do you wish to remove this item from your bookmark?";
+  const savedItem = async (item) => {
+    try {
+      const saving = JSON.stringify(item);
+      await AsyncStorage.setItem("bookmark_key", saving);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  const addItemToBookmark = async (props) => {
+    const item = {
+      id: props.id,
+      name: props.name,
+      price: props.price,
+      description: props.description,
+      category: props.category
+    };
+
+    // if (Object.values(bookmarkItems).find((item) => {item.id === props.id})) {
+    //   Alert.alert(`${props.name} already exists in bookmark.`);
+    //   return;
+    // }
+    // else {
+      setBookmarkItems([...bookmarkItems, item]);
+      await savedItem([...bookmarkItems, item]);
+    // }
+  }
+
+  const removeItemFromBookmark = (props) => {
+    const item = {
+      "id": props.id,
+      "name": props.name,
+      "price": props.price,
+      "description": props.description,
+      "category": props.category
+    };
+    // delete x[itemToRemove]; // or iterate through each element object
+  }
+
+  const handleBookmark = (props) => {
+    const title = (bookmark === "bookmark-outline") ? "Add to Bookmark" : "Remove From Bookmark";
+    const msg = (bookmark === "bookmark-outline") ? "Do you wish to add this item to your bookmark?" : "Do you wish to remove this item from your bookmark?";
 
     Alert.alert(
       title,
@@ -39,19 +79,27 @@ const Sell = (props) => {
       [
         {
           text: "Cancel",
-          onPress: () => console.log("Do nothing"),
+          onPress: () => {console.log("Do nothing")},
           style: "cancel"
         },
         {
-          text: "OK",
+          text: "Confirm",
           onPress: () => {
-            if (bookmarkState === 'bookmark-outline') {
-              setBookmarkState("bookmark");
+            if (bookmark === 'bookmark-outline') { // or item not in array
+              console.log("Adding item to bookmark!");
+              setBookmark("bookmark");
+              setBookmarkState(true);
+
               // TODO: add item to bookmark object
+              addItemToBookmark(props);
             }
             else {
-              setBookmarkState("bookmark-outline");
+              console.log("Removing item from bookmark!");
+              setBookmark("bookmark-outline");
+              setBookmarkState(false);
+
               // TODO: remove item from bookmark object
+              removeItemFromBookmark(props);
             }
           }
         }
@@ -59,38 +107,18 @@ const Sell = (props) => {
     );
   }
 
-  const addItemToCart = () => {
-    const title = (addToCartState === false) ? "Add to Cart": "Remove From Cart";
-    const msg = (addToCartState === false) ? "Do you wish to add this item to your cart?" : "Do you wish to remove this item from your cart?";
-
-    Alert.alert(
-      title,
-      msg,
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Do nothing"),
-          style: "cancel"
-        },
-        {
-          text: "OK",
-          onPress: () => {
-            console.log("OK Pressed");
-
-            if (addToCartState === false) {
-              // TODO: add item to cart object
-            }
-            else {
-              // TODO: remove item from cart object
-            }
-
-
-            setAddToCartState(!addToCartState);
-          }
-        }
-      ]
-    );
-  }
+  useEffect(() => {
+    const loadBookmark = async () => {
+      try {
+        const response = await AsyncStorage.getItem("bookmark_key");
+        setBookmarkItems(JSON.parse(response));
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    loadBookmark();
+  }, [bookmarkItems])
 
   return (
     <View style={styles.container}>
@@ -100,7 +128,7 @@ const Sell = (props) => {
         </View>
 
         <View>
-          <Text style={styles.titleSmall}>{props.item}</Text>
+          <Text style={styles.titleSmall}>{props.name}</Text>
 
           <View style={styles.priceAndBookmark}>
             <View>
@@ -108,17 +136,14 @@ const Sell = (props) => {
             </View>
 
             <View style={styles.pressBookmark}>
-              <Pressable onPress={() => changeBookmark()}>
-                <Icon name={bookmarkState} size={65} style={styles.bookmark}/>
+              <Pressable onPress={() => handleBookmark(props)}>
+                <Icon name={bookmark} size={65} style={styles.bookmark}/>
               </Pressable>
             </View>
           </View>
 
           <View>
             <Text style={descriptionState ? styles.descriptionHide : styles.descriptionShow}>{props.description}</Text>
-              <TouchableOpacity activeOpacity={0.3} style={cartState ? styles.cartHide : styles.cartShow} onPress={() => addItemToCart()}>
-                <Text>Add to Cart</Text>
-              </TouchableOpacity>
           </View>
         </View>
       </TouchableOpacity>
