@@ -1,7 +1,7 @@
 import Homepage from './Homepage';
 import Profile from './Profile';
 import Search from './Search';
-import Cart from './Cart';
+import Bookmark from './Bookmark';
 
 import { View, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -31,8 +31,8 @@ export default function Tabs() {
       else if (route.name === 'Sell') {
         iconName = focused ? 'logo-usd' : 'logo-usd';
       }
-      else if (route.name === "Cart") {
-        iconName = focused ? "ios-cart" : "ios-cart";
+      else if (route.name === "Bookmark") {
+        iconName = focused ? "ios-bookmark" : "ios-bookmark";
       }
       return <Ionicons name={iconName} size={size} color={color} />;
     },
@@ -83,7 +83,7 @@ export default function Tabs() {
 
         <Tab.Screen name="Search" component={Search} options={{headerShown: false,}}/>
 
-        <Tab.Screen name="Cart" component={Cart} />
+        <Tab.Screen name="Bookmark" component={Bookmark} />
 
         <Tab.Screen name="Profile" component={Profile} />
       </Tab.Navigator>

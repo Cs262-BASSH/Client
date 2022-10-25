@@ -1,5 +1,5 @@
 import Sell from '../components/Sell';
-import Items from '../data/homepage';
+import Items from '../data/items';
 
 import { AsyncStorageStatic, Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, SafeAreaView, } from 'react-native';
 
@@ -10,7 +10,7 @@ export default function Homepage() {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList data={Items} renderItem={({item}) => (
-        <Sell item={item.name} price={item.price} description={item.description}></Sell>)}
+        <Sell id={item.id} name={item.name} price={item.price} description={item.description} category={item.category}></Sell>)}
       />
     </SafeAreaView>
   );

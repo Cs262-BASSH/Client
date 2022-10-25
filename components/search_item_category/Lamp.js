@@ -1,4 +1,4 @@
-import Items from '../../data/homepage'
+import Items from '../../data/items'
 import CategorySell from '../CategorySell';
 
 import React from 'react';

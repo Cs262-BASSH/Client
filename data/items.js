@@ -5,7 +5,7 @@
   TODO: Add image
 */
 
-const homepage = [
+const items = [
   {
     id: 1,
     name: "Lava lamp",
@@ -15,10 +15,10 @@ const homepage = [
   },
   {
     id: 2,
-    name: "Lamp",
+    name: "Desk",
     price: 10,
-    description: "This is a lamp.",
-    category: 'Lamp'
+    description: "This is a desk.",
+    category: 'Desk'
   },
   {
     id: 3,
@@ -27,13 +27,13 @@ const homepage = [
     description: "This is a gaming chair.",
     category: "Chair",
   },
-  // {
-  //   id: 4,
-  //   name: "Desk chair",
-  //   price: 10,
-  //   description: "This is a desk chair.",
-  //   category: "Chair",
-  // },
+  {
+    id: 4,
+    name: "sofa",
+    price: 10,
+    description: "This is a sofa.",
+    category: "Sofa",
+  },
 ];
 
-export default homepage;
+export default items;
