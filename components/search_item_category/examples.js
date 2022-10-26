@@ -1,6 +1,6 @@
 import Items from '../../data/items'
 import CategorySell from '../CategorySell';
-
+import SearchBar from '../SearchBar';
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView} from 'react-native';
 import { useState } from 'react';
@@ -11,11 +11,28 @@ export default function Example() {
     const [searchText, setSearchText] = useState();
 
     return (
-        <SafeAreaView style={styles.container}>
-            <FlatList data={Items} renderItem={({item}) => (
-                <CategorySell item={item.name} price={item.price} description={item.description}></CategorySell>)}
-            />
+        <View style={{ flex: 1, margintop: 50, marginLeft: 10 }}>
+        <View>
+        <SearchBar searchText={searchText} setSearchText={setSearchText} />
+      </View>
+
+
+
+
+        <SafeAreaView style={{flex: 1}}>
+
+
+        <FlatList data={Items} renderItem={({item}) => (
+            <CategorySell item = {item.name}  price = {item.price} description = {item.description}></CategorySell>
+        )} />
+
         </SafeAreaView>
+
+
+
+
+
+    </View>
   )
 }
 

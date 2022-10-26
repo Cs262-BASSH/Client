@@ -1,6 +1,6 @@
 import SearchBar from '../components/SearchBar';
-import Example from '../components/search_item_category/example';
-import Lamp from "../components/search_item_category/Lamp";
+import Example from '../components/search_item_category/examples';
+
 
 import { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
@@ -30,7 +30,7 @@ function SearchScreen({ navigation }) {
         <ScrollView style={styles.Iconsview}>
           <View  style={styles.IconsRawsContainer}>
           <View style={styles.buttonraw}>
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Lamp')} >
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')} >
               <Icon name="floor-lamp" size={50} color="#000" />
               <Text style={styles.icontext}>lamp</Text>
             </TouchableOpacity>
@@ -99,7 +99,6 @@ export default function Search() {
     <Stack.Navigator>
       <Stack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false, gestureDirection: 'horizontal'} }/>
       <Stack.Screen name="Example" component={Example} options={homepageOptions} />
-      <Stack.Screen name="Lamp" component={Lamp} options={{ title: "Lamp" , gestureDirection: 'horizontal'}} />
     </Stack.Navigator>
   );
 }
