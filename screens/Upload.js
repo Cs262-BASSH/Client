@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView, useSate } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
 import blank from "../assets/black.png"
@@ -9,76 +9,87 @@ import blank from "../assets/black.png"
 global.control = 0;
 
 export default function Upload() {
-  const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
+
+	const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
 	const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
+
+	// const [itemName, setName] = useSate(null);
+	// const [itemPrice, setPrice] = useSate(null);
+
+	// function submit() {
+	// 	itemName;
+	// 	itemPrice;
+	// }
 
 	if (control === 0) {
 		setDefaultImage(UploadImageTemp);
 		control = 1;
 	}
 
-  let openImagePickerAsync = async () => {
-    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+	let openImagePickerAsync = async () => {
+		let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    if (permissionResult.granted === false) {
-      alert("Permission to access camera roll is required!");
-      return;
-    }
-
-    let pickerResult = await ImagePicker.launchImageLibraryAsync();
-
-    if (pickerResult.cancelled === true) {
-        return;
+		if (permissionResult.granted === false) {
+			alert("Permission to access camera roll is required!");
+			return;
 		}
 
-      setSelectedImage({ localUri: pickerResult.uri });
-			setDefaultImage(blank);
-		};
+		let pickerResult = await ImagePicker.launchImageLibraryAsync();
 
-  return (
-    <ScrollView automaticallyAdjustKeyboardInsets={true}>
-		<View>
-      <TouchableOpacity onPress={openImagePickerAsync}>
-				<Image source={defaultImage} style={styles.defaultImage}/>
-				<Image source={{uri: selectedImage.localUri}}
-					style={styles.image}/>
-      </TouchableOpacity>
+		if (pickerResult.cancelled === true) {
+			return;
+		}
 
-			<Text style={styles.firstHeading}>Item Name</Text>
-				<TextInput style={styles.typeInput}
-					placeholder = "Name...">
-			</TextInput>
+		setSelectedImage({ localUri: pickerResult.uri });
+		setDefaultImage(blank);
+	};
 
-			<Text style={styles.heading}>Price</Text>
-				<TextInput style={styles.typeInput}
-					placeholder = "Price...">
-			</TextInput>
+	return (
+		<ScrollView automaticallyAdjustKeyboardInsets={true}>
+			<View>
+				<TouchableOpacity onPress={openImagePickerAsync}>
+					<Image source={defaultImage} style={styles.defaultImage} />
+					<Image source={{ uri: selectedImage.localUri }}
+						style={styles.image} />
+				</TouchableOpacity>
 
-			<Text style={styles.heading}>Description</Text>
-					<TextInput style={styles.typeInput}
-						placeholder = "Description..." multiline={true}>
-			</TextInput>
+				<Text style={styles.firstHeading}>Item Name</Text>
+				<TextInput
+					// onChangeText={val => setName(val)}
+					style={styles.typeInput}
+					placeholder="Name..." />
 
-			<Text></Text>
-			<TouchableOpacity onPress={() => null} style={styles.button}>
-      	<Text style={styles.buttonText}> Submit</Text>
-      </TouchableOpacity>
-		</View>
+				<Text style={styles.heading}>Price</Text>
+				<TextInput
+					// onChangeText={(val) => setPrice(val)}
+					style={styles.typeInput}
+					placeholder="Price..." />
+
+				<Text style={styles.heading}>Description</Text>
+				<TextInput
+					style={styles.typeInput}
+					placeholder="Description..." multiline={true} />
+
+				<Text></Text>
+				<TouchableOpacity style={styles.button}>
+					<Text style={styles.buttonText}> Submit</Text>
+				</TouchableOpacity>
+			</View>
 		</ScrollView>
-  );
+	);
 }
 
 const styles = StyleSheet.create({
-  defaultImage: {
+	defaultImage: {
 		width: "100%",
-    height: 300,
+		height: 300,
 		position: "absolute",
 	},
 	image: {
-    width: "100%",
-    height: 300,
+		width: "100%",
+		height: 300,
 		resizeMode: "contain",
-  },
+	},
 	firstHeading: {
 		padding: 10,
 		paddingLeft: 20,
