@@ -1,7 +1,7 @@
 import Tabs from './Tabs';
 
 import React from 'react';
-import { View, StyleSheet} from 'react-native';
+import { View, StyleSheet, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -16,6 +16,10 @@ export default function Home(){
             <StatusBar barStyle='light-content' hidden={true}/>
             <Tabs/>
         </NavigationContainer>
+        <Image style={styles.logo_container} 
+        source={require('../assets/logo.png')}
+        height={50}
+        width={50}/>
     </View>
     );
 }
@@ -29,4 +33,9 @@ const styles = StyleSheet.create ({
         right: 0,
         // marginTop: 20, // shows statusbar clearly
     },
+    logo_container: {
+        alignSelf: 'flex-end',
+        marginTop: -5,
+        position: 'absolute',
+    }
 })
