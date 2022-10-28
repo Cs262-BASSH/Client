@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView, useSate } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
 import blank from "../assets/black.png"
@@ -11,29 +11,26 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 global.control = 0;
 
 export default function Upload() {
-  const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
+
+	const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
 	const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
 
-	//Object submitData =  {
-		const [itemName, setItemName] = React.useState(null);
-		const [itemPrice, setItemPrice] = React.useState(null);
-		const [itemDescription, setItemDescription] = React.useState(null);
-	//}
-	
+
 	if (control === 0) {
 		setDefaultImage(UploadImageTemp);
 		control = 1;
 	}
 
-  let openImagePickerAsync = async () => {
-    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+	let openImagePickerAsync = async () => {
+		let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    if (permissionResult.granted === false) {
-      alert("Permission to access camera roll is required!");
-      return;
-    }
+		if (permissionResult.granted === false) {
+			alert("Permission to access camera roll is required!");
+			return;
+		}
 
-    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+		let pickerResult = await ImagePicker.launchImageLibraryAsync();
+
 
     if (pickerResult.cancelled === true) {
       return;
@@ -134,21 +131,22 @@ export default function Upload() {
       </TouchableOpacity>
 		
 		
+
 		</ScrollView>
-  );
+	);
 }
 
 const styles = StyleSheet.create({
-  defaultImage: {
+	defaultImage: {
 		width: "100%",
-    height: 300,
+		height: 300,
 		position: "absolute",
 	},
 	image: {
-    width: "100%",
-    height: 300,
+		width: "100%",
+		height: 300,
 		resizeMode: "contain",
-  },
+	},
 	firstHeading: {
 		padding: 10,
 		paddingLeft: 20,
