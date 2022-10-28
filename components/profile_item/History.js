@@ -28,12 +28,6 @@ export default function History() {
   else {
     return (
 
-
-
-
-
-
-
       <View style={{ flex: 1, margintop: 50, marginLeft: 10 }}>
         You are not selling anytyhing.
       </View>
