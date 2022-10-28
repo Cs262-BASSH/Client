@@ -35,11 +35,12 @@ const categorySell = (props) => {
         <View>
           <Image source={lavaLamp} style={size ? styles.imageSmall : styles.imageBig}></Image>
         </View>
-
+        
         <View>
-          <Text style={styles.titleSmall}>{props.item}</Text>
-
+          <Text style={styles.titleSmall}>{props.name}</Text>
+        
           <View style={styles.priceAndBookmark}>
+            
             <Text style={styles.priceSmall}>${props.price}</Text>
           </View>
             <View style = {styles.textContainer}>

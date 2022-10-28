@@ -1,5 +1,6 @@
 import Sell from '../components/Sell';
-import Items from '../data/items';
+import categorySell from '../components/CategorySell';
+import Items from '../data/item';
 
 import { AsyncStorageStatic, Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, SafeAreaView, } from 'react-native';
 

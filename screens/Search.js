@@ -30,7 +30,7 @@ function SearchScreen({ navigation }) {
         <ScrollView style={styles.Iconsview}>
           <View  style={styles.IconsRawsContainer}>
           <View style={styles.buttonraw}>
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Lamp')} >
+            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')} >
               <Icon name="floor-lamp" size={50} color="#000" />
               <Text style={styles.icontext}>lamp</Text>
             </TouchableOpacity>
@@ -91,14 +91,16 @@ const Stack = createNativeStackNavigator();
 export default function Search() {
 
   const homepageOptions = ({}) => ({
-    headerTitle: 'exmple',
+    headerTitle: 'example',
+    headerTintColor: '#fff',
     tabBarBadge: 4,
+    headerStyle: {backgroundColor: "#121212"}
   })
 
   return (
     <Stack.Navigator>
       <Stack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false, gestureDirection: 'horizontal'} }/>
-      <Stack.Screen name="Example" component={Example} options={homepageOptions} />
+      <Stack.Screen name="Example" component={Example} options={homepageOptions}  />
       <Stack.Screen name="Lamp" component={Lamp} options={{ title: "Lamp" , gestureDirection: 'horizontal'}} />
     </Stack.Navigator>
   );

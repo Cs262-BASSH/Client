@@ -4,6 +4,9 @@ import { useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CategorySell from '../CategorySell';
 import SearchBar from '../SearchBar';
+import Items from '../../data/item';
+import Sell from '../Sell';
+
 
 export default function Example() {
     const [searchText, setSearchText] = useState();
@@ -41,18 +44,20 @@ export default function Example() {
   return (
 
 
-    <View style={{ flex: 1, margintop: 50, marginLeft: 10 }}>
-        <View>
-        <SearchBar searchText={searchText} setSearchText={setSearchText} />
+
+    <View style = {styles.background}>
+      <SearchBar searchText={searchText} setSearchText={setSearchText} />
+
+
+
+      <SafeAreaView style={styles.container}>
+        <FlatList data={Items} renderItem={({item}) => (
+          <CategorySell id={item.id} name={item.name} price={item.price} description={item.description} category={item.category}></CategorySell>)}
+          />
+      </SafeAreaView>
+      
       </View>
 
-
-
-
-
-
-
-    </View>
 
   )
 
@@ -60,10 +65,20 @@ export default function Example() {
 
 
 const styles = StyleSheet.create({
+  background: {
+
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        flex: 1,
+        backgroundColor: "#121212",
+      
+  },
+
     container: {
         marginTop: 0,
         flexDirection: 'column',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        marginBottom: 50,
     },
 
 

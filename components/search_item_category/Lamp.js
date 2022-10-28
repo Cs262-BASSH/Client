@@ -1,4 +1,4 @@
-import Items from '../../data/items'
+import Items from '../../data/item'
 import CategorySell from '../CategorySell';
 
 import React from 'react';
