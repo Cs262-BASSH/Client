@@ -1,16 +1,15 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native'
+import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, TouchableOpacity } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons';
 import Home from '../screens/Home';
 
-export default function Login() {
+export default function SignUp() {
   const {height, width} = Dimensions.get("window");
 
   return (
     <View style={styles.container}>
       <View style={styles.bandTop}>
-              {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
       </View>
       <View style={styles.center}>
         <Text style={styles.firstHeading}>Username</Text>
@@ -23,13 +22,18 @@ export default function Login() {
             placeholder = "Password..." secureTextEntry="true">
         </TextInput>
 
+        <Text style={styles.heading}>Re-enter Password</Text>
+            <TextInput style={styles.typeInput}
+              placeholder = "Password..." secureTextEntry="true">
+                
+        </TextInput>
+
         <Text></Text>
         <TouchableOpacity onPress={() => null} style={styles.button}>
-          <Text style={styles.buttonText}> Log In </Text>
+          <Text style={styles.buttonText}> Sign Up </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.bandBottom}>
-              {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
       </View>
     </View>
   )
@@ -45,7 +49,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal : 30,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   bandTop: {
     flex: 1,
