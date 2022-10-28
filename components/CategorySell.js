@@ -29,7 +29,7 @@ const categorySell = (props) => {
       <TouchableOpacity activeOpacity={0.3} style={styles.Sell} onPress={() => changeSize()} >
 
         <Pressable style={description ? styles.descriptionShow : styles.descriptionHide} onPress={() => changeBookmark()}>
-          <Icon name={bookmark} size= {35} style={styles.bookmark}/>
+          <Icon name={bookmark} size={35} style={styles.bookmark} />
         </Pressable>
 
         <View>
@@ -42,11 +42,11 @@ const categorySell = (props) => {
           <View style={styles.priceAndBookmark}>
             <Text style={styles.priceSmall}>${props.price}</Text>
           </View>
-            <View style = {styles.textContainer}>
-             <Text style={description ? styles.descriptionHide : styles.descriptionShow} >{props.description}</Text>
-           </View>
-
+          <View style={styles.textContainer}>
+            <Text style={description ? styles.descriptionHide : styles.descriptionShow} >{props.description}</Text>
           </View>
+
+        </View>
       </TouchableOpacity>
     </View>
   )
@@ -126,34 +126,34 @@ const styles = StyleSheet.create({
     marginTop: 0,
     flexDirection: 'column',
     justifyContent: 'flex-start'
-},
+  },
 
 
-buttonView:{
+  buttonView: {
     // marginTop: 20,
     // width: '90%',
     // justifyContent: 'flex-start'
-},
+  },
 
-boxContainer: {
+  boxContainer: {
     flexDirection: 'row',
     marginLeft: 10,
     justifyContent: 'flex-start',
     borderWidth: 3,
     borderBottomLeftRadius: 20,
-    borderTopLeftRadius:20,
-},
-textContainer: {
+    borderTopLeftRadius: 20,
+  },
+  textContainer: {
     flexDirection: 'column',
     justifyContent: 'center',
     marginRight: 100,
     marginTop: 10,
-},
-itemName: {
+  },
+  itemName: {
     fontWeight: 'bold'
-},
-starcontainer: {
+  },
+  starcontainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-}
+  }
 });

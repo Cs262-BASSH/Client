@@ -52,7 +52,7 @@ function ProfileScreen({ navigation }) {
             {/* Touch Event */}
             <TouchableOpacity>
               <Text style={styles.items} onPress={() => navigation.navigate('Settings')}>Setting</Text>
-              <Text style={styles.items} onPress={() => navigation.navigate('History')}>History</Text>
+              <Text style={styles.items} onPress={() => navigation.navigate('History')}>Sales List</Text>
               <Text style={styles.items} onPress={() => navigation.navigate('Likes')}>Likes</Text>
               <Text style={styles.items} onPress={() => navigation.navigate('Saved Items')}>Saved Items</Text>
             </TouchableOpacity>
@@ -85,7 +85,7 @@ function ProfileScreen({ navigation }) {
           {/* Touch Event */}
           <TouchableOpacity>
             <Text style={styles.items} onPress={() => navigation.navigate('Settings')}>Setting</Text>
-            <Text style={styles.items} onPress={() => navigation.navigate('History')}>History</Text>
+            <Text style={styles.items} onPress={() => navigation.navigate('History')}>Sales List</Text>
             <Text style={styles.items} onPress={() => navigation.navigate('Likes')}>Likes</Text>
             <Text style={styles.items} onPress={() => navigation.navigate('Saved Items')}>Saved Items</Text>
           </TouchableOpacity>
