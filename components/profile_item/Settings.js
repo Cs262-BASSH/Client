@@ -16,10 +16,18 @@ const Settings = () => {
       { text: 'OK', onPress: () => console.log('OK Pressed') },
     ]);
 
+  const aboutInfo = () =>
+  Alert.alert('KNIGHT MARKET', 'This is an app where you can view items, speak with sellers and negotiate prices for items you want to buy')
+  
+  const helpInfo = () =>
+  Alert.alert('For help:', 'Email bee6@calvin.edu')
+
   return (
     <View style={styles.container}>
       <View style={styles.item}>
+      <TouchableOpacity onPress={aboutInfo}>
       <Text style={styles.item}>About    <Icon name="ios-information-circle" size={20}/></Text>
+      </TouchableOpacity>
       <Text style={styles.item}>Notifications   <Icon name="ios-notifications" size={20}/></Text>
       <Switch style={{marginLeft: 150, marginTop: -5}}
         trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -30,8 +38,11 @@ const Settings = () => {
       />
 
       <Text style={styles.item}>Password and Security   <Icon name="ios-finger-print" size={20}/></Text>
-      <Text style={styles.item}>Payments   <Icon name="ios-card" size={20}/></Text>
-      <Text style={styles.item}>Help    <Icon name="ios-help" size={20}/></Text></View>
+      <TouchableOpacity onPress={helpInfo}>
+      <Text style={styles.item}>Help    <Icon name="ios-help" size={20}/></Text>
+      </TouchableOpacity>
+      </View>
+
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
       <View>
@@ -60,7 +71,7 @@ const styles = StyleSheet.create({
   },
   item: {
     fontSize: 15,
-    padding: 15,
+    padding: 20,
     marginBottom: 15,
     backgroundColor: '#FFF',
     borderRadius: 20,
