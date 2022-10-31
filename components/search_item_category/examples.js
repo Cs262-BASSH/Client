@@ -1,5 +1,4 @@
 import Items from '../../data/item'
-import CategorySell from '../CategorySell';
 import SearchBar from '../SearchBar';
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView} from 'react-native';
