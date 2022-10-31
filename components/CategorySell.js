@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, 
 import lavaLamp from '../assets/lavalamp.jpg'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // TODO: fix which item are fetch -> not outputted according to category
 
@@ -26,6 +27,7 @@ const categorySell = (props) => {
 
   return (
     <View style={styles.buttonView}>
+
       <TouchableOpacity activeOpacity={0.3} style={styles.Sell} onPress={() => changeSize()} >
 
         <Pressable style={description ? styles.descriptionShow : styles.descriptionHide} onPress={() => changeBookmark()}>
@@ -35,11 +37,12 @@ const categorySell = (props) => {
         <View>
           <Image source={lavaLamp} style={size ? styles.imageSmall : styles.imageBig}></Image>
         </View>
-
+        
         <View>
-          <Text style={styles.titleSmall}>{props.item}</Text>
-
+          <Text style={styles.titleSmall}>{props.name}</Text>
+        
           <View style={styles.priceAndBookmark}>
+            
             <Text style={styles.priceSmall}>${props.price}</Text>
           </View>
             <View style = {styles.textContainer}>
@@ -48,6 +51,7 @@ const categorySell = (props) => {
 
           </View>
       </TouchableOpacity>
+
     </View>
   )
 }

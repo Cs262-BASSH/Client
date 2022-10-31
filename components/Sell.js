@@ -123,6 +123,9 @@ const Sell = (props) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity activeOpacity={0.3} style={styles.Sell} onPress={() => changeSize()} >
+
+
+      <View style={styles.priceAndName}>
         <View>
           <Image source={lavaLamp} style={sizeState ? styles.imageSmall : styles.imageBig}></Image>
         </View>
@@ -134,18 +137,19 @@ const Sell = (props) => {
             <View>
               <Text style={styles.priceSmall}>${props.price}</Text>
             </View>
-
-            <View style={styles.pressBookmark}>
-              <Pressable onPress={() => handleBookmark(props)}>
-                <Icon name={bookmark} size={65} style={styles.bookmark}/>
-              </Pressable>
-            </View>
           </View>
 
           <View>
             <Text style={descriptionState ? styles.descriptionHide : styles.descriptionShow}>{props.description}</Text>
           </View>
+
         </View>
+      </View>
+              <View style={styles.pressBookmark}>
+              <Pressable onPress={() => handleBookmark(props)}>
+                <Icon name={bookmark} size={65} style={styles.bookmark}/>
+              </Pressable>
+            </View>
       </TouchableOpacity>
     </View>
   )
@@ -154,10 +158,6 @@ const Sell = (props) => {
 export default Sell;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#121212',
-  },
-
   Sell: {
     backgroundColor: 'white',
     marginLeft: 15,
@@ -167,20 +167,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     padding: 5,
+    justifyContent: 'space-between'
   },
 
   imageSmall: {
-    height: 125,
-    width: 100,
+    height: 75,
+    width: 75,
   },
 
   imageBig: {
-    height: 200,
+    height: 150,
     width: 100,
   },
 
   titleSmall: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
     flexWrap: 'wrap',
     flexDirection: 'row',
@@ -189,22 +190,20 @@ const styles = StyleSheet.create({
   priceAndBookmark: {
     flexDirection: 'row',
     alignItems: 'center'
+
   },
 
   priceSmall: {
     fontWeight: 'normal',
-    fontSize: 30,
-    color: 'maroon',
+    fontSize: 20,
+    color: '#900',
     alignItems: 'center',
-  },
-
-  pressBookmark: {
-    marginTop: "5%",
-    marginLeft: "35%"
   },
 
   bookmark: {
     color: "gold",
+    // paddingLeft: 85,
+    // paddingTop: 20,
   },
 
   descriptionHide: {
@@ -216,17 +215,55 @@ const styles = StyleSheet.create({
   descriptionShow: {
     flexWrap: 'wrap',
     flexDirection: 'row',
-    width: "50%"
   },
 
-  cartHide: {
-    display: "none",
 
+
+  pressBookmark: {
+    justifyContent: 'flex-end'
   },
 
-  cartShow: {
-    borderColor:'black',
-    backgroundColor: "red",
-    width: 50,
+
+  priceAndName: {
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
   },
+
+
+
+  container: {
+    marginTop: 0,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+
+},
+
+
+buttonView:{
+    // marginTop: 20,
+    // width: '90%',
+    // justifyContent: 'flex-start'
+},
+
+boxContainer: {
+    flexDirection: 'row',
+    marginLeft: 10,
+    justifyContent: 'flex-start',
+    borderWidth: 3,
+    borderBottomLeftRadius: 20,
+    borderTopLeftRadius:20,
+},
+textContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginRight: 100,
+    marginTop: 10,
+},
+itemName: {
+    fontWeight: 'bold'
+},
+starcontainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+}
 });

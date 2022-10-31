@@ -10,10 +10,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 function SearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState();
 
-  const [categoryTitle, setcategoryTitle] = useState();
+  const [categoryTitle, setcategoryTitle] = useState('lamp');
 
 
-  const onPress = (props) => {
+  const onPress = () => {
     setcategoryTitle('lamp')
     navigation.navigate('Example')
   }
@@ -22,27 +22,28 @@ function SearchScreen({ navigation }) {
   return (
     <View style={styles.container}>
 
-      <View>
+
         <SearchBar searchText={searchText} setSearchText={setSearchText} />
-      </View>
+
 
       <View>
         <ScrollView style={styles.Iconsview}>
           <View  style={styles.IconsRawsContainer}>
           <View style={styles.buttonraw}>
+
             <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')} >
-              <Icon name="floor-lamp" size={50} color="#000" />
+              <Icon name="floor-lamp" size={50} color="white" />
               <Text style={styles.icontext}>lamp</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="chair-rolling" size={50} color="#000" />
+              <Icon name="chair-rolling" size={50} color="white" />
               <Text style={styles.icontext}>chair</Text>
             </TouchableOpacity>
 
 
             <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="table-furniture" size={50} color="#000" />
+              <Icon name="table-furniture" size={50} color="white" />
               <Text style={styles.icontext}>Desk</Text>
             </TouchableOpacity>
 
@@ -51,18 +52,18 @@ function SearchScreen({ navigation }) {
           <View style={styles.buttonraw}>
 
             <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="tablet-android" size={50} color="#000" />
+              <Icon name="tablet-android" size={50} color="white" />
               <Text style={styles.icontext}>electronics</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="laptop" size={50} color="#000" />
+              <Icon name="laptop" size={50} color="white" />
               <Text style={styles.icontext}>laptop and computer</Text>
             </TouchableOpacity>
 
 
             <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="sofa" size={50} color="#000" />
+              <Icon name="sofa" size={50} color="white" />
               <Text style={styles.icontext}>sofa</Text>
             </TouchableOpacity>
 
@@ -72,7 +73,7 @@ function SearchScreen({ navigation }) {
           <View style={styles.buttonraw}>
 
             <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="dots-horizontal-circle" size={50} color="#000" />
+              <Icon name="dots-horizontal-circle" size={50} color="white" />
               <Text style={styles.icontext}>etc</Text>
             </TouchableOpacity>
 
@@ -90,15 +91,24 @@ const Stack = createNativeStackNavigator();
 
 export default function Search() {
 
-  const homepageOptions = ({}) => ({
-    headerTitle: 'exmple',
+  const searchPageHeader = ({}) => ({
+    headerTitle: 'Search',
+    headerTintColor: 'red',
     tabBarBadge: 4,
+    headerStyle: {backgroundColor: "#121212"}
+  })
+
+  const categoryHeader = ({}) => ({
+    headerTitle: 'Example',
+    headerTintColor: 'red',
+    tabBarBadge: 4,
+    headerStyle: {backgroundColor: "#121212"}
   })
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false, gestureDirection: 'horizontal'} }/>
-      <Stack.Screen name="Example" component={Example} options={homepageOptions} />
+      <Stack.Screen name="SearchScreen" component={SearchScreen} options={searchPageHeader}/>
+      <Stack.Screen name="Example" component={Example} options={categoryHeader} />
     </Stack.Navigator>
   );
 }
@@ -110,8 +120,8 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
-    marginTop: 40,
+    backgroundColor: 'black',
+
     // flexDirection: 'column',
     // justifyContent: 'space-evenly',
     // alignItems: 'center'
@@ -137,7 +147,8 @@ const styles = StyleSheet.create({
 
 
   icontext: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    color: 'white'
   },
 
   Iconsview: {

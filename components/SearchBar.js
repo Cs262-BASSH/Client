@@ -13,7 +13,7 @@ const SearchBar = (props) => {
             onChangeText={(searchString) => {this.setState({searchString})}}
             underlineColorAndroid="transparent"
         />
-        </View>
+    </View>
 
 
         
