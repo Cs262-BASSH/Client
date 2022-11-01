@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
         // marginTop: 20, // shows statusbar clearly
     },
     logo_container: {
-        alignSelf: 'flex-end',
+        alignContent: 'flex-end',
+        justifyContent: 'flex-end',
         marginTop: -5,
         position: 'absolute',
     }
