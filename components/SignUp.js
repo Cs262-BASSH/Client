@@ -45,18 +45,18 @@ const styles = StyleSheet.create({
   },
   center : {
     flex: 2,
-    backgroundColor: "#bc8f8f",
+    backgroundColor: "gray",
     paddingVertical: 10,
     paddingHorizontal : 30,
     alignItems: 'center',
   },
   bandTop: {
     flex: 1,
-    backgroundColor: '#140404',
+    backgroundColor: 'black',
   },
   bandBottom: {
     flex: 1,
-    backgroundColor: '#140404',
+    backgroundColor: 'black',
   },
 	firstHeading: {
 		padding: 5,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 	typeInput: {
 		fontSize: 18,
 		padding: 10,
-		backgroundColor: '#FFE4C4',
+		backgroundColor: 'beige',
 		borderWidth: 1,
 		borderRadius: 10,
 		borderColor: "black",

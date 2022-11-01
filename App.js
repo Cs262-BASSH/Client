@@ -14,10 +14,11 @@ export default function App(navigation) {
     return (
       <View style={styles.container}>
           {/* <View style={styles.header}>
-            <Image source={require('./assets/KNIGHTS.png')} height={height} width={width}/>
+            <Image source={require('./assets/knight.png')} height={height} width={width}/>
           </View>
           <View style={styles.footer}>
             <Text style={styles.title}> Welcome Back!</Text>
+            <Text></Text>
             <View style={styles.button}>
             <Button title='Log In' color="black" onPress={()=> {navigation.navigate('Login')}}/>
             </View>
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
   },
   footer : {
     flex: 1,
-    backgroundColor: '#bc8f8f',
+    backgroundColor: 'gray',
     paddingVertical: 10,
     paddingHorizontal : 30,
     borderTopLeftRadius: 20,
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   fontSize: 30,
   },
 	button: {
-		backgroundColor: "#FFE4C4",
+		backgroundColor: "beige",
 		borderRadius: 25,
     padding: 10
 	}
