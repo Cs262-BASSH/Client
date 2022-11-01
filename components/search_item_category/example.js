@@ -45,13 +45,6 @@ export default function Example() {
         <View>
         <SearchBar searchText={searchText} setSearchText={setSearchText} />
       </View>
-
-
-
-
-
-
-
     </View>
 
   )
