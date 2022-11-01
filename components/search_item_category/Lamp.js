@@ -1,5 +1,6 @@
 import Items from '../../data/items'
 import CategorySell from '../CategorySell';
+import Sell from '../Sell';
 
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView} from 'react-native';
@@ -12,8 +13,10 @@ export default function Example() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <FlatList data={Items} renderItem={({item}) => (
-                <CategorySell item={item.name} price={item.price} description={item.description}></CategorySell>)}
+            <FlatList
+                data={Items}
+                renderItem={({item, index}) => (
+                    <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.category} item={Items[index]}></Sell>)}
             />
         </SafeAreaView>
   )

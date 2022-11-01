@@ -1,10 +1,9 @@
 // import Login from './components/Login';
 // import SignIn from './components/SignIn';
 
-import Home from "./screens/Home";
+import Home from "./tabs/Home";
 import { View, StyleSheet} from 'react-native';
 
-/* sell, search, buy */
 export default function App() {
 
   return (

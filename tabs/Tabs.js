@@ -2,6 +2,7 @@ import Homepage from './Homepage';
 import Profile from './Profile';
 import Search from './Search';
 import Bookmark from './Bookmark';
+import Items from '../data/items';
 
 import { View, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,7 +16,7 @@ const Tab = createBottomTabNavigator();
 export default function Tabs() {
 
   // Screen Options
-  const screenOptions = ({route}) => ({
+  const screenStyle = ({route}) => ({
     tabBarIcon: ({ focused, color, size }) => {
       let iconName;
 
@@ -48,6 +49,7 @@ export default function Tabs() {
     },
     headerTitleStyle: {
       color: '#e4000f',
+      fontSize: "35%",
     },
     tabBarActiveTintColor: "#ffff33",
     tabBarInactiveTintColor: '#e4000f',
@@ -68,20 +70,28 @@ export default function Tabs() {
     // tabBarInactiveTintColor: '#990000',
   });
 
+  const totalItems = (items) => {
+    return items.length;
+  }
+
   // Home options
-  const homepageOptions = ({}) => ({
+  const homepageStyle = () => ({
     headerTitle: "KnightMarket",
-    tabBarBadge: 4,
+    tabBarBadge: totalItems(Items),
+  })
+
+  const searchStyle = () => ({
+    headerShown: true,
   })
 
   return (
-      <Tab.Navigator style={styles.container} screenOptions={screenOptions}>
+      <Tab.Navigator style={styles.container} screenOptions={screenStyle}>
         {/* List of tabs */}
-        <Tab.Screen name="Home" component={Homepage} options={homepageOptions}/>
+        <Tab.Screen name="Home" component={Homepage} options={homepageStyle}/>
 
         <Tab.Screen name="Sell" component={Upload}/>
 
-        <Tab.Screen name="Search" component={Search} options={{headerShown: false,}}/>
+        <Tab.Screen name="Search" component={Search} options={searchStyle}/>
 
         <Tab.Screen name="Bookmark" component={Bookmark} />
 
