@@ -81,7 +81,7 @@ export default function Tabs() {
 
         <Tab.Screen name="Sell" component={Upload}/>
 
-        <Tab.Screen name="Search" component={Search} options={{headerShown: false,}}/>
+        <Tab.Screen name="Search" component={Search}  options={{headerShown: false,}}/>
 
         <Tab.Screen name="Bookmark" component={Bookmark} />
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView } from 'react-native';
-import Items from '../../data/items';
-import CategorySell from '../CategorySell';
+import Items from '../../data/item';
+import CategorySell from '../Sell';
 import Upload from '../../screens/Upload';
 
 export default function History() {
