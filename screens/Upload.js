@@ -5,7 +5,6 @@ import UploadImageTemp from "../assets/UploadImageTemp.png"
 import blank from "../assets/black.png"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
 // TODO: item object push to database
 
 global.control = 0;
@@ -141,7 +140,7 @@ export default function Upload() {
     };
 
 	//}
-	
+
 	if (control === 0) {
 		setDefaultImage(UploadImageTemp);
 		control = 1;
@@ -187,6 +186,7 @@ export default function Upload() {
 		};
 
   return (
+
     <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"black"}>
 		<View>
       <TouchableOpacity onPress={openImagePickerAsync}>
@@ -205,22 +205,23 @@ export default function Upload() {
 			<Text style={styles.heading}>Price</Text>
 				<TextInput style={styles.typeInput} 
           keyboardType = "numeric"
+
 					placeholder = "Price..."
 					onChangeText={newText => setItemPrice(newText)}>
-			</TextInput>
-			{console.log(itemPrice)}
+				</TextInput>
+				{console.log(itemPrice)}
+				<Text style={styles.heading}>Description</Text>
+				<TextInput style={styles.typeInput}
+					placeholder = "Description..." multiline={true}
+					onChangeText={newText => setItemDescription(newText)}>
+				</TextInput>
+				{console.log(itemDescription)}
 
-			<Text style={styles.heading}>Description</Text>
-					<TextInput style={styles.typeInput}
-						placeholder = "Description..." multiline={true}
-						onChangeText={newText => setItemDescription(newText)}>
-			</TextInput>
-			{console.log(itemDescription)}
-
-			{/* Code to Implement Categories */}
-			<Text style={styles.heading}>Category</Text>
-          <View style={styles.IconsRawsContainer}>
+				{/* Code to Implement Categories */}
+				<Text style={styles.heading}>Category</Text>
+        <View style={styles.IconsRawsContainer}>
           <View style={styles.buttonraw}>
+
 
             <TouchableOpacity style={styles.buttonView} onPress ={toggle}>
               <Icon name="floor-lamp" size={50} style={{ color: color ? "red" : "white" }}/>
@@ -273,8 +274,6 @@ export default function Upload() {
 			<TouchableOpacity onPress={() => null} style={styles.button}>
       	<Text style={styles.buttonText}> Submit</Text>
       </TouchableOpacity>
-		
-		
 		</ScrollView>
   );
 }
@@ -285,11 +284,13 @@ const styles = StyleSheet.create({
     height: 300,
 		position: "absolute",
 	},
+
 	image: {
     width: "100%",
     height: 300,
 		resizeMode: "contain",
   },
+
 	firstHeading: {
 		padding: 10,
 		paddingLeft: 20,
@@ -297,6 +298,7 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
     color: "white",
 	},
+
 	heading: {
 		padding: 10,
 		paddingLeft: 20,
@@ -304,6 +306,7 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
     color: "white",
 	},
+
 	typeInput: {
 		fontSize: 18,
 		paddingLeft: 20,
@@ -314,6 +317,7 @@ const styles = StyleSheet.create({
 		marginRight: 20,
 		marginLeft: 20,
 	},
+
 	button: {
 		backgroundColor: "black",
 		padding: 15,
@@ -326,6 +330,7 @@ const styles = StyleSheet.create({
     marginRight: 100,
     marginBottom: 10,
 	},
+
 	buttonText: {
 		fontWeight: "bold",
 		color: "red",
@@ -337,6 +342,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginTop: 30,
   },
+
   buttonView: {
     width: '25%',
     padding: 5,
