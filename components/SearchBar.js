@@ -4,19 +4,15 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const SearchBar = (props) => {
     return(
-
-    <View style={styles.searchSection}>
-        <Icon style={styles.searchIcon} name="search" size={20} color="#000"/>
-        <TextInput
-            style={styles.input}
-            placeholder="Search for an Item!"
-            onChangeText={(searchString) => {this.setState({searchString})}}
-            underlineColorAndroid="transparent"
-        />
-    </View>
-
-
-        
+        <View style={styles.searchSection}>
+            <Icon style={styles.searchIcon} name="search" size={20} color="#000"/>
+            <TextInput
+                style={styles.input}
+                placeholder="Search for an Item!"
+                onChangeText={(searchString) => {this.setState({searchString})}}
+                underlineColorAndroid="transparent"
+            />
+        </View>
     )
 }
 
@@ -24,7 +20,6 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
     searchSection: {
-
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -35,9 +30,11 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         height: 40,
     },
+
     searchIcon: {
         padding: 10,
     },
+
     input: {
         flex: 1,
         paddingTop: 10,
@@ -48,6 +45,4 @@ const styles = StyleSheet.create({
         color: '#424242',
         borderRadius: 20,
     },
-
-
 })
