@@ -3,31 +3,28 @@ import SignUp from './components/SignUp';
 import Home from "./screens/Home";
 import { View, StyleSheet,Image,Button,Dimensions, Alert, Text, TouchableOpacity} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 
 /* sell, search, buy */
+
 const Stack = createNativeStackNavigator();
 
-export default function App(navigation) {
+  export default function App() {
 
   const {height, width} = Dimensions.get("window");
     return (
       <View style={styles.container}>
-          {/* <View style={styles.header}>
+          <View style={styles.header}>
             <Image source={require('./assets/knight.png')} height={height} width={width}/>
           </View>
           <View style={styles.footer}>
-            <Text style={styles.title}> Welcome Back!</Text>
-            <Text></Text>
-            <View style={styles.button}>
-            <Button title='Log In' color="black" onPress={()=> {navigation.navigate('Login')}}/>
-            </View>
-            <Text></Text>
-            <View style={styles.button}>
-            <Button title='Sign Up' color= "black" onPress={() => navigate('Login')}/>
-            </View>
-          </View> */}
-          <Home/>
+            <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.screen style={styles.button} name="Profile." component={Login} options={{headerShown: false}}/>
+              
+            </Stack.Navigator></NavigationContainer>
+          </View>
+          {/* <SignUp/> */}
       </View>
     )
 }
@@ -54,9 +51,15 @@ const styles = StyleSheet.create({
   fontFamily: 'Optima',
   fontSize: 30,
   },
+  btn_title : {
+    fontWeight: 'bold',
+   fontFamily: 'Optima',
+   fontSize: 20,
+   },
 	button: {
 		backgroundColor: "beige",
 		borderRadius: 25,
-    padding: 10
+    padding: 10,
+    alignItems: 'center'
 	}
 });

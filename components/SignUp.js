@@ -4,7 +4,7 @@ import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, Touchable
 import MaterialIcons from 'react-native-vector-icons';
 import Home from '../screens/Home';
 
-export default function SignUp() {
+export default function SignUp({navigation}) {
   const {height, width} = Dimensions.get("window");
 
   return (
@@ -29,7 +29,7 @@ export default function SignUp() {
         </TextInput>
 
         <Text></Text>
-        <TouchableOpacity onPress={() => null} style={styles.button}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.button}>
           <Text style={styles.buttonText}> Sign Up </Text>
         </TouchableOpacity>
       </View>
