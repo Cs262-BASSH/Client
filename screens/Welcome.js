@@ -9,11 +9,22 @@ import { useNavigation, NavigationContainer } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
-  export default function App() {
+  export default function Welcome() {
 
+  const {height, width} = Dimensions.get("window");
     return (
       <View style={styles.container}>
-          <Home/>
+          <View style={styles.header}>
+            <Image source={require('./assets/knight.png')} height={height} width={width}/>
+          </View>
+          <View style={styles.footer}>
+            <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.screen style={styles.button} name="Profile." component={Login} options={{headerShown: false}}/>
+              
+            </Stack.Navigator></NavigationContainer>
+          </View>
+          {/* <SignUp/> */}
       </View>
     )
 }
@@ -51,4 +62,4 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center'
 	}
-});]
+});

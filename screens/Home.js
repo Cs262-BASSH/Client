@@ -14,6 +14,7 @@ export default function Home() {
         <View style={styles.container}>
             <NavigationContainer>
                 <StatusBar barStyle='light-content' hidden={true} />
+                <Welcome/>
                 <Tabs />
             </NavigationContainer>
             {/* <Image style={styles.logo_container}
