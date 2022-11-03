@@ -52,7 +52,7 @@ export default function Tabs() {
     },
     headerTitleStyle: {
       color: '#e4000f',
-      fontSize: "35%",
+      fontSize: 12,
     },
     tabBarActiveTintColor: "#ffff33",
     tabBarInactiveTintColor: '#e4000f',

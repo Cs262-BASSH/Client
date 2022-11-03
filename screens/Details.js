@@ -52,28 +52,28 @@ const styles = StyleSheet.create({
   image: {
     width: '90%',
     height: '55%', // problem
-    borderWidth: '1%',
+    borderWidth: 1,
     borderColor: 'grey',
-    borderRadius: '5%',
+    borderRadius: 1,
     marginBottom: '2%'
   },
 
   name: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: '40%',
+    fontSize: 20,
   },
 
   price: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: '50%',
+    fontSize: 20,
   },
 
   description: {
     color: 'white',
     textAlign: 'center',
-    fontSize: '20%'
+    fontSize: 15,
   },
 
   contact: {

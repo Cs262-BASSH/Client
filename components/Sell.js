@@ -199,8 +199,8 @@ const styles = StyleSheet.create({
     marginLeft: "2%",
     marginRight: "2%",
     marginTop: "2%",
-    borderWidth: "2%",
-    borderRadius: "10%",
+    borderWidth: 1,
+    borderRadius: 2,
     padding: "3%",
     borderColor: "grey",
   },
@@ -210,12 +210,12 @@ const styles = StyleSheet.create({
     width: 100, // percentage
     margin: "2%",
     borderColor: "black",
-    borderWidth: "3%",
-    borderRadius: "3%",
+    borderWidth: 1,
+    borderRadius: 2,
   },
 
   title: {
-    fontSize: "40%",
+    fontSize: 15,
     fontWeight: 'bold',
     flexWrap: 'wrap',
     flexDirection: 'row',
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
 
   price: {
     fontWeight: 'normal',
-    fontSize: "50%",
+    fontSize: 20,
     color: 'maroon',
   },
 
@@ -246,17 +246,17 @@ const styles = StyleSheet.create({
   },
 
   description: {
-    fontSize: "20%",
+    fontSize: 20,
     marginTop: "2%",
   },
 
   detail: {
     width: "28%",
-    fontSize: "25%",
+    fontSize: 20,
     alignSelf: 'flex-end',
     fontWeight: 'bold',
     marginTop: '1%',
-    borderWidth: '2%',
+    borderWidth: 1,
     borderColor: "grey",
     textAlign: 'center',
   },
