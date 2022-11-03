@@ -1,28 +1,33 @@
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import Home from "./screens/Home";
 import { View, StyleSheet,Image,Button,Dimensions, Alert, Text, TouchableOpacity} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation, NavigationContainer } from '@react-navigation/native';
+import { useNavigation, NavigationContainer, NavigationContainerRefContext } from '@react-navigation/native';
 
 /* sell, search, buy */
 
 const Stack = createNativeStackNavigator();
 
-  export default function Welcome() {
+  export default function Welcome({navigation}) {
 
   const {height, width} = Dimensions.get("window");
     return (
       <View style={styles.container}>
           <View style={styles.header}>
-            <Image source={require('./assets/knight.png')} height={height} width={width}/>
+            <Image source={require('../assets/knight.png')} height={height} width={width}/>
           </View>
           <View style={styles.footer}>
-            <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.screen style={styles.button} name="Profile." component={Login} options={{headerShown: false}}/>
-              
-            </Stack.Navigator></NavigationContainer>
+            <Text style={styles.title}>Welcome!</Text>
+            <Text></Text>
+            <View style={styles.button}>
+            <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
+            <Text style={styles.btn_title}>Log In</Text>
+            </TouchableOpacity>
+            </View>
+            <Text></Text>
+            <View style={styles.button}>
+            <TouchableOpacity onPress={()=> navigation.navigate('SignUp')}>
+            <Text style={styles.btn_title}>Sign Up</Text>
+            </TouchableOpacity>
+            </View>
           </View>
           {/* <SignUp/> */}
       </View>
