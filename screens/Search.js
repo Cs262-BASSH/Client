@@ -1,86 +1,68 @@
 import SearchBar from '../components/SearchBar';
 import Example from '../components/search_item_category/examples';
 
-
 import { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+/*
+TODO: change the header name of category to match it's respective name
+
+Fix:
+-scroll is only halfway
+*/
+
 function SearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState();
-
   const [categoryTitle, setcategoryTitle] = useState('lamp');
-
 
   const onPress = () => {
     setcategoryTitle('lamp')
     navigation.navigate('Example')
   }
 
-
   return (
     <View style={styles.container}>
-
-
-        <SearchBar searchText={searchText} setSearchText={setSearchText} />
-
-
+      <SearchBar searchText={searchText} setSearchText={setSearchText} />
       <View>
         <ScrollView style={styles.Iconsview}>
-          <View  style={styles.IconsRawsContainer}>
-          <View style={styles.buttonraw}>
-
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')} >
-              <Icon name="floor-lamp" size={50} color="white" />
-              <Text style={styles.icontext}>lamp</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="chair-rolling" size={50} color="white" />
-              <Text style={styles.icontext}>chair</Text>
-            </TouchableOpacity>
-
-
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="table-furniture" size={50} color="white" />
-              <Text style={styles.icontext}>Desk</Text>
-            </TouchableOpacity>
-
+          <View style={styles.IconsRawsContainer}>
+            <View style={styles.buttonraw}>
+              <TouchableOpacity style={styles.buttonView} onPress={() => {onPress()}}>
+                <Icon name="floor-lamp" size={50} color="white" />
+                <Text style={styles.icontext}>lamp</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonView} onPress={() => {onPress()}}>
+                <Icon name="chair-rolling" size={50} color="white" />
+                <Text style={styles.icontext}>chair</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonView} onPress={() => {onPress()}}>
+                <Icon name="table-furniture" size={50} color="white" />
+                <Text style={styles.icontext}>Desk</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonraw}>
+              <TouchableOpacity style={styles.buttonView} onPress={() => {onPress()}}>
+                <Icon name="tablet-android" size={50} color="white" />
+                <Text style={styles.icontext}>electronics</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonView} onPress={() => {onPress()}}>
+                <Icon name="laptop" size={50} color="white" />
+                <Text style={styles.icontext}>laptop and computer</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonView} onPress={() => {onPress()}}>
+                <Icon name="sofa" size={50} color="white" />
+                <Text style={styles.icontext}>sofa</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonraw}>
+              <TouchableOpacity style={styles.buttonView} onPress={() => {onPress()}}>
+                <Icon name="dots-horizontal-circle" size={50} color="white" />
+                <Text style={styles.icontext}>etc</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-
-          <View style={styles.buttonraw}>
-
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="tablet-android" size={50} color="white" />
-              <Text style={styles.icontext}>electronics</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="laptop" size={50} color="white" />
-              <Text style={styles.icontext}>laptop and computer</Text>
-            </TouchableOpacity>
-
-
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="sofa" size={50} color="white" />
-              <Text style={styles.icontext}>sofa</Text>
-            </TouchableOpacity>
-
-          </View>
-
-
-          <View style={styles.buttonraw}>
-
-            <TouchableOpacity style={styles.buttonView} onPress ={() => navigation.navigate('Example')}>
-              <Icon name="dots-horizontal-circle" size={50} color="white" />
-              <Text style={styles.icontext}>etc</Text>
-            </TouchableOpacity>
-
-
-          </View>
-          </View>
-
         </ScrollView>
       </View>
     </View>
@@ -113,19 +95,15 @@ export default function Search() {
   );
 }
 
-
-
 const styles = StyleSheet.create({
-
-
   container: {
     flex: 1,
     backgroundColor: 'black',
-
     // flexDirection: 'column',
     // justifyContent: 'space-evenly',
     // alignItems: 'center'
   },
+
   IconsRawsContainer: {
     // flexDirection: 'column',
     // justifyContent: 'space-between',
@@ -145,7 +123,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
 
-
   icontext: {
     justifyContent: 'center',
     color: 'white'
@@ -155,7 +132,6 @@ const styles = StyleSheet.create({
 
   }
 })
-
 
 {/* https://reactnative.dev/docs/image */ }
 {/* https://www.prudentdevs.club/btns-imgs-in-react-native */ }

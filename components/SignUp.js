@@ -9,32 +9,26 @@ export default function SignUp({navigation}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.bandTop}>
-      </View>
+      <View style={styles.bandTop}></View>
       <View style={styles.center}>
         <Text style={styles.firstHeading}>Username</Text>
           <TextInput style={styles.typeInput}
             placeholder = "Name...">
           </TextInput>
-
         <Text style={styles.heading}>Password</Text>
           <TextInput style={styles.typeInput}
             placeholder = "Password..." secureTextEntry="true">
         </TextInput>
-
         <Text style={styles.heading}>Re-enter Password</Text>
             <TextInput style={styles.typeInput}
               placeholder = "Password..." secureTextEntry="true">
-                
         </TextInput>
-
         <Text></Text>
         <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.button}>
           <Text style={styles.buttonText}> Sign Up </Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.bandBottom}>
-      </View>
+      <View style={styles.bandBottom}></View>
     </View>
   )
 }
@@ -43,6 +37,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
   center : {
     flex: 2,
     backgroundColor: "gray",
@@ -50,24 +45,29 @@ const styles = StyleSheet.create({
     paddingHorizontal : 30,
     alignItems: 'center',
   },
+
   bandTop: {
     flex: 1,
     backgroundColor: 'black',
   },
+
   bandBottom: {
     flex: 1,
     backgroundColor: 'black',
   },
+
 	firstHeading: {
 		padding: 5,
 		fontSize: 16,
 		fontWeight: "bold",
 	},
+
 	heading: {
 		padding: 5,
 		fontSize: 16,
 		fontWeight: "bold",
 	},
+
 	typeInput: {
 		fontSize: 18,
 		padding: 10,
@@ -78,11 +78,13 @@ const styles = StyleSheet.create({
 		marginRight: 20,
 		marginLeft: 20,
 	},
+
 	button: {
 		backgroundColor: "black",
     padding: 20,
 		borderRadius: 15,
 	},
+
 	buttonText: {
 		alignItems: "center",
 		justifyContent: "center",
