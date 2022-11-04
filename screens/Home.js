@@ -13,7 +13,7 @@ export default function Home(){
     const detailStyle = () => ({
         headerTitleStyle: {
             color: "#e4000f",
-            fontSize: 10,
+
         },
         headerStyle: {
             backgroundColor: "#121212",
