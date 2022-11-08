@@ -1,28 +1,27 @@
 import Sell from '../components/Sell';
-import Items from '../data/item';
-
-import { StyleSheet, FlatList, SafeAreaView, } from 'react-native';
+import { StyleSheet, FlatList, SafeAreaView, View, ScrollView} from 'react-native';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Homepage = (props) => {
-  const [data, setdata] = useState(Items);
+  const homepage = useSelector((state) => state.homepage);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={({item, index}) => (
-          <Sell
-            id={item.id}
-            name={item.name}
-            price={item.price}
-            description={item.description}
-            image={item.image}
-            category={item.category}
-          />
-        )}
-      />
-    </SafeAreaView>
+    <ScrollView style={styles.container}>
+    {
+      homepage.map((item) => (
+        <Sell
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          price={item.price}
+          description={item.description}
+          image={item.image}
+          category={item.category}
+        />
+        ))
+      }
+      </ScrollView>
   );
 }
 

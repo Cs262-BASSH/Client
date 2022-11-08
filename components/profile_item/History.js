@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView } from 'react-native';
 import Items from '../../data/item';
-import CategorySell from '../Sell';
+import Sell from '../Sell';
 import Upload from '../../screens/Upload';
 
 export default function History() {
@@ -14,7 +14,7 @@ export default function History() {
         <SafeAreaView style={{ flex: 1 }}>
 
           <FlatList data={Items} renderItem={({ item }) => (
-            <CategorySell item={item.name} price={item.price} description={item.description}></CategorySell>
+            <Sell item={item.name} price={item.price} description={item.description}></Sell>
           )} />
 
         </SafeAreaView>

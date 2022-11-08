@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Items from '../../../data/item';
 
-const initialState = []; // todo: add item.js and upload here
+const initialState = [];
 
 const bookmarkSlice = createSlice({
   name: 'bookmark',
@@ -9,7 +8,6 @@ const bookmarkSlice = createSlice({
   reducers: {
     addToBookmark(state, action) {
       //const {id} = payload;
-
       //const find = state.findIndex((item) => item.id === action.payload.id); // find id
       //if (find) {
       //  return (
@@ -24,11 +22,12 @@ const bookmarkSlice = createSlice({
     },
 
     removeFromBookmark(state, action) {
-      const newBookmark = state.filter(
-        (item) => {item.id !== state.id} // !what is item???
-      );
-
-      state = newBookmark;
+      // state.map((item) => {
+        const newBookmark = state.filter(
+          (item) => {item.id !== state.id} // !what is item???
+        );
+        state = newBookmark;
+      // });
       return state;
     },
 
@@ -38,7 +37,7 @@ const bookmarkSlice = createSlice({
   }
 })
 
-export const {addToBookmark, removeFromBookmark, checkItemInBookmark} = bookmarkSlice.actions;
 const cartReducer = bookmarkSlice.reducer;
 
+export const {addToBookmark, removeFromBookmark} = bookmarkSlice.actions;
 export default cartReducer;
