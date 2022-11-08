@@ -4,7 +4,8 @@ import Home from "./screens/Home";
 import { View, StyleSheet,Image,Button,Dimensions, Alert, Text, TouchableOpacity} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
-
+import {Provider} from 'react-redux';
+import store from './components/redux/store'
 /* sell, search, buy */
 const Stack = createNativeStackNavigator();
 
@@ -27,11 +28,13 @@ export default function App(navigation) {
             <Button title='Sign Up' color= "black" onPress={() => navigate('Login')}/>
             </View>
           </View> */}
-          <Home/>
+          <Provider store={store}>
+            <Home/>
+          </Provider>
       </View>
     )
 }
-    
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

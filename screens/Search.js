@@ -98,7 +98,7 @@ export default function Search() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#121212',
     // flexDirection: 'column',
     // justifyContent: 'space-evenly',
     // alignItems: 'center'

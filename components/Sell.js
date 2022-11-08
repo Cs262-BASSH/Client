@@ -4,6 +4,8 @@ import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, 
 import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { addToBookmark } from './redux/reducer/bookmarkItems';
 
 /*
 Fixes:
@@ -22,6 +24,8 @@ const Sell = (props) => {
   const [item, setItem] = useState();
   const [bookmarkItems, setBookmarkItems] = useState([]); // List of items in bookmark
   console.log("Console2: " + JSON.stringify(bookmarkItems, undefined, 2)); // not working
+
+  const dispatch = useDispatch();
 
   const newItem = {
     id: props.id,
@@ -45,13 +49,6 @@ const Sell = (props) => {
       console.log(error);
     }
   }
-
-  // const addItemToBookmark = useCallback(
-  //   () => {
-  //     setBookmarkItems((oldBookmark) => [...oldBookmark, newItem]);
-  //   },
-  //   [bookmarkItems],
-  // )
 
   const addItemToBookmark = async () => {
     // if (Object.values(bookmarkItems).find((item) => {item.id === props.id})) {
@@ -99,7 +96,8 @@ const Sell = (props) => {
               setBookmarkState(true);
 
               // TODO: add item to bookmark object
-              addItemToBookmark();
+              //addItemToBookmark();
+              dispatch(addToBookmark(newItem));
             }
             else {
               console.log("Removing item from bookmark!");
@@ -149,9 +147,9 @@ const Sell = (props) => {
                 <Text style={styles.price}>${props.price}</Text>
               </View>
               <View style={styles.pressBookmark}>
-                <Pressable onPress={() => handleBookmark()}>
+                <TouchableOpacity onPress={() => {handleBookmark()}}>
                   <Icon name={bookmark} size={60} style={styles.bookmark}/>
-                </Pressable>
+                </TouchableOpacity>
               </View>
             </View>
           </View>

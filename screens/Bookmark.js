@@ -1,13 +1,18 @@
 import Sell from '../components/Sell';
-
+import { removeFromBookmark } from '../components/redux/reducer/bookmarkItems';
+import { useDispatch, useSelector } from 'react-redux';
+import Items from '../data/item';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback, useState } from "react";
 import { ActivityIndicator, ScrollView, StyleSheet, View, TouchableOpacity, Text, Button } from "react-native";
 import { useFocusEffect } from '@react-navigation/native';
 
-export default function Bookmark() {
+const Bookmark = () => {
   const [loading, setLoading] = useState(true);
   const [bookmarkItems, setBookmarkItems] = useState([]);
+
+  const dispatch = useDispatch();
+  const bookmark = useSelector((state) => state.bookmark);
 
   const getBookmark = async () => {
     try {
@@ -34,24 +39,38 @@ export default function Bookmark() {
           <View>
             <ScrollView>
               {
+                Items.map((item) => (
+                  <Sell
+                    key={item.id}
+                    item={item}
+                    {...item}
+                  />
+                ))
+              }
+            </ScrollView>
+          </View>
+        )
+      }
+
+{/*          (
+          <View>
+            <ScrollView>
+              {
                 //Object.keys(bookmarkItems)
                 bookmarkItems.map((item) =>
-                  <TouchableOpacity
-                    key={item}
-                    onPress={() => {
-                      navigation.navigate({}) // navigate to the homepage -> details page of each item
-                  }}>
+                  <TouchableOpacity key={item}>
                     <Sell id={item.id} name={bookmarkItems[item]} price={bookmarkItems[item]} description={bookmarkItems[item]} category={bookmarkItems[item]} />
                   </TouchableOpacity>
                 )
               }
             </ScrollView>
           </View>
-        )
-      }
+        ) */}
     </View>
   )
 }
+
+export default Bookmark;
 
 const styles = StyleSheet.create ({
   container: {

@@ -2,19 +2,31 @@ import Sell from '../components/Sell';
 import Items from '../data/item';
 
 import { StyleSheet, FlatList, SafeAreaView, } from 'react-native';
+import { useState } from 'react';
 
-export default function Homepage() {
+const Homepage = (props) => {
+  const [data, setdata] = useState(Items);
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={Items}
+        data={data}
         renderItem={({item, index}) => (
-          <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.category}></Sell>)}
+          <Sell
+            id={item.id}
+            name={item.name}
+            price={item.price}
+            description={item.description}
+            image={item.image}
+            category={item.category}
+          />
+        )}
       />
     </SafeAreaView>
   );
 }
+
+export default Homepage;
 
 const styles = StyleSheet.create({
   container: {
