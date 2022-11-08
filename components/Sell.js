@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkItems';
+import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkSlice';
 
 /*
 Fixes:

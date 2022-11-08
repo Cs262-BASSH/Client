@@ -1,7 +1,5 @@
 import Settings from '../components/profile_item/Settings';
-
 import History from '../components/profile_item/History';
-
 import Likes from '../components/profile_item/Likes';
 import SavedItems from '../components/profile_item/SavedItems';
 import ProfileScreen from '../components/profile_item/ProfileScreen'
@@ -16,7 +14,7 @@ export default function Profile() {
     <Stack.Navigator>
       <Stack.Screen name="Profile." component={ProfileScreen} options={{headerShown: false}}/>
       <Stack.Screen name="Settings" component={Settings} options= {{headerTransparent: true,
-    headerBackImage: () => <Icon name={'arrowLeft'} />}}/>
+        headerBackImage: () => <Icon name={'arrowLeft'} />}}/>
       <Stack.Screen name="History" component={History} />
       <Stack.Screen name="Likes" component={Likes} />
       <Stack.Screen name="Saved Items" component={SavedItems} />

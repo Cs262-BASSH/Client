@@ -1,5 +1,4 @@
 import Sell from '../components/Sell';
-import { removeFromBookmark } from '../components/redux/reducer/bookmarkItems';
 import { useDispatch, useSelector } from 'react-redux';
 import Items from '../data/item';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,7 +8,7 @@ import { useFocusEffect } from '@react-navigation/native';
 
 const Bookmark = () => {
   const [loading, setLoading] = useState(true);
-  const [bookmarkItems, setBookmarkItems] = useState([]);
+  //const [bookmarkItems, setBookmarkItems] = useState([]);
 
   //const dispatch = useDispatch();
   const bookmark = useSelector((state) => state.bookmark);

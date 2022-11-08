@@ -1,11 +1,14 @@
 import {configureStore} from '@reduxjs/toolkit';
-import bookmarkItems from './reducer/bookmarkItems';
+import bookmarkSlice from './reducer/bookmarkSlice';
+import homepageSlice from './reducer/homepageSlice';
+import historySlice from './reducer/historySlice';
 
 const store = configureStore({
   reducer: {
-    bookmark: bookmarkItems,
+    bookmark: bookmarkSlice,
+    homepage: homepageSlice,
+    history: historySlice,
   }
 });
 
 export default store;
-
