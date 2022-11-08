@@ -9,28 +9,98 @@ export default function Details({route}) {
   const {name, price, description, image} = route.params;
   //contentContainerStyle
   return (
-      <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
-        <View>
-          <Text style={styles.name}>{name}</Text>
-          <Image source={image} style={styles.image}></Image>
-          <Text style={styles.price}>${price}</Text>
-          <View>
-            <Text style={styles.descriptionTitle}>Description:</Text>
-            <Text style={styles.description}>{description}</Text>
-          </View>
-          <View>
-            <Text style={styles.contact}>Seller Contact: </Text>
-            <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
-          </View>
-        </View>
-      </ScrollView>
+
+    <SafeAreaView style={styles.scrollView}>
+    <ScrollView>
+    <View style={styles.details}>
+      <Text style={styles.name}>{name}</Text>
+      <View>
+      <Image source={image} style={styles.image}></Image>
+      </View>
+      <Text style={styles.price}>${price}</Text>
+      <Text style={styles.description}>{description}</Text>
+      <Text style={styles.contact}>Seller Contact: </Text>
+
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      <Text style={styles.contact}>end</Text>
+
+    </View>
+    </ScrollView>
+    </SafeAreaView>
+
+
+
+      // <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
+      //   <View style={styles.details}>
+      //     <Text style={styles.name}>{name}</Text>
+      //     <Image source={image} style={styles.image}></Image>
+      //     <Text style={styles.price}>${price}</Text>
+      //     <Text style={styles.description}>{description}</Text>
+      //     <Text style={styles.contact}>Seller Contact: </Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //     <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
+      //   </View>
+      // </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
 
   scrollView: {
     backgroundColor: '#121212',
@@ -42,39 +112,34 @@ const styles = StyleSheet.create({
 
   details: {
     alignItems: 'center',
+
   },
 
   image: {
-    width: '95%',
-    height: '80%', // problem
+    width: '90%',
+    height: '55%', // problem
     borderWidth: '1%',
     borderColor: 'grey',
     borderRadius: '5%',
-    marginBottom: '2%',
-    alignSelf: 'center'
+    marginBottom: '2%'
   },
 
   name: {
     color: 'white',
     fontWeight: 'bold',
-    alignSelf: 'center'
+    fontSize: '40%',
   },
 
   price: {
     color: 'white',
     fontWeight: 'bold',
-  },
-
-  descriptionTitle: {
-    color: 'white',
+    fontSize: '50%',
   },
 
   description: {
     color: 'white',
-  },
-
-  seller: {
-    color: 'white'
+    textAlign: 'center',
+    fontSize: '20%'
   },
 
   contact: {

@@ -40,6 +40,7 @@ export default function Tabs() {
       }
       return <Ionicons name={iconName} size={size} color={color} />;
     },
+    headerTitleAlign: 'center',
     shifting: true,
     // Dark mode
     tabBarStyle: {
@@ -52,7 +53,7 @@ export default function Tabs() {
     },
     headerTitleStyle: {
       color: '#e4000f',
-      fontSize: "35%",
+      
     },
     tabBarActiveTintColor: "#ffff33",
     tabBarInactiveTintColor: '#e4000f',
@@ -81,10 +82,12 @@ export default function Tabs() {
   const homepageStyle = () => ({
     headerTitle: "KnightMarket",
     tabBarBadge: totalItems(Items),
+    headerTitleAlign: 'center'
   })
 
   const searchStyle = () => ({
     headerShown: false,
+
   })
 
   return (

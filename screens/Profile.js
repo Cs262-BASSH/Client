@@ -1,5 +1,7 @@
 import Settings from '../components/profile_item/Settings';
+
 import History from '../components/profile_item/History';
+
 import Likes from '../components/profile_item/Likes';
 import SavedItems from '../components/profile_item/SavedItems';
 import ProfileScreen from '../components/profile_item/ProfileScreen'
