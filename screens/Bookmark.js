@@ -1,28 +1,33 @@
 import Sell from '../components/Sell';
-
+import { removeFromBookmark } from '../components/redux/reducer/bookmarkItems';
+import { useDispatch, useSelector } from 'react-redux';
+import Items from '../data/item';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback, useState } from "react";
 import { ActivityIndicator, ScrollView, StyleSheet, View, TouchableOpacity, Text, Button } from "react-native";
 import { useFocusEffect } from '@react-navigation/native';
 
-export default function Bookmark() {
+const Bookmark = () => {
   const [loading, setLoading] = useState(true);
   const [bookmarkItems, setBookmarkItems] = useState([]);
 
-  const getBookmark = async () => {
-    try {
-      const response = await AsyncStorage.getItem("@bookmark_key");
-      setBookmarkItems(JSON.parse(response));
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
+  //const dispatch = useDispatch();
+  const bookmark = useSelector((state) => state.bookmark);
+
+  // const getBookmark = async () => {
+  //   try {
+  //     const response = await AsyncStorage.getItem("@bookmark_key");
+  //     setBookmarkItems(JSON.parse(response));
+  //   }
+  //   catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   useFocusEffect(
     useCallback(() => {
       console.log("item placed!");
-      getBookmark();
+      //getBookmark();
       setLoading(false);
     }, [])
   );
@@ -31,27 +36,28 @@ export default function Bookmark() {
     <View style={styles.container}>
       {loading ? <ActivityIndicator style={styles.activityIndicator}/> :
         (
-          <View>
-            <ScrollView>
-              {
-                //Object.keys(bookmarkItems)
-                bookmarkItems.map((item) =>
-                  <TouchableOpacity
-                    key={item}
-                    onPress={() => {
-                      navigation.navigate({}) // navigate to the homepage -> details page of each item
-                  }}>
-                    <Sell id={item.id} name={bookmarkItems[item]} price={bookmarkItems[item]} description={bookmarkItems[item]} category={bookmarkItems[item]} />
-                  </TouchableOpacity>
-                )
-              }
-            </ScrollView>
-          </View>
+          <ScrollView>
+            {
+              bookmark.map((item) => (
+                <Sell
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  price={item.price}
+                  description={item.description}
+                  image={item.image}
+                  category={item.category}
+                />
+              ))
+            }
+          </ScrollView>
         )
       }
     </View>
   )
 }
+
+export default Bookmark;
 
 const styles = StyleSheet.create ({
   container: {

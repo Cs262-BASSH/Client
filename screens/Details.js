@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image } from "react-n
 /*
 TODO: Swipe horizontally to view more images
 */
+
 export default function Details({route}) {
 
   const {name, price, description, image} = route.params;
@@ -19,7 +20,7 @@ export default function Details({route}) {
       <Text style={styles.price}>${price}</Text>
       <Text style={styles.description}>{description}</Text>
       <Text style={styles.contact}>Seller Contact: </Text>
-      
+
       <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
       <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
       <Text style={styles.contact}>Email: bee6@calvin.edu</Text>
@@ -74,7 +75,7 @@ export default function Details({route}) {
     </SafeAreaView>
 
 
-    
+
       // <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
       //   <View style={styles.details}>
       //     <Text style={styles.name}>{name}</Text>
@@ -115,27 +116,30 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 200,
-    height: 200, 
-
+    width: '90%',
+    height: '55%', // problem
+    borderWidth: '1%',
+    borderColor: 'grey',
+    borderRadius: '5%',
+    marginBottom: '2%'
   },
 
   name: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: '40%',
   },
 
   price: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: '50%',
   },
 
   description: {
     color: 'white',
     textAlign: 'center',
-    fontSize: 15,
+    fontSize: '20%'
   },
 
   contact: {

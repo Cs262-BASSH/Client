@@ -4,6 +4,8 @@ import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, 
 import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkItems';
 
 /*
 Fixes:
@@ -16,13 +18,13 @@ const Sell = (props) => {
   // Determines whether the description and details button is shown or not
   const [hide, setHide] = useState(true);
 
-  const [bookmark, setBookmark] = useState("bookmark-outline"); // Set to not filled
-  const [bookmarkState, setBookmarkState] = useState(false); // False = item not in bookmark
+  // Determines how the icon should look like depending on if user bookmarked it or not
+  const [bookmark, setBookmark] = useState("bookmark-outline");
+  const [bookmarkState, setBookmarkState] = useState(false); // false = item not in bookmark
 
-  const [item, setItem] = useState();
-  const [bookmarkItems, setBookmarkItems] = useState([]); // List of items in bookmark
-  console.log("Console2: " + JSON.stringify(bookmarkItems, undefined, 2)); // not working
+  const dispatch = useDispatch();
 
+  // The item that user pressed
   const newItem = {
     id: props.id,
     name: props.name,
@@ -36,51 +38,9 @@ const Sell = (props) => {
     setHide(!hide);
   }
 
-  const savedItem = async (item) => {
-    try {
-      const saving = JSON.stringify(item);
-      await AsyncStorage.setItem("@bookmark_key", saving);
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
-
-  // const addItemToBookmark = useCallback(
-  //   () => {
-  //     setBookmarkItems((oldBookmark) => [...oldBookmark, newItem]);
-  //   },
-  //   [bookmarkItems],
-  // )
-
-  const addItemToBookmark = async () => {
-    // if (Object.values(bookmarkItems).find((item) => {item.id === props.id})) {
-    //   Alert.alert(`${props.name} already exists in bookmark.`);
-    //   return;
-    // }
-    // else {
-      setItem(props)
-      setBookmarkItems((oldBookmark) => [...oldBookmark, newItem]);
-      await savedItem([...bookmarkItems, newItem]);
-    // }
-  }
-
-  const removeItemFromBookmark = (props) => {
-    const item = {
-      "id": props.id,
-      "name": props.name,
-      "price": props.price,
-      "description": props.description,
-      "category": props.category
-    };
-
-    // delete x[itemToRemove]; // or iterate through each element object
-  }
-
   const handleBookmark = () => {
     const title = (bookmark === "bookmark-outline") ? "Add to Bookmark" : "Remove From Bookmark";
     const msg = (bookmark === "bookmark-outline") ? "Do you wish to add this item to your bookmark?" : "Do you wish to remove this item from your bookmark?";
-
     Alert.alert(
       title,
       msg,
@@ -93,27 +53,40 @@ const Sell = (props) => {
         {
           text: "Confirm",
           onPress: () => {
-            if (bookmark === 'bookmark-outline') { // or item not in array
+            // bookmark === 'bookmark-outline' !bookmarkState
+            // !(dispatch(checkItemInBookmark(newItem)))
+
+            if (!bookmarkState) { // todo: bookmark icon persist in bookmark screen
               console.log("Adding item to bookmark!");
               setBookmark("bookmark");
               setBookmarkState(true);
 
-              // TODO: add item to bookmark object
-              addItemToBookmark();
+              // Add selected item into bookmark screen
+              dispatch(addToBookmark(newItem));
             }
             else {
               console.log("Removing item from bookmark!");
               setBookmark("bookmark-outline");
               setBookmarkState(false);
 
-              // TODO: remove item from bookmark object
-              //removeItemFromBookmark();
+              // Remove selected item from bookmark screen
+              dispatch(removeFromBookmark(newItem));
             }
           }
         }
       ]
     );
   }
+
+  // const savedItem = async (item) => {
+  //   try {
+  //     const saving = JSON.stringify(item);
+  //     await AsyncStorage.setItem("@bookmark_key", saving);
+  //   }
+  //   catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   // const loadBookmark = async () => {
   //   try {
@@ -127,9 +100,9 @@ const Sell = (props) => {
   //   }
   // }
 
-  useEffect(() => {
+  //useEffect(() => {
   //   loadBookmark();
-  }, [])
+  //}, [])
 
   const navigation = useNavigation();
 
@@ -149,9 +122,9 @@ const Sell = (props) => {
                 <Text style={styles.price}>${props.price}</Text>
               </View>
               <View style={styles.pressBookmark}>
-                <Pressable onPress={() => handleBookmark()}>
+                <TouchableOpacity onPress={() => {handleBookmark()}}>
                   <Icon name={bookmark} size={60} style={styles.bookmark}/>
-                </Pressable>
+                </TouchableOpacity>
               </View>
             </View>
           </View>

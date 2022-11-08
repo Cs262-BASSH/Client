@@ -167,7 +167,7 @@ export default function Upload() {
     // );}
 
   let openImagePickerAsync = async () => {
-    
+
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (permissionResult.granted === false) {
@@ -187,25 +187,22 @@ export default function Upload() {
 
   return (
 
-    <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"black"}>
-		<View>
-      <TouchableOpacity onPress={openImagePickerAsync}>
-				<Image source={defaultImage} style={styles.defaultImage}/>
-				<Image source={{uri: selectedImage.localUri}}
-					style={styles.image}/>
-      </TouchableOpacity>
-
-			<Text style={styles.firstHeading}>Item Name</Text>
+    <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"#121212"}>
+		  <View>
+        <TouchableOpacity onPress={openImagePickerAsync}>
+				  <Image source={defaultImage} style={styles.defaultImage}/>
+				  <Image source={{uri: selectedImage.localUri}}
+					  style={styles.image}/>
+        </TouchableOpacity>
+			  <Text style={styles.firstHeading}>Item Name</Text>
 				<TextInput style={styles.typeInput}
 					placeholder = "Name..."
 					onChangeText={newText => setItemName(newText)}>
-			</TextInput>
-			{console.log("\n" + itemName)}
-
-			<Text style={styles.heading}>Price</Text>
-				<TextInput style={styles.typeInput} 
+			  </TextInput>
+			  {console.log("\n" + itemName)}
+			  <Text style={styles.heading}>Price</Text>
+				<TextInput style={styles.typeInput}
           keyboardType = "numeric"
-
 					placeholder = "Price..."
 					onChangeText={newText => setItemPrice(newText)}>
 				</TextInput>
@@ -221,58 +218,44 @@ export default function Upload() {
 				<Text style={styles.heading}>Category</Text>
         <View style={styles.IconsRawsContainer}>
           <View style={styles.buttonraw}>
-
-
             <TouchableOpacity style={styles.buttonView} onPress ={toggle}>
               <Icon name="floor-lamp" size={50} style={{ color: color ? "red" : "white" }}/>
               <Text style={styles.icontext}>Lamp</Text>
             </TouchableOpacity>
-
             <TouchableOpacity style={styles.buttonView} onPress ={toggle2}>
               <Icon name="chair-rolling" size={50} style={{ color: color2 ? "red" : "white" }}/>
               <Text style={styles.icontext}>Chair</Text>
             </TouchableOpacity>
-
             <TouchableOpacity style={styles.buttonView} onPress ={toggle3}>
               <Icon name="table-furniture" size={50} style={{ color: color3 ? "red" : "white" }} />
               <Text style={styles.icontext}>Desk</Text>
             </TouchableOpacity>
-						</View>
-						</View>
-          </View>
-
-          <View style={styles.buttonraw}>
-
-            <TouchableOpacity style={styles.buttonView} onPress ={toggle4}>
-              <Icon name="tablet-android" size={50} style={{ color: color4 ? "red" : "white" }} />
-              <Text style={styles.icontext}>Electronics</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.buttonView} onPress ={toggle5}>
-              <Icon name="laptop" size={50} style={{ color: color5 ? "red" : "white" }} />
-              <Text style={styles.icontext}>Laptop and Computer</Text>
-            </TouchableOpacity>
-
-
-            <TouchableOpacity style={styles.buttonView} onPress ={toggle6}>
-              <Icon name="sofa" size={50} style={{ color: color6 ? "red" : "white" }} />
-              <Text style={styles.icontext}>Sofa</Text>
-            </TouchableOpacity>
-
-          </View>
-
-
-          <View style={styles.buttonraw}>
-
-            <TouchableOpacity style={styles.buttonView} onPress ={toggle7}>
-              <Icon name="dots-horizontal-circle" size={50} style={{ color: color7 ? "red" : "white" }} />
-              <Text style={styles.icontext}>Other</Text>
-            </TouchableOpacity>
+					</View>
+				</View>
+      </View>
+      <View style={styles.buttonraw}>
+        <TouchableOpacity style={styles.buttonView} onPress ={toggle4}>
+          <Icon name="tablet-android" size={50} style={{ color: color4 ? "red" : "white" }} />
+          <Text style={styles.icontext}>Electronics</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonView} onPress ={toggle5}>
+          <Icon name="laptop" size={50} style={{ color: color5 ? "red" : "white" }} />
+          <Text style={styles.icontext}>Laptop and Computer</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonView} onPress ={toggle6}>
+          <Icon name="sofa" size={50} style={{ color: color6 ? "red" : "white" }} />
+          <Text style={styles.icontext}>Sofa</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.buttonraw}>
+        <TouchableOpacity style={styles.buttonView} onPress ={toggle7}>
+          <Icon name="dots-horizontal-circle" size={50} style={{ color: color7 ? "red" : "white" }} />
+          <Text style={styles.icontext}>Other</Text>
+        </TouchableOpacity>
 			</View>
       {console.log(itemCategory)}
-
 			<TouchableOpacity onPress={() => null} style={styles.button}>
-      	<Text style={styles.buttonText}> Submit</Text>
+      	<Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
 		</ScrollView>
   );
