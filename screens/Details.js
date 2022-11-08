@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: '90%',
-    height: '55%', // problem
+    width: 200,
+    height: 200,
     borderWidth: '1%',
     borderColor: 'grey',
     borderRadius: '5%',
