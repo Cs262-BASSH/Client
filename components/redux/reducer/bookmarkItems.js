@@ -1,49 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Items from '../../../data/item';
 
-const initialState = [];
+const initialState = []; // todo: add item.js and upload here
 
-const cartSlice = createSlice({
+const bookmarkSlice = createSlice({
   name: 'bookmark',
   initialState,
   reducers: {
-    addToBookmark(state, {payload}) {
-      const {id} = payload;
+    addToBookmark(state, action) {
+      //const {id} = payload;
 
-      const find = state.find((item) => item.id === id);
-      if (find) {
-        return (
-          state.map((item) => {
-            item.id === id ? {...item, quantity: item.quantity +1,} : item
-          })
-        );
-      }
-      else {
-        state.push({...payload, quantity: 1,});
-      }
+      //const find = state.findIndex((item) => item.id === action.payload.id); // find id
+      //if (find) {
+      //  return (
+     //     state.map((item) => {
+     //       item.id === id ? [...item] : item
+      //    })
+      //  );
+      //}
+      //else {
+        state.push({...action.payload});
+      //}
     },
 
-    removeFromBookmark: (state, action) => {
-      const itemId = action.payload;
-      return (
-        state.filter((item) => item.id !== itemId)
+    removeFromBookmark(state, action) {
+      const newBookmark = state.filter(
+        (item) => {item.id !== state.id} // !what is item???
       );
+
+      state = newBookmark;
+      return state;
+    },
+
+    checkItemInBookmark(state, action) {
+      return state.includes(action.payload);
     }
   }
 })
 
-export const {addToBookmark, removeFromBookmark} = cartSlice.actions;
-const cartReducer = cartSlice.reducer;
+export const {addToBookmark, removeFromBookmark, checkItemInBookmark} = bookmarkSlice.actions;
+const cartReducer = bookmarkSlice.reducer;
 
 export default cartReducer;
-
-// const bookmarkItems = (state = [], action) => {
-//   switch(action.type) {
-//     case 'ADD_TO_BOOKMARK':
-//       return [...state, action.payload];
-//     case 'REMOVE_FROM_BOOKMARK':
-//       return state.filter((bookmarkItems) => bookmarkItems.id !== action.payload.id);
-//   }
-//   return state;
-// }
-
-// export default bookmarkItems;
