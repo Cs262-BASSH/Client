@@ -3,8 +3,9 @@ import SignUp from './components/SignUp';
 import Home from "./screens/Home";
 import { View, StyleSheet,Image,Button,Dimensions, Alert, Text, TouchableOpacity} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation, NavigationContainer } from '@react-navigation/native';
-
+import { useNavigation } from '@react-navigation/native';
+import {Provider} from 'react-redux';
+import store from './components/redux/store'
 /* sell, search, buy */
 
 const Stack = createNativeStackNavigator();
@@ -13,11 +14,13 @@ const Stack = createNativeStackNavigator();
 
     return (
       <View style={styles.container}>
-          <Home/>
+          <Provider store={store}>
+            <Home/>
+          </Provider>
       </View>
     )
 }
-    
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

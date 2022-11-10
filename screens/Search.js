@@ -77,14 +77,17 @@ export default function Search() {
     headerTitle: 'Search',
     headerTintColor: 'red',
     tabBarBadge: 4,
-    headerStyle: {backgroundColor: "#121212"}
+    headerStyle: {backgroundColor: "#121212"},
+    headerTitleAlign: 'center'
+
   })
 
   const categoryHeader = ({}) => ({
     headerTitle: 'Example',
     headerTintColor: 'red',
     tabBarBadge: 4,
-    headerStyle: {backgroundColor: "#121212"}
+    headerStyle: {backgroundColor: "#121212"},
+    headerTitleAlign: 'center'
   })
 
   return (
@@ -98,7 +101,7 @@ export default function Search() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#121212',
     // flexDirection: 'column',
     // justifyContent: 'space-evenly',
     // alignItems: 'center'
