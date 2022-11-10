@@ -8,19 +8,20 @@ const Homepage = (props) => {
 
   return (
     <ScrollView style={styles.container}>
-    {
-      homepage.map((item) => (
-        <Sell
-          key={item.id}
-          id={item.id}
-          name={item.name}
-          price={item.price}
-          description={item.description}
-          image={item.image}
-          category={item.category}
-        />
+      {
+        homepage.map((item) => (
+          <Sell
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            price={item.price}
+            description={item.description}
+            image={item.image}
+            category={item.category}
+            contact={item.contact}
+          />
         ))
-      }
+        }
       </ScrollView>
   );
 }
@@ -33,7 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
 
 {/*       <ScrollView>
           {

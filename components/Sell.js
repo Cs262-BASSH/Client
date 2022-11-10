@@ -31,7 +31,8 @@ const Sell = (props) => {
     price: props.price,
     description: props.description,
     category: props.category,
-    image: props.image
+    image: props.image,
+    contact: props.contact
   };
 
   const changeSize = () => {
@@ -132,17 +133,9 @@ const Sell = (props) => {
         <View style={hide ? styles.hide : styles.show}>
           <Text style={styles.description}>{props.description}</Text>
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate(
-                "Details", {
-                  id: props.id,
-                  name: props.name,
-                  price: props.price,
-                  description: props.description,
-                  category: props.category,
-                  image: props.image
-                }
-              )
+            onPress={() => {
+                navigation.navigate("Details", newItem)
+              }
             }>
             <Text style={styles.detail}>Details</Text>
           </TouchableOpacity>

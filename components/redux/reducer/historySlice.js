@@ -7,8 +7,7 @@ const historySlice = createSlice({
   initialState,
   reducers: {
     addToSalesHistory(state, action) {
-      //TODO: add to user sales history
-
+      state.push({...action.payload});
     },
 
     removeFromSalesHistory(state, action) {

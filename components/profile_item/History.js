@@ -1,35 +1,53 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView } from 'react-native';
-import Items from '../../data/item';
+import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import Sell from '../Sell';
 import Upload from '../../screens/Upload';
+import { useSelector } from 'react-redux';
 
 export default function History() {
+  const history = useSelector((state) => state.history);
 
-  if (Items !== null) {
+  if (history.length > 0) {
     return (
-
-      <View style={{ flex: 1, margintop: 50, marginLeft: 10 }}>
-
-        <SafeAreaView style={{ flex: 1 }}>
-
-          <FlatList data={Items} renderItem={({ item }) => (
-            <Sell item={item.name} price={item.price} description={item.description}></Sell>
-          )} />
-
-        </SafeAreaView>
-
-      </View>
+      <ScrollView style={styles.container}>
+        {
+          history.map((item) => (
+            <Sell
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              price={item.price}
+              description={item.description}
+              image={item.image}
+              category={item.category}
+              contact={item.contact}
+            />
+          ))
+        }
+      </ScrollView>
     )
   }
 
   else {
     return (
-
-      <View style={{ flex: 1, margintop: 50, marginLeft: 10 }}>
-        You are not selling anytyhing.
+      <View style={styles.container}>
+        <Text style={styles.nothing}>Ops! You are not selling anything.</Text>
       </View>
-
     )
   }
 }
+
+const styles = StyleSheet.create ({
+  container: {
+    backgroundColor: "#121212",
+    flex: 1,
+    justifyContent: 'center'
+  },
+
+  nothing: {
+    color: 'white',
+    fontSize: '23%',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  }
+})
