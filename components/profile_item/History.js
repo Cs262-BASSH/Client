@@ -46,7 +46,7 @@ const styles = StyleSheet.create ({
 
   nothing: {
     color: 'white',
-    fontSize: '23%',
+    fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
   }
