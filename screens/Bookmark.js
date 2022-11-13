@@ -33,8 +33,8 @@ const Bookmark = () => {
 
   return (
     <View style={styles.container}>
-      {loading ? <ActivityIndicator style={styles.activityIndicator} /> :
-        (
+      {
+        loading ? <ActivityIndicator style={styles.activityIndicator} /> : (
           <ScrollView>
             {
               bookmark.map((item) => (

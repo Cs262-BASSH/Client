@@ -1,38 +1,80 @@
 import Items from '../../data/item'
-import SearchBar from '../SearchBar';
 import Sell from '../Sell'
 
-import { Text, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView} from 'react-native';
+import { Text, TextInput, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView } from 'react-native';
 import { useState } from 'react';
+import SearchBarIcon from 'react-native-vector-icons/MaterialIcons';
 
-export default function Example() {
-    const [searchText, setSearchText] = useState();
+/*
+TODO: output item in the correct category
+TODO: output the search item filter that is in that category
+*/
+
+export default function Example({ route, navigation }) {
+    const [search, setSearch] = useState("");
+
+    const searchItem = (text) => {
+        setSearch(text);
+    }
 
     return (
-        <View style = {styles.background}>
-            <SearchBar searchText={searchText} setSearchText={setSearchText} />
+        <View style={styles.container}>
+            {/* SearchBar */}
+            <View style={styles.searchSection}>
+                <SearchBarIcon style={styles.searchIcon} name="search" size={20} color="#000" />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Search for an item!"
+                    underlineColorAndroid="transparent"
+                    value={search}
+                    onChangeText={(text) => searchItem(text)}
+                />
+            </View>
             <SafeAreaView style={styles.container}>
-                <FlatList data={Items} renderItem={({item, index}) => (
+                <FlatList data={Items} renderItem={({ item, index }) => (
                     <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.category} item={Items[index]}></Sell>
-                )}/>
+                )} />
             </SafeAreaView>
         </View>
-  )
+    )
 }
 
 const styles = StyleSheet.create({
-    background: {
+    container: {
         flexDirection: 'column',
         justifyContent: 'flex-start',
         flex: 1,
         backgroundColor: "#121212",
     },
 
-    container: {
-        marginBottom: 50,
+    searchSection: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f5f5f5',
+        borderRadius: 20,
+        borderWidth: 1,
+        marginRight: 20,
+        marginLeft: 10,
+        height: 40,
     },
 
-    buttonView:{
+    searchIcon: {
+        padding: 10,
+    },
+
+    input: {
+        flex: 1,
+        paddingTop: 10,
+        paddingRight: 20,
+        paddingBottom: 10,
+        paddingLeft: 0,
+        backgroundColor: '#f5f5f5',
+        color: '#424242',
+        borderRadius: 20,
+    },
+
+    buttonView: {
         marginTop: 20,
         width: '90%',
         justifyContent: 'flex-start'
@@ -44,7 +86,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         borderWidth: 3,
         borderBottomLeftRadius: 20,
-        borderTopLeftRadius:20,
+        borderTopLeftRadius: 20,
     },
 
     textContainer: {
