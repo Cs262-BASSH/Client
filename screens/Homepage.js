@@ -1,5 +1,5 @@
 import Sell from '../components/Sell';
-import { StyleSheet, FlatList, SafeAreaView, View, ScrollView} from 'react-native';
+import { StyleSheet, FlatList, SafeAreaView, View, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -21,8 +21,8 @@ const Homepage = (props) => {
             contact={item.contact}
           />
         ))
-        }
-      </ScrollView>
+      }
+    </ScrollView>
   );
 }
 

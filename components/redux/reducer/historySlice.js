@@ -7,7 +7,7 @@ const historySlice = createSlice({
   initialState,
   reducers: {
     addToSalesHistory(state, action) {
-      state.push({...action.payload});
+      state.push({ ...action.payload });
     },
 
     removeFromSalesHistory(state, action) {
@@ -19,5 +19,5 @@ const historySlice = createSlice({
 
 const cartReducer = historySlice.reducer;
 
-export const {addToSalesHistory, removeFromSalesHistory} = historySlice.actions;
+export const { addToSalesHistory, removeFromSalesHistory } = historySlice.actions;
 export default cartReducer;

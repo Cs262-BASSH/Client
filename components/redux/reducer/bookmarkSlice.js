@@ -11,23 +11,29 @@ const bookmarkSlice = createSlice({
       //const find = state.findIndex((item) => item.id === action.payload.id); // find id
       //if (find) {
       //  return (
-     //     state.map((item) => {
-     //       item.id === id ? [...item] : item
+      //     state.map((item) => {
+      //       item.id === id ? [...item] : item
       //    })
       //  );
       //}
       //else {
-        state.push({...action.payload});
+      state.push(action.payload);
+      // state.push({...action.payload});
       //}
+      console.log(state);
     },
 
     removeFromBookmark(state, action) {
-      // state.map((item) => {
-        const newBookmark = state.filter(
-          (item) => {item.id !== state.id} // !what is item???
-        );
-        state = newBookmark;
-      // });
+      console.log("index: " + action.payload.id);
+      //const newBookmark = state.splice(action.payload.id, 1);
+
+      const newBookmark = state.filter(
+        (item) => { item.id != action.payload.id }
+      );
+
+      state = newBookmark;
+      console.log(state);
+
       return state;
     },
 
@@ -39,5 +45,5 @@ const bookmarkSlice = createSlice({
 
 const cartReducer = bookmarkSlice.reducer;
 
-export const {addToBookmark, removeFromBookmark} = bookmarkSlice.actions;
+export const { addToBookmark, removeFromBookmark } = bookmarkSlice.actions;
 export default cartReducer;
