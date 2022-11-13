@@ -4,7 +4,7 @@ import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, Touchable
 import MaterialIcons from 'react-native-vector-icons';
 import Home from '../screens/Home';
 
-export default function Login() {
+export default function Login({navigation}) {
   const {height, width} = Dimensions.get("window");
 
   return (
@@ -24,9 +24,11 @@ export default function Login() {
         </TextInput>
 
         <Text></Text>
-        <TouchableOpacity onPress={() => null} style={styles.button}>
-          <Text style={styles.buttonText}> Log In </Text>
+        <View style={styles.button}>
+        <TouchableOpacity onPress={()=> navigation.navigate('Tabs')}>
+            <Text style={styles.buttonText}> Submit</Text>
         </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.bandBottom}>
               {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}

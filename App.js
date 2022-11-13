@@ -7,27 +7,13 @@ import { useNavigation } from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import store from './components/redux/store'
 /* sell, search, buy */
+
 const Stack = createNativeStackNavigator();
 
-export default function App(navigation) {
+  export default function App() {
 
-  const {height, width} = Dimensions.get("window");
     return (
       <View style={styles.container}>
-          {/* <View style={styles.header}>
-            <Image source={require('./assets/knight.png')} height={height} width={width}/>
-          </View>
-          <View style={styles.footer}>
-            <Text style={styles.title}> Welcome Back!</Text>
-            <Text></Text>
-            <View style={styles.button}>
-            <Button title='Log In' color="black" onPress={()=> {navigation.navigate('Login')}}/>
-            </View>
-            <Text></Text>
-            <View style={styles.button}>
-            <Button title='Sign Up' color= "black" onPress={() => navigate('Login')}/>
-            </View>
-          </View> */}
           <Provider store={store}>
             <Home/>
           </Provider>
@@ -57,9 +43,15 @@ const styles = StyleSheet.create({
   fontFamily: 'Optima',
   fontSize: 30,
   },
+  btn_title : {
+    fontWeight: 'bold',
+   fontFamily: 'Optima',
+   fontSize: 20,
+   },
 	button: {
 		backgroundColor: "beige",
 		borderRadius: 25,
-    padding: 10
+    padding: 10,
+    alignItems: 'center'
 	}
 });
