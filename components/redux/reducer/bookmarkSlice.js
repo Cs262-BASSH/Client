@@ -28,7 +28,7 @@ const bookmarkSlice = createSlice({
       //const newBookmark = state.splice(action.payload.id, 1);
 
       const newBookmark = state.filter(
-        (item) => { item != action.payload }
+        (item) => { item.id != action.payload.id }
       );
 
       state = newBookmark;

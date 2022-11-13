@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { SearchBar } from '@rneui/themed';
 
 /*
 TODO: change the header name of category to match it's respective name
