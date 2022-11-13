@@ -17,6 +17,7 @@ const items = [
     description: "This is a lava lamp. A cool lava lamp. You should buy it. Please. Buy it. You won't regret it. Yes? Of course.",
     category: 'Lamp',
     image: lavaLamp,
+    contact: 'sc77@calvin.edu',
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const items = [
     description: "This is a desk.",
     category: 'Desk',
     image: desk,
+    contact: 'heonjaek@gmail.com',
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ const items = [
     description: "This is a gaming chair.",
     category: "Chair",
     image: gamingChair,
+    contact: 'ads38@calvin.edu',
   },
   {
     id: 4,
@@ -41,14 +44,16 @@ const items = [
     description: "This is a sofa.",
     category: "Sofa",
     image: sofa,
+    contact: 'oko2@calvin.edu',
   },
   {
     id: 5,
     name: "cooler lava lamp!!!",
-    price: 10,
+    price: 1000,
     description: "This is a lava lamp.",
     category: "Lamp",
     image: coolLavaLamp,
+    contact: 'kvlinden@calvin.edu',
   },
 ];
 

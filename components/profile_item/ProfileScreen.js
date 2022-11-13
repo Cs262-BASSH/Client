@@ -42,8 +42,8 @@ function ProfileScreen({ navigation }) {
             </TouchableOpacity>
 
             <View style={styles.upPartTextView}>
-              <Text style={styles.upPartText}>Name:</Text>
-              <Text style={styles.upPartText}>ID:</Text>
+              <Text style={styles.upPartText}>Name: (User Name)</Text>
+              <Text style={styles.upPartText}>ID: (User ID)</Text>
             </View>
 
           </View>
@@ -75,8 +75,8 @@ function ProfileScreen({ navigation }) {
           </TouchableOpacity>
 
           <View style={styles.upPartTextView}>
-            <Text style={styles.upPartText}>Name:</Text>
-            <Text style={styles.upPartText}>ID:</Text>
+            <Text style={styles.upPartText}>Name: (User Name)</Text>
+            <Text style={styles.upPartText}>ID: (User ID)</Text>
           </View>
         </View>
 
@@ -138,10 +138,12 @@ const styles = StyleSheet.create({
   },
   upPartTextView: {
     marginLeft: 25,
-    marginTop: 60
+    marginTop: 60,
+
   },
   upPartText: {
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: "white"
   }
 });

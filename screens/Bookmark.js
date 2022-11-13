@@ -8,10 +8,10 @@ import { useFocusEffect } from '@react-navigation/native';
 
 const Bookmark = () => {
   const [loading, setLoading] = useState(true);
-  //const [bookmarkItems, setBookmarkItems] = useState([]);
-
-  //const dispatch = useDispatch();
   const bookmark = useSelector((state) => state.bookmark);
+
+  //const [bookmarkItems, setBookmarkItems] = useState([]);
+  //const dispatch = useDispatch();
 
   // const getBookmark = async () => {
   //   try {
@@ -46,6 +46,7 @@ const Bookmark = () => {
                   description={item.description}
                   image={item.image}
                   category={item.category}
+                  contact={item.contact}
                 />
               ))
             }
