@@ -31,9 +31,9 @@ const Bookmark = () => {
     }, [])
   );
 
-  return(
+  return (
     <View style={styles.container}>
-      {loading ? <ActivityIndicator style={styles.activityIndicator}/> :
+      {loading ? <ActivityIndicator style={styles.activityIndicator} /> :
         (
           <ScrollView>
             {
@@ -59,7 +59,7 @@ const Bookmark = () => {
 
 export default Bookmark;
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: "#121212",
     flex: 1,

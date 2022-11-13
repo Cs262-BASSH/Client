@@ -37,7 +37,7 @@ export default function History() {
   }
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: "#121212",
     flex: 1,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create ({
 
   nothing: {
     color: 'white',
-    fontSize: '23%',
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
   }

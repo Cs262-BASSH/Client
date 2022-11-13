@@ -48,7 +48,7 @@ const Sell = (props) => {
       [
         {
           text: "Cancel",
-          onPress: () => {console.log("Do nothing")},
+          onPress: () => { console.log("Do nothing") },
           style: "cancel"
         },
         {
@@ -123,8 +123,8 @@ const Sell = (props) => {
                 <Text style={styles.price}>${props.price}</Text>
               </View>
               <View style={styles.pressBookmark}>
-                <TouchableOpacity onPress={() => {handleBookmark()}}>
-                  <Icon name={bookmark} size={60} style={styles.bookmark}/>
+                <TouchableOpacity onPress={() => { handleBookmark() }}>
+                  <Icon name={bookmark} size={60} style={styles.bookmark} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -134,8 +134,8 @@ const Sell = (props) => {
           <Text style={styles.description}>{props.description}</Text>
           <TouchableOpacity
             onPress={() => {
-                navigation.navigate("Details", newItem)
-              }
+              navigation.navigate("Details", newItem)
+            }
             }>
             <Text style={styles.detail}>Details</Text>
           </TouchableOpacity>
