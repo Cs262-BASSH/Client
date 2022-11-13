@@ -12,10 +12,12 @@ const Stack = createNativeStackNavigator();
 export default function Profile() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Profile." component={ProfileScreen} options={{headerShown: false}}/>
-      <Stack.Screen name="Settings" component={Settings} options= {{headerTransparent: true,
-        headerBackImage: () => <Icon name={'arrowLeft'} />}}/>
-      <Stack.Screen name="History" component={History} />
+      <Stack.Screen name="Profile." component={ProfileScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Settings" component={Settings} options={{
+        headerTransparent: true,
+        headerBackImage: () => <Icon name={'arrowLeft'} />
+      }} />
+      <Stack.Screen name="History" component={History} options={{ headerShown: false }} />
       <Stack.Screen name="Likes" component={Likes} />
       <Stack.Screen name="Saved Items" component={SavedItems} />
     </Stack.Navigator>
