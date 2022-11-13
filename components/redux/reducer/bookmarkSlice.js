@@ -7,39 +7,23 @@ const bookmarkSlice = createSlice({
   initialState,
   reducers: {
     addToBookmark(state, action) {
-      //const {id} = payload;
-      //const find = state.findIndex((item) => item.id === action.payload.id); // find id
-      //if (find) {
-      //  return (
-      //     state.map((item) => {
-      //       item.id === id ? [...item] : item
-      //    })
-      //  );
-      //}
-      //else {
       state.push(action.payload);
-      // state.push({...action.payload});
-      //}
-      console.log(state);
-    },
 
-    removeFromBookmark(state, action) {
-      console.log("index: " + action.payload.id);
-      //const newBookmark = state.splice(action.payload.id, 1);
-
-      const newBookmark = state.filter(
-        (item) => { item.id != action.payload.id }
-      );
-
-      state = newBookmark;
-      console.log(state);
+      console.log(`Pushing item with ID: ${action.payload.id} to bookmark.`);
+      console.log(`Bookmark = ${JSON.stringify(state, undefined, 2)}`);
 
       return state;
     },
 
-    checkItemInBookmark(state, action) {
-      return state.includes(action.payload);
-    }
+    removeFromBookmark(state, action) {
+      const itemIndex = state.findIndex((item) => item.id === action.payload.id)
+      console.log(`Removing item with ID: ${JSON.stringify(action.payload.id)} at index: ${itemIndex} in bookmark.`);
+
+      state.splice(itemIndex, 1);
+      console.log(`Bookmark = ${JSON.stringify(state, undefined, 2)}`);
+
+      return state;
+    },
   }
 })
 

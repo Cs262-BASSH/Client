@@ -1,57 +1,54 @@
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import Home from "./screens/Home";
-import { View, StyleSheet,Image,Button,Dimensions, Alert, Text, TouchableOpacity} from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
-import {Provider} from 'react-redux';
 import store from './components/redux/store'
-/* sell, search, buy */
+import Home from "./screens/Home";
+
+import { View, StyleSheet } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Provider } from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
-  export default function App() {
+export default function App() {
 
-    return (
-      <View style={styles.container}>
-          <Provider store={store}>
-            <Home/>
-          </Provider>
-      </View>
-    )
+  return (
+    <View style={styles.container}>
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header : {
+  header: {
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  footer : {
+  footer: {
     flex: 1,
     backgroundColor: 'gray',
     paddingVertical: 10,
-    paddingHorizontal : 30,
+    paddingHorizontal: 30,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
-  title : {
-   fontWeight: 'bold',
-  fontFamily: 'Optima',
-  fontSize: 30,
-  },
-  btn_title : {
+  title: {
     fontWeight: 'bold',
-   fontFamily: 'Optima',
-   fontSize: 20,
-   },
-	button: {
-		backgroundColor: "beige",
-		borderRadius: 25,
+    fontFamily: 'Optima',
+    fontSize: 30,
+  },
+  btn_title: {
+    fontWeight: 'bold',
+    fontFamily: 'Optima',
+    fontSize: 20,
+  },
+  button: {
+    backgroundColor: "beige",
+    borderRadius: 25,
     padding: 10,
     alignItems: 'center'
-	}
+  }
 });
