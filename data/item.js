@@ -5,8 +5,7 @@ import sofa from '../assets/sofa.jpg';
 import coolLavaLamp from '../assets/coollavalamp.jpg';
 
 /*
-  Data object for homepage. Inputs the newest item and outputs the oldest item.
-  So that the items in homepage are ordered from the newest (top) to the oldest (bottom).
+  TODO: save image as a URL instead of file
 */
 
 const items = [
@@ -16,7 +15,7 @@ const items = [
     price: 50,
     description: "This is a lava lamp. A cool lava lamp. You should buy it. Please. Buy it. You won't regret it. Yes? Of course.",
     category: 'Lamp',
-    image: lavaLamp,
+    image: lavaLamp, // https://upload.wikimedia.org/wikipedia/commons/2/24/Lava_lamps_%2816136876840%29.jpg
     contact: 'sc77@calvin.edu',
   },
   {

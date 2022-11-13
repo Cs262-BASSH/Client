@@ -1,17 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, Alert } from 'react-native';
-import { useEffect, useState } from 'react';
-import { useCallback } from 'react';
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkSlice';
 
 /*
-Fixes:
-- white lines
-- how image is fetched
-- bookmark size, do not use hardcode value
+TODO: how image is passed
 */
 
 const Sell = (props) => {
@@ -40,6 +36,7 @@ const Sell = (props) => {
   }
 
   const handleBookmark = () => {
+    // TODO: no need to use alert
     const title = (bookmark === "bookmark-outline") ? "Add to Bookmark" : "Remove From Bookmark";
     const msg = (bookmark === "bookmark-outline") ? "Do you wish to add this item to your bookmark?" : "Do you wish to remove this item from your bookmark?";
     Alert.alert(
@@ -58,7 +55,6 @@ const Sell = (props) => {
             // !(dispatch(checkItemInBookmark(newItem)))
 
             if (!bookmarkState) { // todo: bookmark icon persist in bookmark screen
-              console.log("Adding item to bookmark!");
               setBookmark("bookmark");
               setBookmarkState(true);
 
@@ -66,7 +62,6 @@ const Sell = (props) => {
               dispatch(addToBookmark(newItem));
             }
             else {
-              console.log("Removing item from bookmark!");
               setBookmark("bookmark-outline");
               setBookmarkState(false);
 
@@ -78,32 +73,6 @@ const Sell = (props) => {
       ]
     );
   }
-
-  // const savedItem = async (item) => {
-  //   try {
-  //     const saving = JSON.stringify(item);
-  //     await AsyncStorage.setItem("@bookmark_key", saving);
-  //   }
-  //   catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // const loadBookmark = async () => {
-  //   try {
-  //     const getBookmark = await AsyncStorage.getItem("bookmark_key");
-  //     const bookmarkObject = getBookmark != null ? getBookmark : [];
-
-  //     setBookmarkItems(JSON.parse(bookmarkObject));
-  //   }
-  //   catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  //useEffect(() => {
-  //   loadBookmark();
-  //}, [])
 
   const navigation = useNavigation();
 
