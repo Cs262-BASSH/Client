@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
 
   scrollView: {
-    padding: '2%',
+    padding: 2,
   },
 
   details: {
@@ -45,27 +45,27 @@ const styles = StyleSheet.create({
   image: {
     width: 200,
     height: 200,
-    borderWidth: '1%',
+    borderWidth: 1,
     borderColor: 'grey',
-    borderRadius: '5%',
-    marginBottom: '2%'
+    borderRadius: 5,
+    marginBottom: 2
   },
 
   name: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: '40%',
+    fontSize: 40,
   },
 
   price: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: '50%',
+    fontSize: 50,
   },
 
   descriptionTitle: {
     color: 'white',
-    fontSize: '25%',
+    fontSize: 25,
     textAlign: 'center',
     fontWeight: 'bold',
   },
@@ -73,12 +73,12 @@ const styles = StyleSheet.create({
   description: {
     color: 'white',
     textAlign: 'justify',
-    fontSize: '20%',
-    marginBottom: '5%'
+    fontSize: 20,
+    marginBottom: 5
   },
 
   contactTitle: {
-    fontSize: '25%',
+    fontSize: 25,
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold'
@@ -87,6 +87,6 @@ const styles = StyleSheet.create({
   contact: {
     color: 'white',
     textAlign: 'justify',
-    fontSize: '20%',
+    fontSize: 20,
   },
 })
