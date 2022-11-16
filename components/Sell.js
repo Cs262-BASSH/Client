@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, Alert } from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkSlice';
 
 /*
@@ -36,42 +36,21 @@ const Sell = (props) => {
   }
 
   const handleBookmark = () => {
-    // TODO: no need to use alert
-    const title = (bookmark === "bookmark-outline") ? "Add to Bookmark" : "Remove From Bookmark";
-    const msg = (bookmark === "bookmark-outline") ? "Do you wish to add this item to your bookmark?" : "Do you wish to remove this item from your bookmark?";
-    Alert.alert(
-      title,
-      msg,
-      [
-        {
-          text: "Cancel",
-          onPress: () => { console.log("Do nothing") },
-          style: "cancel"
-        },
-        {
-          text: "Confirm",
-          onPress: () => {
-            // bookmark === 'bookmark-outline' !bookmarkState
-            // !(dispatch(checkItemInBookmark(newItem)))
+    // todo: bookmark icon persist in bookmark screen
+    if (!bookmarkState) {
+      setBookmark("bookmark");
+      setBookmarkState(true);
 
-            if (!bookmarkState) { // todo: bookmark icon persist in bookmark screen
-              setBookmark("bookmark");
-              setBookmarkState(true);
+      // Add selected item into bookmark screen
+      dispatch(addToBookmark(newItem));
+    }
+    else {
+      setBookmark("bookmark-outline");
+      setBookmarkState(false);
 
-              // Add selected item into bookmark screen
-              dispatch(addToBookmark(newItem));
-            }
-            else {
-              setBookmark("bookmark-outline");
-              setBookmarkState(false);
-
-              // Remove selected item from bookmark screen
-              dispatch(removeFromBookmark(newItem));
-            }
-          }
-        }
-      ]
-    );
+      // Remove selected item from bookmark screen
+      dispatch(removeFromBookmark(newItem));
+    }
   }
 
   const navigation = useNavigation();

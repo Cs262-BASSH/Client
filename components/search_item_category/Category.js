@@ -6,7 +6,7 @@ import { useState } from 'react';
 import SearchBarIcon from 'react-native-vector-icons/MaterialIcons';
 
 /*
-TODO: output item in the correct category
+TODO: output item in the correct category = make multiple files
 TODO: output the search item filter that is in that category
 */
 
