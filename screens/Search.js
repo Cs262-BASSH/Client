@@ -1,4 +1,4 @@
-import Example from '../components/search_item_category/examples';
+import Category from '../components/search_item_category/Category';
 
 import { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchBarIcon from 'react-native-vector-icons/MaterialIcons';
 
 /*
-TODO: change the header name of category to match it's respective name
+TODO: change the header name of category to match it's respective name = make multiple files
 TODO: output the search item filter
 */
 
@@ -39,11 +39,11 @@ function SearchScreen({ navigation }) {
         categoryState ? (
           <View style={styles.IconsRawsContainer}>
             <View style={styles.buttonraw} >
-              <TouchableOpacity style={styles.buttonView} onPress={() => { navigation.navigate('Example') }} >
+              <TouchableOpacity style={styles.buttonView} onPress={() => { navigation.navigate('Category') }} >
                 <Icon name="floor-lamp" size={50} color="white" />
                 <Text style={styles.icontext}>Lamp</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonView} onPress={() => { }}>
+              <TouchableOpacity style={styles.buttonView} onPress={() => { navigation.navigate('Category') }}>
                 <Icon name="chair-rolling" size={50} color="white" />
                 <Text style={styles.icontext}>Chair</Text>
               </TouchableOpacity>
@@ -89,14 +89,12 @@ export default function Search() {
   const searchPageHeader = ({ }) => ({
     headerTitle: 'Search',
     headerTintColor: 'red',
-    tabBarBadge: 4,
     headerStyle: { backgroundColor: "#121212" },
     headerTitleAlign: 'center'
-
   })
 
-  const categoryHeader = ({ route }) => ({
-    headerTitle: "Example",
+  const categoryHeader = (route) => ({
+    headerTitle: route.params,
     headerTintColor: 'red',
     tabBarBadge: 4,
     headerStyle: { backgroundColor: "#121212" },
@@ -106,7 +104,7 @@ export default function Search() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="SearchScreen" component={SearchScreen} options={searchPageHeader} />
-      <Stack.Screen name="Example" component={Example} options={({ route }) => categoryHeader({ route })} />
+      <Stack.Screen name="Category" component={Category} options={(route) => categoryHeader(route)} />
     </Stack.Navigator>
   );
 }

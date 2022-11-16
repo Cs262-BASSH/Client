@@ -16,7 +16,7 @@ const bookmarkSlice = createSlice({
     },
 
     removeFromBookmark(state, action) {
-      const itemIndex = state.findIndex((item) => item.id === action.payload.id)
+      const itemIndex = state.findIndex((item) => item.id === action.payload.id);
       console.log(`Removing item with ID: ${JSON.stringify(action.payload.id)} at index: ${itemIndex} in bookmark.`);
 
       state.splice(itemIndex, 1);
@@ -24,10 +24,19 @@ const bookmarkSlice = createSlice({
 
       return state;
     },
+
+    checkItemInBookmark(state, action) {
+      state.find((data) => {
+        if (data.id == action.payload.id) {
+          return true;
+        }
+      })
+      return false;
+    }
   }
 })
 
 const cartReducer = bookmarkSlice.reducer;
 
-export const { addToBookmark, removeFromBookmark } = bookmarkSlice.actions;
+export const { addToBookmark, removeFromBookmark, checkItemInBookmark } = bookmarkSlice.actions;
 export default cartReducer;

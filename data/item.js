@@ -3,6 +3,7 @@ import desk from '../assets/desk.jpg';
 import gamingChair from '../assets/gamingchair.jpg';
 import sofa from '../assets/sofa.jpg';
 import coolLavaLamp from '../assets/coollavalamp.jpg';
+import aot from '../assets/AOT.jpeg';
 
 /*
   TODO: save image as a URL instead of file
@@ -54,6 +55,15 @@ const items = [
     image: coolLavaLamp,
     contact: 'kvlinden@calvin.edu',
   },
+  // {
+  //   id: 6,
+  //   name: "Attack on Titan",
+  //   price: 1000,
+  //   description: "This is the first volume of AOT",
+  //   category: "Books",
+  //   image: aot,
+  //   contact: 'bee6@calvin.edu',
+  // },
 ];
 
 export default items;
