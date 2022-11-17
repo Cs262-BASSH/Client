@@ -1,21 +1,39 @@
 import Items from '../../data/item'
 import Sell from '../Sell'
 
-import { Text, TextInput, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView } from 'react-native';
-import { useState } from 'react';
+import { Text, TextInput, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
 import SearchBarIcon from 'react-native-vector-icons/MaterialIcons';
+import React, { useState , useEffect } from 'react';
 
 /*
 TODO: output item in the correct category
 TODO: output the search item filter that is in that category
 */
 
-export default function Example({ route, navigation }) {
+export default function Etc({ route, navigation }) {
     const [search, setSearch] = useState("");
 
-    const searchItem = (text) => {
-        setSearch(text);
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+
+    const getItems = async () => {
+        try {
+            const response = await fetch("https://quiet-oasis-96937.herokuapp.com/useritem/category/7");
+            const json = await response.json();
+            setData(json);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
     }
+
+    useEffect(() => {
+        getItems();
+    }, []);
+
+
+
 
     return (
         <View style={styles.container}>
@@ -31,9 +49,14 @@ export default function Example({ route, navigation }) {
                 />
             </View>
             <SafeAreaView style={styles.container}>
-                <FlatList data={Items} renderItem={({ item, index }) => (
-                    <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.category} item={Items[index]}></Sell>
-                )} />
+                {isLoading ? <ActivityIndicator /> : (
+                    <FlatList
+                        data={data}
+                        renderItem={({ item }) => (
+                            <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.categorynum}></Sell>
+                        )}
+                    />
+                )}
             </SafeAreaView>
         </View>
     )
