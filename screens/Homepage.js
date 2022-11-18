@@ -1,6 +1,6 @@
 import Sell from '../components/Sell';
-import { StyleSheet, FlatList, SafeAreaView, View, ScrollView, ActivityIndicator} from 'react-native';
-import React, { useState , useEffect } from 'react';
+import { StyleSheet, FlatList, SafeAreaView, View, ScrollView, ActivityIndicator } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const Homepage = (props) => {
@@ -11,7 +11,7 @@ const Homepage = (props) => {
   const [data, setData] = useState([]);
 
   const getItems = async () => {
-     try {
+    try {
       const response = await fetch("https://quiet-oasis-96937.herokuapp.com/useritem");
       const json = await response.json();
       setData(json);
@@ -30,16 +30,16 @@ const Homepage = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-{isLoading ? <ActivityIndicator/> : (
-          <FlatList
-            data={data}
-           
-            renderItem={({ item }) => (
-              <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.categorynum}></Sell>
-            )}
-            />
-            )}
-      </SafeAreaView>
+      {isLoading ? <ActivityIndicator /> : (
+        <FlatList
+          data={data}
+
+          renderItem={({ item }) => (
+            <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.categorynum}></Sell>
+          )}
+        />
+      )}
+    </SafeAreaView>
   );
 }
 

@@ -9,7 +9,7 @@ export default function History() {
 
   if (history.length > 0) {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.containerSellItem}>
         {
           history.map((item) => (
             <Sell
@@ -38,6 +38,11 @@ export default function History() {
 }
 
 const styles = StyleSheet.create({
+  containerSellItem: {
+    backgroundColor: "#121212",
+    flex: 1,
+  },
+
   container: {
     backgroundColor: "#121212",
     flex: 1,
