@@ -4,6 +4,7 @@ import History from './History';
 import Likes from './Likes';
 import SavedItems from './SavedItems';
 import * as ImagePicker from 'expo-image-picker';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image, StyleSheet, Text, View, TextInput, Keyboard, ScrollView, Button, TouchableOpacity, FlatList } from 'react-native';
@@ -35,6 +36,7 @@ function ProfileScreen({ navigation }) {
         <View style={styles.tasksWrapper}>
           <View style={styles.upPart}>
 
+
             <TouchableOpacity onPress={openImagePickerAsync}>
               <View>
                 <Image source={{ uri: selectedImage.localUri }} style={styles.img} />
@@ -49,12 +51,26 @@ function ProfileScreen({ navigation }) {
           </View>
 
           <View style={styles.itemsList}>
+
             {/* Touch Event */}
-            <TouchableOpacity>
-              <Text style={styles.items} onPress={() => navigation.navigate('Settings')}>Setting</Text>
-              <Text style={styles.items} onPress={() => navigation.navigate('History')}>Sales History</Text>
-              <Text style={styles.items} onPress={() => navigation.navigate('Likes')}>Likes</Text>
-              <Text style={styles.items} onPress={() => navigation.navigate('Saved Items')}>Saved Items</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+              <View style={styles.itemTabs}>
+                <View style={styles.icons}><Ionicons name="settings" size={30} color="#0066ff" /></View>
+                <Text style={styles.items} >
+                  Setting{"\n"}
+                  <Text style={styles.secondery}>Notification · Password · Help</Text>
+                </Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('History')}>
+              <View style={styles.itemTabs}>
+                <View style={styles.icons}><Ionicons name="document-text" size={30} color="#a4de02" /></View>
+                <Text style={styles.items} >
+                  Sales History{"\n"}
+                  <Text style={styles.secondery}>List of Your Sales</Text>
+                </Text>
+              </View>
             </TouchableOpacity>
 
           </View>
@@ -83,12 +99,27 @@ function ProfileScreen({ navigation }) {
         <View style={styles.itemsList}>
 
           {/* Touch Event */}
-          <TouchableOpacity>
-            <Text style={styles.items} onPress={() => navigation.navigate('Settings')}>Setting</Text>
-            <Text style={styles.items} onPress={() => navigation.navigate('History')}>Sales History</Text>
-            <Text style={styles.items} onPress={() => navigation.navigate('Likes')}>Likes</Text>
-            <Text style={styles.items} onPress={() => navigation.navigate('Saved Items')}>Saved Items</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+            <View style={styles.itemTabs}>
+              <View style={styles.icons}><Ionicons name="settings" size={30} color="#0066ff" /></View>
+              <Text style={styles.items} >
+                Setting{"\n"}
+                <Text style={styles.secondery}>Notification · Password · Help</Text>
+              </Text>
+            </View>
           </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('History')}>
+
+            <View style={styles.itemTabs}>
+              <View style={styles.icons}><Ionicons name="document-text" size={30} color="#a4de02" /></View>
+              <Text style={styles.items} >
+                Sales History{"\n"}
+                <Text style={styles.secondery}>List of Your Sales</Text>
+              </Text>
+            </View>
+          </TouchableOpacity>
+
 
         </View>
       </View>
@@ -110,11 +141,10 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   items: {
-    fontSize: 15,
-    padding: 15,
-    marginBottom: 5,
-    backgroundColor: '#FFF',
-    borderRadius: 10,
+    // flexDirection: 'row',
+    fontSize: 18,
+    marginLeft: 10
+
   },
   input: {
     paddingVertical: 15,
@@ -126,24 +156,40 @@ const styles = StyleSheet.create({
     width: 250,
   },
   img: {
-    width: 110,
-    height: 110,
+    width: 130,
+    height: 130,
     marginTop: 30,
-    borderRadius: 60,
+    borderRadius: 100,
     justifyContent: 'center'
   },
   upPart: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     alignItems: 'center'
   },
   upPartTextView: {
-    marginLeft: 25,
-    marginTop: 60,
-
+    alignItems: "center",
+    marginTop: 20,
+    // marginBottom: 10
   },
   upPartText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: "white"
+  },
+  itemTabs: {
+    flexDirection: 'row',
+    fontSize: 17,
+    padding: 15,
+    marginBottom: 5,
+    backgroundColor: '#FFF',
+    borderRadius: 10,
+    alignItems: "center"
+  },
+  icons: {
+    justifyContent: "center"
+  },
+  secondery: {
+    color: "grey",
+    fontSize: 13
   }
 });
