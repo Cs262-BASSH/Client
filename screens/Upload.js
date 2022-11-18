@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { addToHomepage } from '../components/redux/reducer/homepageSlice';
 import { useDispatch } from 'react-redux';
 import { addToSalesHistory } from '../components/redux/reducer/historySlice';
+import { useState } from 'react';
 
 // todo: when user press return in description, should remove keyboard instead of newline
 
@@ -21,6 +22,7 @@ export default function Upload() {
   const [itemPrice, setItemPrice] = React.useState("");
   const [itemDescription, setItemDescription] = React.useState("");
   const [itemCategory, setItemCategory] = React.useState("");
+  const [sellerContact, setSellerContact] = useState("")
 
   const [color, setColor] = React.useState(false);
   const [color2, setColor2] = React.useState(false);
@@ -209,7 +211,14 @@ export default function Upload() {
     dispatch(addToSalesHistory(newItem));
 
     // todo: toast to tell item has been uploaded
+
+    // Reset upload
+    setItemName("");
+    setItemPrice("");
+    setItemDescription("");
+    setItemCategory("");
   }
+
   return (
 
     <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"#121212"}>
@@ -222,7 +231,7 @@ export default function Upload() {
         <Text style={styles.firstHeading}>Item Name</Text>
         <TextInput style={styles.typeInput}
           placeholder="Name..."
-          onChangeText={newText => setItemName(newText)}>
+          onChangeText={newText => { setItemName(newText) }}>
         </TextInput>
         {console.log("\n" + itemName)}
         <Text style={styles.heading}>Price</Text>
