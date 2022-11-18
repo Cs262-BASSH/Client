@@ -70,7 +70,7 @@ function ProfileScreen({ navigation }) {
         <View style={styles.upPart}>
           <TouchableOpacity onPress={openImagePickerAsync}>
             <View>
-              <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.img} />
+              <Image source={{ uri: 'https://waetag.com/wp-content/plugins/buddyboss-platform/bp-core/images/profile-avatar-buddyboss.png' }} style={styles.img} />
             </View>
           </TouchableOpacity>
 
