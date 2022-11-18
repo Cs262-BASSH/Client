@@ -4,8 +4,11 @@ import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
 import blank from "../assets/black.png"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { addToHomepage } from '../components/redux/reducer/homepageSlice';
+import { useDispatch } from 'react-redux';
+import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 
-// TODO: item object push to database
+// todo: when user press return in description, should remove keyboard instead of newline
 
 global.control = 0;
 
@@ -14,10 +17,10 @@ export default function Upload() {
   const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
 
   //Object submitData =  {
-  const [itemName, setItemName] = React.useState(null);
-  const [itemPrice, setItemPrice] = React.useState(null);
-  const [itemDescription, setItemDescription] = React.useState(null);
-  const [itemCategory, setItemCategory] = React.useState(null);
+  const [itemName, setItemName] = React.useState("");
+  const [itemPrice, setItemPrice] = React.useState("");
+  const [itemDescription, setItemDescription] = React.useState("");
+  const [itemCategory, setItemCategory] = React.useState("");
 
   const [color, setColor] = React.useState(false);
   const [color2, setColor2] = React.useState(false);
@@ -26,6 +29,8 @@ export default function Upload() {
   const [color5, setColor5] = React.useState(false);
   const [color6, setColor6] = React.useState(false);
   const [color7, setColor7] = React.useState(false);
+
+  const dispatch = useDispatch();
 
   const toggle = function () {
     if (color) {
@@ -185,6 +190,26 @@ export default function Upload() {
     setDefaultImage(blank);
   };
 
+  const uploadItem = () => {
+    // todo: unique key id, image, contacts
+    const newItem = {
+      // id: props.id,
+      name: itemName,
+      price: itemPrice,
+      description: itemDescription,
+      category: itemCategory,
+      // image: props.image,
+      // contact: props.contact
+    };
+
+    // Upload to homepage
+    dispatch(addToHomepage(newItem));
+
+    // Upload to user sales history
+    dispatch(addToSalesHistory(newItem));
+
+    // todo: toast to tell item has been uploaded
+  }
   return (
 
     <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"#121212"}>
@@ -254,7 +279,7 @@ export default function Upload() {
         </TouchableOpacity>
       </View>
       {console.log(itemCategory)}
-      <TouchableOpacity onPress={() => null} style={styles.button}>
+      <TouchableOpacity onPress={() => uploadItem()} style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
     </ScrollView>
