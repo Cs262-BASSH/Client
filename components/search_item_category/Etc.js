@@ -3,7 +3,7 @@ import Sell from '../Sell'
 
 import { Text, TextInput, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
 import SearchBarIcon from 'react-native-vector-icons/MaterialIcons';
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 /*
 TODO: output item in the correct category

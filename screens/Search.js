@@ -52,27 +52,27 @@ function SearchScreen({ navigation }) {
                 <Icon name="chair-rolling" size={50} color="white" />
                 <Text style={styles.icontext}>Chair</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonView} onPress={() => {navigation.navigate('Desk')  }}>
+              <TouchableOpacity style={styles.buttonView} onPress={() => { navigation.navigate('Desk') }}>
                 <Icon name="table-furniture" size={50} color="white" />
                 <Text style={styles.icontext}>Desk</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.buttonraw}>
-              <TouchableOpacity style={styles.buttonView} onPress={() => { {navigation.navigate('Electronics')  } }}>
+              <TouchableOpacity style={styles.buttonView} onPress={() => { { navigation.navigate('Electronics') } }}>
                 <Icon name="tablet-android" size={50} color="white" />
                 <Text style={styles.icontext}>Electronics</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonView} onPress={() => { {navigation.navigate('LapComs')  } }}>
+              <TouchableOpacity style={styles.buttonView} onPress={() => { { navigation.navigate('LapComs') } }}>
                 <Icon name="laptop" size={50} color="white" />
                 <Text style={styles.icontext}>Laptop and Computer</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonView} onPress={() => { navigation.navigate('Sofa') }}>  
+              <TouchableOpacity style={styles.buttonView} onPress={() => { navigation.navigate('Sofa') }}>
                 <Icon name="sofa" size={50} color="white" />
                 <Text style={styles.icontext}>Sofa</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.buttonraw}>
-              <TouchableOpacity style={styles.buttonView} onPress={() => {navigation.navigate('Etc')  }}>
+              <TouchableOpacity style={styles.buttonView} onPress={() => { navigation.navigate('Etc') }}>
                 <Icon name="dots-horizontal-circle" size={50} color="white" />
                 <Text style={styles.icontext}>Others</Text>
               </TouchableOpacity>
@@ -132,7 +132,7 @@ export default function Search() {
     headerStyle: { backgroundColor: "#121212" },
     headerTitleAlign: 'center'
   })
-  
+
   const LapComsHeader = ({ route }) => ({
     headerTitle: "Laptop and Computer",
     headerTintColor: 'red',
@@ -165,8 +165,8 @@ export default function Search() {
       <Stack.Screen name="Desk" component={Desk} options={({ route }) => DeskHeader({ route })} />
       <Stack.Screen name="Electronics" component={Electronics} options={({ route }) => ElectronicsHeader({ route })} />
       <Stack.Screen name="LapComs" component={LapComs} options={({ route }) => LapComsHeader({ route })} />
+      <Stack.Screen name="Sofa" component={Sofa} options={({ route }) => SofaHeader({ route })} />
       <Stack.Screen name="Etc" component={Etc} options={({ route }) => EtcHeader({ route })} />
-
     </Stack.Navigator>
   );
 }
