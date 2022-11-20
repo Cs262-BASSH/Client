@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
-import Sell from '../Sell';
+import HistorySell from '../HistorySell';
 import Upload from '../../screens/Upload';
 import { useSelector } from 'react-redux';
 
@@ -12,7 +12,7 @@ export default function History() {
       <ScrollView style={styles.containerSellItem}>
         {
           history.map((item) => (
-            <Sell
+            <HistorySell
               key={item.id}
               id={item.id}
               name={item.name}

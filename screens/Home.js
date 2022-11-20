@@ -1,5 +1,6 @@
 import Tabs from './Tabs';
 import Details from '../screens/Details';
+import HistoryDetails from '../screens/HistoryDetails';
 import Welcome from './Welcome';
 import Login from '../components/Login';
 
@@ -20,7 +21,6 @@ export default function Home() {
     const detailStyle = () => ({
         headerTitleStyle: {
             color: "#e4000f",
-
         },
         headerStyle: {
             backgroundColor: "#121212",
@@ -34,7 +34,7 @@ export default function Home() {
             <NavigationContainer>
                 <StatusBar barStyle='light-content' hidden={true} />
                 <Stack.Navigator>
-                    <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
+                    {/* <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                     <Stack.Screen name="Login" component={Login} options={{
                         headerTransparent: true,
                         headerBackImage: () => <Icon name={'arrowLeft'} />
@@ -42,9 +42,10 @@ export default function Home() {
                     <Stack.Screen name="SignUp" component={SignUp} options={{
                         headerTransparent: true,
                         headerBackImage: () => <Icon name={'arrowLeft'} />
-                    }} />
+                    }} /> */}
                     <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
                     <Stack.Screen name="Details" component={Details} options={detailStyle} />
+                    <Stack.Screen name="HistoryDetails" component={HistoryDetails} options={detailStyle} />
                 </Stack.Navigator>
             </NavigationContainer>
             {/* <Image style={styles.logo_container}
