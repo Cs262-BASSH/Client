@@ -1,19 +1,14 @@
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, Alert } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkSlice';
+
+/*
+TODO: how image is passed
+*/
 
 const Sell = (props) => {
   // Determines whether the description and details button is shown or not
   const [hide, setHide] = useState(true);
-
-  // Determines how the icon should look like depending on if user bookmarked it or not
-  const [bookmark, setBookmark] = useState("bookmark-outline");
-  const [bookmarkState, setBookmarkState] = useState(false); // false = item not in bookmark
-
-  const dispatch = useDispatch();
 
   // The item that user pressed
   const newItem = {
@@ -28,24 +23,6 @@ const Sell = (props) => {
 
   const changeSize = () => {
     setHide(!hide);
-  }
-
-  const handleBookmark = () => {
-    // todo: bookmark icon persist in bookmark screen
-    if (!bookmarkState) {
-      setBookmark("bookmark");
-      setBookmarkState(true);
-
-      // Add selected item into bookmark screen
-      dispatch(addToBookmark(newItem));
-    }
-    else {
-      setBookmark("bookmark-outline");
-      setBookmarkState(false);
-
-      // Remove selected item from bookmark screen
-      dispatch(removeFromBookmark(newItem));
-    }
   }
 
   const navigation = useNavigation();
@@ -65,11 +42,6 @@ const Sell = (props) => {
               <View>
                 <Text style={styles.price}>${props.price}</Text>
               </View>
-              <View style={styles.pressBookmark}>
-                <TouchableOpacity onPress={() => { handleBookmark() }}>
-                  <Icon name={bookmark} size={60} style={styles.bookmark} />
-                </TouchableOpacity>
-              </View>
             </View>
           </View>
         </View>
@@ -77,9 +49,9 @@ const Sell = (props) => {
           <Text style={styles.description}>{props.description}</Text>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Details", newItem)
-            }
-            }>
+              navigation.navigate("HistoryDetails", newItem)
+            }}
+          >
             <Text style={styles.detail}>Details</Text>
           </TouchableOpacity>
         </View>

@@ -17,46 +17,43 @@ const Settings = () => {
     ]);
 
   const aboutInfo = () =>
-  Alert.alert('KNIGHT MARKET', 'This is an app where you can view items, speak with sellers and negotiate prices for items you want to buy')
-  
+    Alert.alert('KNIGHT MARKET', 'This is an app where you can view items, speak with sellers and negotiate prices for items you want to buy')
+
   const helpInfo = () =>
-  Alert.alert('For help:', 'Email bee6@calvin.edu')
+    Alert.alert('For help:', 'Email bee6@calvin.edu')
 
   return (
     <View style={styles.container}>
       <View style={styles.item}>
-      <TouchableOpacity onPress={aboutInfo}>
-      <Text style={styles.item}>About    <Icon name="ios-information-circle" size={20}/></Text>
-      </TouchableOpacity>
-      <Text style={styles.item}>Notifications   <Icon name="ios-notifications" size={20}/></Text>
-      <Switch style={{marginLeft: 200, marginTop: -65}}
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
-      <Text></Text><Text></Text>
-      <Text style={styles.item}>Password and Security   <Icon name="ios-finger-print" size={20}/></Text>
-      <TouchableOpacity onPress={helpInfo}>
-      <Text style={styles.item}>Help    <Icon name="ios-help" size={20}/></Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={aboutInfo}>
+          <Text style={styles.item}>About    <Icon name="ios-information-circle" size={20} /></Text>
+        </TouchableOpacity>
+        <Text style={styles.item}>Notifications   <Icon name="ios-notifications" size={20} /></Text>
+        <Switch style={{ marginLeft: 200, marginTop: -65 }}
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
+        <Text></Text><Text></Text>
+        <Text style={styles.item}>Password and Security   <Icon name="ios-finger-print" size={20} /></Text>
+        <TouchableOpacity onPress={helpInfo}>
+          <Text style={styles.item}>Help    <Icon name="ios-help" size={20} /></Text>
+        </TouchableOpacity>
       </View>
 
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <View style={{flex: 1, height: 1, backgroundColor: 'white'}} />
-      <View>
-        <Text style={{width: 60, textAlign: 'center', color: 'white'}}>Danger Zone</Text>
-      </View>
-      <View style={{flex: 1, height: 1, backgroundColor: 'white'}} />
-      
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flex: 1, height: 1, backgroundColor: 'white' }} />
+        <View>
+          <Text style={{ width: 60, textAlign: 'center', color: 'white' }}>Danger Zone</Text>
+        </View>
+        <View style={{ flex: 1, height: 1, backgroundColor: 'white' }} />
       </View>
       <Text></Text>
-      <View style={{ backgroundColor: 'tomato', padding: 10, borderRadius: 15,  }}>
-        <Button title={'Delete Account'} color='black' onPress={createTwoButtonAlert}/>
-        
+      <View style={{ backgroundColor: 'tomato', padding: 10, borderRadius: 15, }}>
+        <Button title={'Delete Account'} color='black' onPress={createTwoButtonAlert} />
       </View>
-      
     </View>
   );
 }

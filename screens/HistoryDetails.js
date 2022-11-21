@@ -1,12 +1,21 @@
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image } from "react-native";
-
-/*
-TODO: Swipe horizontally to view more images
-*/
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Button } from "react-native";
+import { useDispatch } from "react-redux";
+import { removeFromSalesHistory } from '../components/redux/reducer/historySlice';
 
 export default function Details({ route }) {
-  const { name, price, description, image, contact } = route.params;
+  const { id, name, price, description, image, contact } = route.params;
 
+  const dispatch = useDispatch();
+
+  const newItem = {
+    id: id,
+    name: name,
+    price: price,
+    description: description,
+    // category: category,
+    image: image,
+    contact: contact
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -22,6 +31,10 @@ export default function Details({ route }) {
           <View style={styles.line} />
           <Text style={styles.contactTitle}>Seller Contact</Text>
           <Text style={styles.contact}>{contact}</Text>
+          <View style={styles.line} />
+          <View style={styles.button}>
+            <Button title="Remove Item" color='white' onPress={() => dispatch(removeFromSalesHistory(newItem))} />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -96,4 +109,13 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     fontSize: 20,
   },
+
+  button: {
+    backgroundColor: 'tomato',
+    padding: 10,
+    borderRadius: 15,
+    width: "50%",
+    alignSelf: 'center',
+    marginTop: 5,
+  }
 })

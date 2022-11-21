@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 const Homepage = (props) => {
   const homepage = useSelector((state) => state.homepage);
 
-
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -26,14 +25,11 @@ const Homepage = (props) => {
     getItems();
   }, []);
 
-
-
   return (
     <SafeAreaView style={styles.container}>
-      {isLoading ? <ActivityIndicator /> : (
+      {isLoading ? <ActivityIndicator style={styles.loading} /> : (
         <FlatList
           data={data}
-
           renderItem={({ item }) => (
             <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.categorynum}></Sell>
           )}
@@ -46,6 +42,10 @@ const Homepage = (props) => {
 export default Homepage;
 
 const styles = StyleSheet.create({
+  loading: {
+
+  },
+
   container: {
     backgroundColor: '#121212',
     flex: 1,
