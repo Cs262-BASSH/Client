@@ -32,6 +32,18 @@ export default function Upload() {
   const [color6, setColor6] = React.useState(false);
   const [color7, setColor7] = React.useState(false);
 
+  // todo: unique key id, image, contacts
+  // Item to be uploaded
+  const newItem = {
+    // id: props.id,
+    name: itemName,
+    price: itemPrice,
+    description: itemDescription,
+    category: itemCategory,
+    // image: props.image,
+    // contact: props.contact
+  };
+
   const dispatch = useDispatch();
 
   const toggle = function () {
@@ -192,23 +204,48 @@ export default function Upload() {
     setDefaultImage(blank);
   };
 
-  const uploadItem = () => {
-    // todo: unique key id, image, contacts
-    const newItem = {
-      // id: props.id,
-      name: itemName,
-      price: itemPrice,
-      description: itemDescription,
-      category: itemCategory,
-      // image: props.image,
-      // contact: props.contact
-    };
+  // const uploadItem = () => {
+  //   // Upload to homepage
+  //   dispatch(addToHomepage(newItem));
 
-    // Upload to homepage
-    dispatch(addToHomepage(newItem));
+  //   // Upload to user sales history
+  //   dispatch(addToSalesHistory(newItem));
 
-    // Upload to user sales history
-    dispatch(addToSalesHistory(newItem));
+  //   // todo: toast to tell item has been uploaded
+
+  //   // Reset upload
+  //   setItemName("");
+  //   setItemPrice("");
+  //   setItemDescription("");
+  //   setItemCategory("");
+  // }
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newItem)
+  };
+
+  const uploadItem = async () => {
+    try {
+      await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
+        .then(response => response.text())
+        .then((responseData) => {
+          console.log(
+            "POST Response:",
+            "Response Body -> " + JSON.stringify(responseData)
+          )
+        })
+      //const response = await fetch('https://quiet-oasis-96937.herokuapp.com/useritem', requestOptions);
+      //const responseData = await response.text();
+      //console.log("POST Response", "Response Body -> " + JSON.stringify(responseData));
+    }
+    catch (error) {
+      console.error(error);
+    }
 
     // todo: toast to tell item has been uploaded
 
