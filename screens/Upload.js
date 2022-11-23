@@ -223,11 +223,19 @@ export default function Upload() {
   const requestOptions = {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(newItem)
+    body: JSON.stringify({"userid":1,
+    "time":"2006-06-27T08:00:00.000Z",
+    "categorynum":1,
+    "price":50,
+    "description":"nice lamp",
+    "imageurl":""
+  })
   };
+
+
 
   const uploadItem = async () => {
     try {
