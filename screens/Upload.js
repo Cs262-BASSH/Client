@@ -226,16 +226,15 @@ export default function Upload() {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({"userid":1,
-    "time":"2006-06-27T08:00:00.000Z",
-    "categorynum":1,
-    "price":50,
-    "description":"nice lamp",
-    "imageurl":""
-  })
+    body: JSON.stringify({
+      "userid": 1,
+      "time": "2006-06-27T08:00:00.000Z",
+      "categorynum": 1,
+      "price": 50,
+      "description": "nice lamp",
+      "imageurl": ""
+    })
   };
-
-
 
   const uploadItem = async () => {
     try {
@@ -257,7 +256,7 @@ export default function Upload() {
 
     // todo: toast to tell item has been uploaded
 
-    // Reset upload
+    // Reset upload and refresh page
     setItemName("");
     setItemPrice("");
     setItemDescription("");
