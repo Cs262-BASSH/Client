@@ -4,9 +4,7 @@ import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
 import blank from "../assets/black.png"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { addToHomepage } from '../components/redux/reducer/homepageSlice';
 import { useDispatch } from 'react-redux';
-import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 import { useState } from 'react';
 
 // todo: when user press return in description, should remove keyboard instead of newline
@@ -33,7 +31,7 @@ export default function Upload() {
   const [color7, setColor7] = React.useState(false);
 
   // todo: unique key id, image, contacts
-  // Item to be uploaded
+  // Item to be written to database
   const newItem = {
     // id: props.id,
     name: itemName,
@@ -204,22 +202,6 @@ export default function Upload() {
     setDefaultImage(blank);
   };
 
-  // const uploadItem = () => {
-  //   // Upload to homepage
-  //   dispatch(addToHomepage(newItem));
-
-  //   // Upload to user sales history
-  //   dispatch(addToSalesHistory(newItem));
-
-  //   // todo: toast to tell item has been uploaded
-
-  //   // Reset upload
-  //   setItemName("");
-  //   setItemPrice("");
-  //   setItemDescription("");
-  //   setItemCategory("");
-  // }
-
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -228,7 +210,8 @@ export default function Upload() {
     },
     body: JSON.stringify({
       "userid": 1,
-      "time": "2006-06-27T08:00:00.000Z",
+      // "time": "2006-06-27T08:00:00.000Z",
+      "time": new Date(), // .getTime()
       "categorynum": 1,
       "price": 50,
       "description": "nice lamp",
@@ -245,10 +228,8 @@ export default function Upload() {
             "POST Response:",
             "Response Body -> " + JSON.stringify(responseData)
           )
+          console.log("Successfully written to database.");
         })
-      //const response = await fetch('https://quiet-oasis-96937.herokuapp.com/useritem', requestOptions);
-      //const responseData = await response.text();
-      //console.log("POST Response", "Response Body -> " + JSON.stringify(responseData));
     }
     catch (error) {
       console.error(error);
