@@ -213,7 +213,7 @@ export default function Upload() {
       "userid": 1,
       // "time": "2006-06-27T08:00:00.000Z",
       "name": newItem.name,
-      "time": new Date(), // .getTime()
+      "time": new Date(),
       "categorynum": 1,
       // "categorynum": newItem.category,
       "price": newItem.price,
