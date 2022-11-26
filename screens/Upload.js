@@ -6,6 +6,7 @@ import blank from "../assets/black.png"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 
 // todo: when user press return in description, should remove keyboard instead of newline
 
@@ -222,6 +223,7 @@ export default function Upload() {
   };
 
   const uploadItem = async () => {
+    // Post Request to database
     try {
       await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
         .then(response => response.text())
@@ -236,6 +238,9 @@ export default function Upload() {
     catch (error) {
       console.error(error);
     }
+
+    // Use redux to push item temporarily to user sales history
+    dispatch(addToSalesHistory(newItem));
 
     // todo: toast to tell item has been uploaded
 
