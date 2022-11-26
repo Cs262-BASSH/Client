@@ -211,7 +211,7 @@ export default function Upload() {
     body: JSON.stringify({
       "userid": 1,
       // "time": "2006-06-27T08:00:00.000Z",
-      "time": new Date(), // .getTime()
+      "time": new Date(), // .getTime() // unique key
       "categorynum": 1,
       "price": 50,
       "description": "nice lamp",
