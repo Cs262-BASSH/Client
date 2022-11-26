@@ -22,9 +22,11 @@ export default function Details({ route }) {
     body: JSON.stringify() // todo: delete item here
   };
 
+  const address = "https://quiet-oasis-96937.herokuapp.com/useritem/"+{id};
+
   const deleteItem = async () => { // pass userid as parameter
     try {
-      const response = await fetch('https://quiet-oasis-96937.herokuapp.com/useritem', requestOptions);
+      const response = await fetch({address}, requestOptions);
       //const response_1 = await fetch(`https://quiet-oasis-96937.herokuapp.com/useritem/${userid}`, requestOptions);
 
       const responseData = await response.text();
