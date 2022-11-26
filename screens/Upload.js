@@ -211,10 +211,12 @@ export default function Upload() {
     body: JSON.stringify({
       "userid": 1,
       // "time": "2006-06-27T08:00:00.000Z",
-      "time": new Date(), // .getTime() // unique key
+      "name": newItem.name,
+      "time": new Date(), // .getTime()
       "categorynum": 1,
-      "price": 50,
-      "description": "nice lamp",
+      // "categorynum": newItem.category,
+      "price": newItem.price,
+      "description": newItem.description,
       "imageurl": ""
     })
   };
