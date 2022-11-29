@@ -21,8 +21,9 @@ export default function Details({ route }) {
     },
     body: JSON.stringify() // todo: delete item here
   };
+  const text = JSON.stringify(newItem.id);
 
-  const address = "https://quiet-oasis-96937.herokuapp.com/useritem/"+{id};
+  const address = "https://quiet-oasis-96937.herokuapp.com/useritem/"+ text;
 
   const deleteItem = async () => { // pass userid as parameter
     try {
@@ -54,7 +55,7 @@ export default function Details({ route }) {
           <Text style={styles.description}>{description}</Text>
           <View style={styles.line} />
           <Text style={styles.contactTitle}>Seller Contact</Text>
-          <Text style={styles.contact}>{contact}</Text>
+          <Text style={styles.contact}>{contact} </Text>
           <View style={styles.line} />
           <View style={styles.button}>
             <Button title="Remove Item" color='white' onPress={() => deleteItem()} />
