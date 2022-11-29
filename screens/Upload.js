@@ -226,7 +226,7 @@ export default function Upload() {
       await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
         .then(response => response.json())
         .then((responseData) => {
-          
+
           const item1 = responseData.id;
           setitemID(item1);
           setitemID(item1.toString());
@@ -268,17 +268,20 @@ export default function Upload() {
           placeholder="Name..."
           onChangeText={newText => { setItemName(newText) }}>
         </TextInput>
+        {console.log(itemName)}
         <Text style={styles.heading}>Price</Text>
         <TextInput style={styles.typeInput}
           keyboardType="numeric"
           placeholder="Price..."
           onChangeText={newText => setItemPrice(newText)}>
         </TextInput>
+        {console.log(itemPrice)}
         <Text style={styles.heading}>Description</Text>
         <TextInput style={styles.typeInput}
           placeholder="Description..." multiline={true}
           onChangeText={newText => setItemDescription(newText)}>
         </TextInput>
+        {console.log(itemDescription)}
 
         {/* Code to Implement Categories */}
         <Text style={styles.heading}>Category</Text>
@@ -319,10 +322,11 @@ export default function Upload() {
           <Text style={styles.icontext}>Other</Text>
         </TouchableOpacity>
       </View>
+      {console.log(itemCategory)}
       <TouchableOpacity onPress={() => uploadItem()} style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
-    </ScrollView >
+    </ScrollView>
   );
 }
 
