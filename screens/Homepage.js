@@ -1,7 +1,8 @@
 import Sell from '../components/Sell';
 import { StyleSheet, FlatList, SafeAreaView, View, ScrollView, ActivityIndicator } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Homepage = (props) => {
   const homepage = useSelector((state) => state.homepage);
@@ -21,9 +22,11 @@ const Homepage = (props) => {
     }
   }
 
-  useEffect(() => {
-    getItems();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      getItems();
+    }, [])
+  );
 
   return (
     <SafeAreaView style={styles.container}>

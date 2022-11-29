@@ -4,12 +4,9 @@ import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
 import blank from "../assets/black.png"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { addToHomepage } from '../components/redux/reducer/homepageSlice';
 import { useDispatch } from 'react-redux';
-import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 import { useState } from 'react';
-
-// todo: when user press return in description, should remove keyboard instead of newline
+import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 
 global.control = 0;
 
@@ -18,12 +15,12 @@ export default function Upload() {
   const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
 
   //Object submitData =  {
+  const [itemID, setitemID] = React.useState("");
   const [itemName, setItemName] = React.useState("");
   const [itemPrice, setItemPrice] = React.useState("");
   const [itemDescription, setItemDescription] = React.useState("");
   const [itemCategory, setItemCategory] = React.useState("");
   const [sellerContact, setSellerContact] = useState("")
-
   const [color, setColor] = React.useState(false);
   const [color2, setColor2] = React.useState(false);
   const [color3, setColor3] = React.useState(false);
@@ -33,9 +30,9 @@ export default function Upload() {
   const [color7, setColor7] = React.useState(false);
 
   // todo: unique key id, image, contacts
-  // Item to be uploaded
+  // Item to be written to database
   const newItem = {
-    // id: props.id,
+    id: itemID,
     name: itemName,
     price: itemPrice,
     description: itemDescription,
@@ -46,12 +43,12 @@ export default function Upload() {
 
   const dispatch = useDispatch();
 
+  // Lamp category
   const toggle = function () {
     if (color) {
       setColor(false);
     } else {
-      setItemCategory("Lamp");
-      console.log(itemCategory);
+      setItemCategory(1);
       setColor(true);
       setColor2(false);
       setColor3(false);
@@ -62,12 +59,12 @@ export default function Upload() {
     }
   };
 
+  // Chair category
   const toggle2 = function () {
     if (color2) {
       setColor2(false);
     } else {
-      setItemCategory("Chair");
-      console.log(itemCategory);
+      setItemCategory(2);
       setColor(false);
       setColor2(true);
       setColor3(false);
@@ -78,12 +75,12 @@ export default function Upload() {
     }
   };
 
+  // Desk category
   const toggle3 = function () {
     if (color3) {
       setColor3(false);
     } else {
-      setItemCategory("Desk");
-      console.log(itemCategory);
+      setItemCategory(3);
       setColor(false);
       setColor2(false);
       setColor3(true);
@@ -94,12 +91,12 @@ export default function Upload() {
     }
   };
 
+  // Electronics category
   const toggle4 = function () {
     if (color4) {
       setColor4(false);
     } else {
-      setItemCategory("Electronics");
-      console.log(itemCategory);
+      setItemCategory(4);
       setColor(false);
       setColor2(false);
       setColor3(false);
@@ -110,12 +107,12 @@ export default function Upload() {
     }
   };
 
+  // Laptop and Computer category
   const toggle5 = function () {
     if (color5) {
       setColor5(false);
     } else {
-      setItemCategory("Laptop and Computer");
-      console.log(itemCategory);
+      setItemCategory(5);
       setColor(false);
       setColor2(false);
       setColor3(false);
@@ -126,12 +123,12 @@ export default function Upload() {
     }
   };
 
+  // Sofa category
   const toggle6 = function () {
     if (color6) {
       setColor6(false);
     } else {
-      setItemCategory("Sofa");
-      console.log(itemCategory);
+      setItemCategory(6);
       setColor(false);
       setColor2(false);
       setColor3(false);
@@ -142,12 +139,12 @@ export default function Upload() {
     }
   };
 
+  // Other category
   const toggle7 = function () {
     if (color7) {
       setColor7(false);
     } else {
-      setItemCategory("Other");
-      console.log(itemCategory);
+      setItemCategory(7);
       setColor(false);
       setColor2(false);
       setColor3(false);
@@ -204,60 +201,53 @@ export default function Upload() {
     setDefaultImage(blank);
   };
 
-  // const uploadItem = () => {
-  //   // Upload to homepage
-  //   dispatch(addToHomepage(newItem));
-
-  //   // Upload to user sales history
-  //   dispatch(addToSalesHistory(newItem));
-
-  //   // todo: toast to tell item has been uploaded
-
-  //   // Reset upload
-  //   setItemName("");
-  //   setItemPrice("");
-  //   setItemDescription("");
-  //   setItemCategory("");
-  // }
-
   const requestOptions = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({"userid":1,
-    "time":"2006-06-27T08:00:00.000Z",
-    "categorynum":1,
-    "price":50,
-    "description":"nice lamp",
-    "imageurl":""
-  })
+    body: JSON.stringify({
+      "userid": 1,
+      // "time": "2006-06-27T08:00:00.000Z",
+      "name": newItem.name,
+      "time": new Date(),
+      "categorynum": 1,
+      // "categorynum": newItem.category,
+      "price": newItem.price,
+      "description": newItem.description,
+      "imageurl": ""
+    })
   };
 
-
-
   const uploadItem = async () => {
+    // Post Request to database
     try {
       await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
-        .then(response => response.text())
+        .then(response => response.json())
         .then((responseData) => {
+          
+          const item1 = responseData.id;
+          setitemID(item1);
+          setitemID(item1.toString());
+          //Wonder why but it is not updating id
           console.log(
             "POST Response:",
-            "Response Body -> " + JSON.stringify(responseData)
+            "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
           )
+          console.log("Successfully written to database.");
         })
-      //const response = await fetch('https://quiet-oasis-96937.herokuapp.com/useritem', requestOptions);
-      //const responseData = await response.text();
-      //console.log("POST Response", "Response Body -> " + JSON.stringify(responseData));
     }
     catch (error) {
       console.error(error);
     }
 
+    // Use redux to push item temporarily to user sales history
+    dispatch(addToSalesHistory(newItem));
+
     // todo: toast to tell item has been uploaded
 
-    // Reset upload
+    // Reset value and refresh page
     setItemName("");
     setItemPrice("");
     setItemDescription("");
@@ -278,20 +268,17 @@ export default function Upload() {
           placeholder="Name..."
           onChangeText={newText => { setItemName(newText) }}>
         </TextInput>
-        {console.log("\n" + itemName)}
         <Text style={styles.heading}>Price</Text>
         <TextInput style={styles.typeInput}
           keyboardType="numeric"
           placeholder="Price..."
           onChangeText={newText => setItemPrice(newText)}>
         </TextInput>
-        {console.log(itemPrice)}
         <Text style={styles.heading}>Description</Text>
         <TextInput style={styles.typeInput}
           placeholder="Description..." multiline={true}
           onChangeText={newText => setItemDescription(newText)}>
         </TextInput>
-        {console.log(itemDescription)}
 
         {/* Code to Implement Categories */}
         <Text style={styles.heading}>Category</Text>
@@ -332,11 +319,10 @@ export default function Upload() {
           <Text style={styles.icontext}>Other</Text>
         </TouchableOpacity>
       </View>
-      {console.log(itemCategory)}
       <TouchableOpacity onPress={() => uploadItem()} style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </ScrollView >
   );
 }
 
@@ -371,7 +357,9 @@ const styles = StyleSheet.create({
 
   typeInput: {
     fontSize: 18,
-    paddingLeft: 20,
+    paddingLeft: 15,
+    paddingTop: 3,
+    paddingBottom: 3,
     backgroundColor: "white",
     borderWidth: 1,
     borderRadius: 10,

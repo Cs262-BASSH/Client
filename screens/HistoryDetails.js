@@ -1,11 +1,7 @@
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Button } from "react-native";
-import { useDispatch } from "react-redux";
-import { removeFromSalesHistory } from '../components/redux/reducer/historySlice';
 
 export default function Details({ route }) {
   const { id, name, price, description, image, contact } = route.params;
-
-  const dispatch = useDispatch();
 
   const newItem = {
     id: id,
@@ -16,6 +12,34 @@ export default function Details({ route }) {
     image: image,
     contact: contact
   };
+
+  const requestOptions = {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify() // todo: delete item here
+  };
+
+  const address = "https://quiet-oasis-96937.herokuapp.com/useritem/"+{id};
+
+  const deleteItem = async () => { // pass userid as parameter
+    try {
+      const response = await fetch(address, requestOptions);
+      //const response_1 = await fetch(`https://quiet-oasis-96937.herokuapp.com/useritem/${userid}`, requestOptions);
+
+      const responseData = await response.text();
+      //const responseData_1 = await response.text();
+      // todo: delete item here
+
+      console.log("Successfully deleted from database.");
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -33,7 +57,7 @@ export default function Details({ route }) {
           <Text style={styles.contact}>{contact}</Text>
           <View style={styles.line} />
           <View style={styles.button}>
-            <Button title="Remove Item" color='white' onPress={() => dispatch(removeFromSalesHistory(newItem))} />
+            <Button title="Remove Item" color='white' onPress={() => deleteItem()} />
           </View>
         </View>
       </ScrollView>
