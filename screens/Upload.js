@@ -32,7 +32,7 @@ export default function Upload() {
   // todo: unique key id, image, contacts
   // Item to be written to database
   const newItem = {
-    id: itemID,
+    id: "",
     name: itemName,
     price: itemPrice,
     description: itemDescription,
@@ -221,21 +221,35 @@ export default function Upload() {
   const uploadItem = async () => {
     // Post Request to database
     try {
-      await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
-        .then(response => response.json()) // response.text()?
-        .then((responseData) => {
+      const response = await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
+      const json = await response.json();
+      const iditem = json.id;
+      setitemID(iditem.toString());
+      newItem.id = iditem;
+      console.log(
+        "Response Body -> " + json + "    NewItem.ID:  " + newItem.id + "     JSON.stringify(json):    " + JSON.stringify(json) +    "    iditem:   " + iditem
+      
+       )
+      
+      
 
-          const item1 = responseData.id;
-          // todo: Wonder why but it is not updating id
-          setitemID(JSON.stringify(item1)); // setitemID(item1.toString());
 
-          console.log(
-            "POST Response:",
-            `Response Body -> ${responseData + item1} ${newItem.name} ${newItem.id};`
-            // "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
-          )
-          console.log("Successfully written to database.");
-        })
+
+      // await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
+      //   .then(response => response.json()) // response.text()?
+      //   .then((responseData) => {
+
+      //     const item1 = responseData.id;
+      //     // todo: Wonder why but it is not updating id
+      //     setitemID(JSON.stringify(item1)); // setitemID(item1.toString());
+
+      //     console.log(
+      //       "POST Response:",
+      //       `Response Body -> ${responseData + item1} ${newItem.name} ${newItem.id};`
+      //       // "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
+      //     )
+      //     console.log("Successfully written to database.");
+      //   })
     }
     catch (error) {
       console.error(error);
