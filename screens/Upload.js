@@ -8,8 +8,6 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 
-// todo: when user press return in description, should remove keyboard instead of newline
-
 global.control = 0;
 
 export default function Upload() {
@@ -22,7 +20,6 @@ export default function Upload() {
   const [itemDescription, setItemDescription] = React.useState("");
   const [itemCategory, setItemCategory] = React.useState("");
   const [sellerContact, setSellerContact] = useState("")
-
   const [color, setColor] = React.useState(false);
   const [color2, setColor2] = React.useState(false);
   const [color3, setColor3] = React.useState(false);
@@ -45,12 +42,12 @@ export default function Upload() {
 
   const dispatch = useDispatch();
 
+  // Lamp category
   const toggle = function () {
     if (color) {
       setColor(false);
     } else {
-      setItemCategory("Lamp");
-      console.log(itemCategory);
+      setItemCategory(1);
       setColor(true);
       setColor2(false);
       setColor3(false);
@@ -61,12 +58,12 @@ export default function Upload() {
     }
   };
 
+  // Chair category
   const toggle2 = function () {
     if (color2) {
       setColor2(false);
     } else {
-      setItemCategory("Chair");
-      console.log(itemCategory);
+      setItemCategory(2);
       setColor(false);
       setColor2(true);
       setColor3(false);
@@ -77,12 +74,12 @@ export default function Upload() {
     }
   };
 
+  // Desk category
   const toggle3 = function () {
     if (color3) {
       setColor3(false);
     } else {
-      setItemCategory("Desk");
-      console.log(itemCategory);
+      setItemCategory(3);
       setColor(false);
       setColor2(false);
       setColor3(true);
@@ -93,12 +90,12 @@ export default function Upload() {
     }
   };
 
+  // Electronics category
   const toggle4 = function () {
     if (color4) {
       setColor4(false);
     } else {
-      setItemCategory("Electronics");
-      console.log(itemCategory);
+      setItemCategory(4);
       setColor(false);
       setColor2(false);
       setColor3(false);
@@ -109,12 +106,12 @@ export default function Upload() {
     }
   };
 
+  // Laptop and Computer category
   const toggle5 = function () {
     if (color5) {
       setColor5(false);
     } else {
-      setItemCategory("Laptop and Computer");
-      console.log(itemCategory);
+      setItemCategory(5);
       setColor(false);
       setColor2(false);
       setColor3(false);
@@ -125,12 +122,12 @@ export default function Upload() {
     }
   };
 
+  // Sofa category
   const toggle6 = function () {
     if (color6) {
       setColor6(false);
     } else {
-      setItemCategory("Sofa");
-      console.log(itemCategory);
+      setItemCategory(6);
       setColor(false);
       setColor2(false);
       setColor3(false);
@@ -141,12 +138,12 @@ export default function Upload() {
     }
   };
 
+  // Other category
   const toggle7 = function () {
     if (color7) {
       setColor7(false);
     } else {
-      setItemCategory("Other");
-      console.log(itemCategory);
+      setItemCategory(7);
       setColor(false);
       setColor2(false);
       setColor3(false);
@@ -244,7 +241,7 @@ export default function Upload() {
 
     // todo: toast to tell item has been uploaded
 
-    // Reset upload and refresh page
+    // Reset value and refresh page
     setItemName("");
     setItemPrice("");
     setItemDescription("");
@@ -323,7 +320,7 @@ export default function Upload() {
       <TouchableOpacity onPress={() => uploadItem()} style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </ScrollView >
   );
 }
 
@@ -358,7 +355,9 @@ const styles = StyleSheet.create({
 
   typeInput: {
     fontSize: 18,
-    paddingLeft: 20,
+    paddingLeft: 15,
+    paddingTop: 3,
+    paddingBottom: 3,
     backgroundColor: "white",
     borderWidth: 1,
     borderRadius: 10,
