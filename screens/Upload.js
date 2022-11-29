@@ -208,12 +208,10 @@ export default function Upload() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "userid": 1,
-      // "time": "2006-06-27T08:00:00.000Z",
+      "userid": 1, // todo
       "name": newItem.name,
       "time": new Date(),
-      "categorynum": 1,
-      // "categorynum": newItem.category,
+      "categorynum": itemCategory,
       "price": newItem.price,
       "description": newItem.description,
       "imageurl": ""
@@ -224,16 +222,17 @@ export default function Upload() {
     // Post Request to database
     try {
       await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
-        .then(response => response.json())
+        .then(response => response.json()) // response.text()?
         .then((responseData) => {
 
           const item1 = responseData.id;
-          setitemID(item1);
-          setitemID(item1.toString());
-          //Wonder why but it is not updating id
+          // todo: Wonder why but it is not updating id
+          setitemID(JSON.stringify(item1)); // setitemID(item1.toString());
+
           console.log(
             "POST Response:",
-            "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
+            `Response Body -> ${responseData + item1} ${newItem.name} ${newItem.id};`
+            // "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
           )
           console.log("Successfully written to database.");
         })
