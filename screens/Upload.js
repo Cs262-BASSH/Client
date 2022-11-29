@@ -15,6 +15,7 @@ export default function Upload() {
   const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
 
   //Object submitData =  {
+  const [itemID, setitemID] = React.useState("");
   const [itemName, setItemName] = React.useState("");
   const [itemPrice, setItemPrice] = React.useState("");
   const [itemDescription, setItemDescription] = React.useState("");
@@ -31,7 +32,7 @@ export default function Upload() {
   // todo: unique key id, image, contacts
   // Item to be written to database
   const newItem = {
-    // id: props.id,
+    id: itemID,
     name: itemName,
     price: itemPrice,
     description: itemDescription,
@@ -223,11 +224,16 @@ export default function Upload() {
     // Post Request to database
     try {
       await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
-        .then(response => response.text())
+        .then(response => response.json())
         .then((responseData) => {
+          
+          const item1 = responseData.id;
+          setitemID(item1);
+          setitemID(item1.toString());
+          //Wonder why but it is not updating id
           console.log(
             "POST Response:",
-            "Response Body -> " + JSON.stringify(responseData)
+            "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
           )
           console.log("Successfully written to database.");
         })
@@ -262,20 +268,17 @@ export default function Upload() {
           placeholder="Name..."
           onChangeText={newText => { setItemName(newText) }}>
         </TextInput>
-        {console.log("\n" + itemName)}
         <Text style={styles.heading}>Price</Text>
         <TextInput style={styles.typeInput}
           keyboardType="numeric"
           placeholder="Price..."
           onChangeText={newText => setItemPrice(newText)}>
         </TextInput>
-        {console.log(itemPrice)}
         <Text style={styles.heading}>Description</Text>
         <TextInput style={styles.typeInput}
           placeholder="Description..." multiline={true}
           onChangeText={newText => setItemDescription(newText)}>
         </TextInput>
-        {console.log(itemDescription)}
 
         {/* Code to Implement Categories */}
         <Text style={styles.heading}>Category</Text>
@@ -316,7 +319,6 @@ export default function Upload() {
           <Text style={styles.icontext}>Other</Text>
         </TouchableOpacity>
       </View>
-      {console.log(itemCategory)}
       <TouchableOpacity onPress={() => uploadItem()} style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
