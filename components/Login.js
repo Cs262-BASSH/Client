@@ -26,7 +26,7 @@ export default function Login({ navigation }) {
   // Check if username and password is in database
   const checkLogin = () => {
     // If username and password matches in database, user logins to homepage
-    if ((users.some(obj => obj.name === name)) && (users.some(obj => obj.password === password))) {
+    if (users.some(obj => (obj.name === name) && (obj.password === password))) {
       navigation.navigate('Tabs');
     }
 
