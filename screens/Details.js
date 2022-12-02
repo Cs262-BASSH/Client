@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image } from "react-n
 TODO: Swipe horizontally to view more images
 */
 
+//Move from the homepage to details of indiviaual item.
+// This information is fetched from the database and displayed here
 export default function Details({ route }) {
   const { name, price, description, image, contact } = route.params;
 

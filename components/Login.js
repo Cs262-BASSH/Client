@@ -4,6 +4,7 @@ import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, Touchable
 import MaterialIcons from 'react-native-vector-icons';
 import Home from '../screens/Home';
 
+//navigate when pressed. Pull from database for comparison before navigation
 export default function Login({navigation}) {
   const {height, width} = Dimensions.get("window");
 

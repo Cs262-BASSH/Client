@@ -6,6 +6,8 @@ import { useNavigation, NavigationContainer, NavigationContainerRefContext } fro
 
 const Stack = createNativeStackNavigator();
 
+
+//Choose between signup and login upon entering the app and navigate to the desired page
 export default function Welcome({ navigation }) {
 
   const { height, width } = Dimensions.get("window");
