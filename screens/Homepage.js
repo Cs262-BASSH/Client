@@ -1,6 +1,6 @@
 import Sell from '../components/Sell';
 import { StyleSheet, FlatList, SafeAreaView, View, ScrollView, ActivityIndicator } from 'react-native';
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -10,6 +10,7 @@ const Homepage = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
+  // READ Request
   const getItems = async () => {
     try {
       const response = await fetch("https://quiet-oasis-96937.herokuapp.com/useritem");

@@ -201,6 +201,7 @@ export default function Upload() {
     setDefaultImage(blank);
   };
 
+  // Post Request to database
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -226,30 +227,11 @@ export default function Upload() {
       const iditem = json.id;
       setitemID(iditem.toString());
       newItem.id = iditem;
-      console.log(
-        "Response Body -> " + json + "    NewItem.ID:  " + newItem.id + "     JSON.stringify(json):    " + JSON.stringify(json) +    "    iditem:   " + iditem
-      
-       )
-      
-      
 
-
-
-      // await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
-      //   .then(response => response.json()) // response.text()?
-      //   .then((responseData) => {
-
-      //     const item1 = responseData.id;
-      //     // todo: Wonder why but it is not updating id
-      //     setitemID(JSON.stringify(item1)); // setitemID(item1.toString());
-
-      //     console.log(
-      //       "POST Response:",
-      //       `Response Body -> ${responseData + item1} ${newItem.name} ${newItem.id};`
-      //       // "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
-      //     )
-      //     console.log("Successfully written to database.");
-      //   })
+      console.log("Response Body -> " + json);
+      console.log("NewItem.ID: " + newItem.id);
+      console.log("JSON.stringify(json): " + JSON.stringify(json));
+      console.log("iditem: " + iditem);
     }
     catch (error) {
       console.error(error);
@@ -268,7 +250,6 @@ export default function Upload() {
   }
 
   return (
-
     <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"#121212"}>
       <View>
         <TouchableOpacity onPress={openImagePickerAsync}>

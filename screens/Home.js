@@ -29,20 +29,22 @@ export default function Home() {
         title: "Details",
     })
 
+    const login_signup = () => ({
+        headerTransparent: true,
+        headerBackImage: () => <Icon name={'arrowLeft'} />,
+        headerTitleStyle: {
+            color: "white",
+        }
+    })
+
     return (
         <View style={styles.container}>
             <NavigationContainer>
                 <StatusBar barStyle='light-content' hidden={true} />
                 <Stack.Navigator>
-                    {/* <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
-                    <Stack.Screen name="Login" component={Login} options={{
-                        headerTransparent: true,
-                        headerBackImage: () => <Icon name={'arrowLeft'} />
-                    }} />
-                    <Stack.Screen name="SignUp" component={SignUp} options={{
-                        headerTransparent: true,
-                        headerBackImage: () => <Icon name={'arrowLeft'} />
-                    }} /> */}
+                    <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
+                    <Stack.Screen name="Login" component={Login} options={login_signup} />
+                    <Stack.Screen name="SignUp" component={SignUp} options={login_signup} />
                     <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
                     <Stack.Screen name="Details" component={Details} options={detailStyle} />
                     <Stack.Screen name="HistoryDetails" component={HistoryDetails} options={detailStyle} />
