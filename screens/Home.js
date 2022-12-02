@@ -12,9 +12,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from '../components/SignUp';
 import { LogBox } from 'react-native';
 
+//Set this so cycle messages do not pop up during us
 LogBox.ignoreLogs([
     'Require cycle:'
 ])
+
+//Host all the main screens here.
 export default function Home() {
     const Stack = createNativeStackNavigator();
 

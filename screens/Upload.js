@@ -10,6 +10,8 @@ import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 
 global.control = 0;
 
+
+//Create an instance that has all the desired field to send to the database
 export default function Upload() {
   const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
   const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);

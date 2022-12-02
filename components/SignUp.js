@@ -4,7 +4,7 @@ import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, Touchable
 import MaterialIcons from 'react-native-vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
 
-// TODO: add phone number text input
+// TODO: add phone number and gmail text input
 
 export default function SignUp({ navigation }) {
   const { height, width } = Dimensions.get("window");

@@ -1,5 +1,8 @@
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Button } from "react-native";
 
+
+// The item displayed in sales history
+// Item can be deleted from the service from here
 export default function Details({ route }) {
   const { id, name, price, description, image, contact } = route.params;
 

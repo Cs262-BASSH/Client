@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
 
+//Display the items that are fetched from website, by time
 const Homepage = (props) => {
   const homepage = useSelector((state) => state.homepage);
 
