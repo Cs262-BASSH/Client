@@ -16,6 +16,7 @@ TODO: dark and light mode
 
 const Tab = createBottomTabNavigator();
 
+//Navigate between the multiple pages of the app by pressing on the icons
 export default function Tabs() {
 
   // Screen Options

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
+//Call home which calls everything else
 export default function App() {
 
   return (

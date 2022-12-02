@@ -16,6 +16,8 @@ TODO: change the header name of category to match it's respective name
 TODO: output the search item filter
 */
 
+//Appropriately use the search bar to search for an item
+//Items with name similar to inserted text will be displayed
 function SearchScreen({ navigation }) {
   const [categoryState, setCategoryState] = useState(true);
   const [search, setSearch] = useState("");
@@ -89,6 +91,7 @@ function SearchScreen({ navigation }) {
 
 const Stack = createNativeStackNavigator();
 
+//Navigate to all the category pages without issue
 export default function Search() {
 
   const searchPageHeader = ({ }) => ({
