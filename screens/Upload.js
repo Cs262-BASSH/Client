@@ -338,7 +338,28 @@ export default function Upload() {
         </TouchableOpacity>
       </View>
       {console.log(itemCategory)}
-      <TouchableOpacity onPress={() => uploadItem()} style={styles.button}>
+      <TouchableOpacity onPress={() => 
+        {
+          if (itemName == null || itemName == "") {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else if (itemPrice == null || itemPrice == "") {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else if (itemDescription == null || itemDescription == "") {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else if (!color && !color2 && !color3 && !color4 && !color5 && !color6 && !color7) {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else if (selectedImage == null) {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else {
+            uploadItem()
+          }
+        }}
+        style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
     </ScrollView>
