@@ -4,6 +4,7 @@ import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, Touchable
 import MaterialIcons from 'react-native-vector-icons';
 import Home from '../screens/Home';
 
+//navigate when pressed. Create a database instance with the data put in
 export default function SignUp({navigation}) {
   const {height, width} = Dimensions.get("window");
 
