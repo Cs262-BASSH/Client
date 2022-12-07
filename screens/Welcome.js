@@ -26,7 +26,12 @@ export default function Welcome({ navigation }) {
         </View>
         <Text></Text>
         <View style={styles.button}>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp') }>
+
+
+
+
+
             <Text style={styles.btn_title}>Sign Up</Text>
           </TouchableOpacity>
         </View>
@@ -55,12 +60,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    fontFamily: 'Optima',
+    // fontFamily: 'Optima',
     fontSize: 30,
   },
   btn_title: {
     fontWeight: 'bold',
-    fontFamily: 'Optima',
+    //fontFamily: 'Optima',
     fontSize: 20,
   },
   button: {

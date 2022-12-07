@@ -18,11 +18,11 @@ export default function SignUp({navigation}) {
           </TextInput>
         <Text style={styles.heading}>Password</Text>
           <TextInput style={styles.typeInput}
-            placeholder = "Password..." secureTextEntry="true">
+            placeholder = "Password..." >
         </TextInput>
         <Text style={styles.heading}>Re-enter Password</Text>
             <TextInput style={styles.typeInput}
-              placeholder = "Password..." secureTextEntry="true">
+              placeholder = "Password..." >
         </TextInput>
         <Text></Text>
         <View style={styles.button}>
