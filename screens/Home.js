@@ -37,7 +37,7 @@ export default function Home() {
             <NavigationContainer>
                 <StatusBar barStyle='light-content' hidden={true} />
                 <Stack.Navigator>
-                    {/* <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
+                    <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                     <Stack.Screen name="Login" component={Login} options={{
                         headerTransparent: true,
                         headerBackImage: () => <Icon name={'arrowLeft'} />
@@ -45,7 +45,7 @@ export default function Home() {
                     <Stack.Screen name="SignUp" component={SignUp} options={{
                         headerTransparent: true,
                         headerBackImage: () => <Icon name={'arrowLeft'} />
-                    }} /> */}
+                    }} /> 
                     <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
                     <Stack.Screen name="Details" component={Details} options={detailStyle} />
                     <Stack.Screen name="HistoryDetails" component={HistoryDetails} options={detailStyle} />
