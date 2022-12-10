@@ -10,6 +10,8 @@ import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 
 global.control = 0;
 
+const uploadSure = () =>
+    Alert.alert('UPLOAD COMPLETE', 'This item has been uploaded!')
 
 //Create an instance that has all the desired field to send to the database
 export default function Upload() {
@@ -357,7 +359,9 @@ export default function Upload() {
           }
           else {
             uploadItem()
+            {uploadSure}
           }
+          
         }}
         style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
