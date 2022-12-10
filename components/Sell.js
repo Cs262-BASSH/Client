@@ -31,22 +31,19 @@ const Sell = (props) => {
 
   const getUser = async () => {
     try {
-        const response = await fetch(address);
-        const json = await response.json();
+      const response = await fetch(address);
+      const json = await response.json();
 
-        const cont = json.phonenum;
-        newItem.contact = cont;
-        console.log("this------------------------" + cont ,  newItem.contact);
+      const cont = json.phonenum;
+      newItem.contact = cont;
+      console.log("this------------------------" + cont, newItem.contact);
     } catch (error) {
-        console.error(error);
-    } 
-}
-useEffect(() => {
-  getUser();
-}, []);
-
-
-
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const changeSize = () => {
     setHide(!hide);
