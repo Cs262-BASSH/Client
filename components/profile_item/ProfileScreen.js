@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import Settings from './Settings';
 import History from './History';
 import Likes from './Likes';
@@ -10,8 +10,45 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image, StyleSheet, Text, View, TextInput, Keyboard, ScrollView, Button, TouchableOpacity, FlatList } from 'react-native';
 
 function ProfileScreen({ navigation }) {
-
   const [selectedImage, setSelectedImage] = React.useState(null);
+
+  const numID = '1';
+  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + numID;
+
+  const [userID, setuserID] = React.useState("");
+  const [userName, setuserName] = React.useState("");
+  const [usercontact, setusercontact] = React.useState("");
+
+
+
+  const userInfo = {
+    ID: '',
+    contact: '',
+    name: '',
+  }
+
+  const getUser = async () => {
+    try {
+        const response = await fetch(address);
+        const json = await response.json();
+        setuserName(json.name);
+        setusercontact(json.phonenum);
+        console.log(json)
+        console.log(json.name)
+        console.log(json.phonenum)
+        userInfo.contact = json.phonenum;
+        userInfo.name = json.name;
+
+    } catch (error) {
+        console.error(error);
+    } finally {
+        setLoading(false);
+    }
+}
+useEffect(() => {
+  getUser();
+}, []);
+
 
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -44,8 +81,8 @@ function ProfileScreen({ navigation }) {
             </TouchableOpacity>
 
             <View style={styles.upPartTextView}>
-              <Text style={styles.upPartText}>Name: (User Name)</Text>
-              <Text style={styles.upPartText}>ID: (User ID)</Text>
+              <Text style={styles.upPartText}>Name: {userName}</Text>
+              <Text style={styles.upPartText}>Phonenum: {usercontact}</Text>
             </View>
 
           </View>
@@ -91,8 +128,8 @@ function ProfileScreen({ navigation }) {
           </TouchableOpacity>
 
           <View style={styles.upPartTextView}>
-            <Text style={styles.upPartText}>Name: (User Name)</Text>
-            <Text style={styles.upPartText}>ID: (User ID)</Text>
+            <Text style={styles.upPartText}>Name: {userName} {userInfo.name}</Text>
+            <Text style={styles.upPartText}>contact: {usercontact} {userInfo.contact}</Text>
           </View>
         </View>
 

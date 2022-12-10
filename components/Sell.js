@@ -1,6 +1,6 @@
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, Alert } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkSlice';
@@ -25,6 +25,28 @@ const Sell = (props) => {
     image: props.image,
     contact: props.contact
   };
+
+  const numID = newItem.id;
+  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + numID;
+
+  const getUser = async () => {
+    try {
+        const response = await fetch(address);
+        const json = await response.json();
+
+        const cont = json.phonenum;
+        newItem.contact = cont;
+        console.log("this------------------------" + cont ,  newItem.contact);
+    } catch (error) {
+        console.error(error);
+    } 
+}
+useEffect(() => {
+  getUser();
+}, []);
+
+
+
 
   const changeSize = () => {
     setHide(!hide);
