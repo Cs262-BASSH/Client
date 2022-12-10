@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Button } from "react-native";
 
-
 // The item displayed in sales history
 // Item can be deleted from the service from here
 export default function Details({ route }) {
@@ -22,20 +21,16 @@ export default function Details({ route }) {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify() // todo: delete item here
+    body: JSON.stringify()
   };
   const text = JSON.stringify(newItem.id);
 
-  const address = "https://quiet-oasis-96937.herokuapp.com/useritem/"+ text;
+  const address = "https://quiet-oasis-96937.herokuapp.com/useritem/" + text;
 
   const deleteItem = async () => { // pass userid as parameter
     try {
       const response = await fetch(address, requestOptions);
-      //const response_1 = await fetch(`https://quiet-oasis-96937.herokuapp.com/useritem/${userid}`, requestOptions);
-
       const responseData = await response.text();
-      //const responseData_1 = await response.text();
-      // todo: delete item here
 
       console.log("Successfully deleted from database.");
     }

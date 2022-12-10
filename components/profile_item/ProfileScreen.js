@@ -5,13 +5,16 @@ import Likes from './Likes';
 import SavedItems from './SavedItems';
 import * as ImagePicker from 'expo-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { useSelector } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image, StyleSheet, Text, View, TextInput, Keyboard, ScrollView, Button, TouchableOpacity, FlatList } from 'react-native';
 
 function ProfileScreen({ navigation }) {
-
   const [selectedImage, setSelectedImage] = React.useState(null);
+
+  // Set the user ID into the new item
+  const userID = useSelector((state) => state.userID);
+  const id = userID[0];
 
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -35,8 +38,6 @@ function ProfileScreen({ navigation }) {
       <View style={styles.container}>
         <View style={styles.tasksWrapper}>
           <View style={styles.upPart}>
-
-
             <TouchableOpacity onPress={openImagePickerAsync}>
               <View>
                 <Image source={{ uri: selectedImage.localUri }} style={styles.img} />

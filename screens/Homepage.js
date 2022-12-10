@@ -55,9 +55,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-{/*       <ScrollView>
-          {
-            Object.keys(Categories).map((item, index) => <Sell id={item.id} name={item.name} price={item.price} description={item.description} category={item.category} item={Items[index]}></Sell>)
-          }
-      </ScrollView> */}
