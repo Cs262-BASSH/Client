@@ -8,6 +8,46 @@ import Home from '../screens/Home';
 export default function Login({navigation}) {
   const {height, width} = Dimensions.get("window");
 
+  const [Username, setuserName] = React.useState("");
+  const [userPass, setuserPass] = React.useState("");
+
+  const newUser = {
+    id: '',
+    username: Username,
+    pass: userPass
+  }
+
+
+  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/"+ Username + "/" + userPass;
+
+  const readUser = async () => {
+    try {
+        const response = await fetch(address);
+        const json = await response.json();
+        console.log(json)
+        const iduser = json.id;
+
+
+        console.log(json.id)
+        console.log(iduser)
+        newUser.id = iduser;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// const requestOptions = {
+//   method: 'READ',
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify() // todo: delete item here
+// };
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.bandTop}>
@@ -16,17 +56,56 @@ export default function Login({navigation}) {
       <View style={styles.center}>
         <Text style={styles.firstHeading}>Username</Text>
           <TextInput style={styles.typeInput}
-            placeholder = "Name...">
+            placeholder = "Name..."
+            onChangeText={newText => { setuserName(newText) }}>
           </TextInput>
 
         <Text style={styles.heading}>Password</Text>
           <TextInput style={styles.typeInput}
-            placeholder = "Password..." secureTextEntry="true">
+            placeholder = "Password..."  
+            onChangeText={newText => { setuserPass(newText) }}>
         </TextInput>
 
         <Text></Text>
         <View style={styles.button}>
-        <TouchableOpacity onPress={()=> navigation.navigate('Tabs')}>
+        <TouchableOpacity onPress={()=> 
+          
+          {
+            console.log(newUser.id)
+            readUser()
+
+
+
+            if (Username == "") {
+              alert("Please Complete All Fields Before Submitting")
+            }
+
+            else {
+              readUser()
+              console.log(newUser.id)
+              if (newUser.id == "") {
+                alert("Please Check your UserID and Password again")
+              }
+              else {
+                navigation.navigate('Tabs')
+  
+              }
+            }
+
+
+          
+          }
+          }>
+          
+          
+          
+      
+
+
+
+
+
+
             <Text style={styles.buttonText}> Submit</Text>
         </TouchableOpacity>
         </View>
