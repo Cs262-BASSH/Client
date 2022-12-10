@@ -1,25 +1,25 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Settings from './Settings';
 import History from './History';
 import Likes from './Likes';
 import SavedItems from './SavedItems';
 import * as ImagePicker from 'expo-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { useSelector } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image, StyleSheet, Text, View, TextInput, Keyboard, ScrollView, Button, TouchableOpacity, FlatList } from 'react-native';
 
 function ProfileScreen({ navigation }) {
-  const [selectedImage, setSelectedImage] = React.useState(null);
-
-  const numID = '1';
-  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + numID;
-
   const [userID, setuserID] = React.useState("");
   const [userName, setuserName] = React.useState("");
   const [usercontact, setusercontact] = React.useState("");
+  const [selectedImage, setSelectedImage] = React.useState(null);
 
+  // Set the user ID into the user info
+  const id = useSelector((state) => state.userID);
+  setuserID(id[0]);
 
+  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + userID;
 
   const userInfo = {
     ID: '',
@@ -29,25 +29,25 @@ function ProfileScreen({ navigation }) {
 
   const getUser = async () => {
     try {
-        const response = await fetch(address);
-        const json = await response.json();
-        setuserName(json.name);
-        setusercontact(json.phonenum);
-        console.log(json)
-        console.log(json.name)
-        console.log(json.phonenum)
-        userInfo.contact = json.phonenum;
-        userInfo.name = json.name;
+      const response = await fetch(address);
+      const json = await response.json();
+      setuserName(json.name);
+      setusercontact(json.phonenum);
+      console.log(json)
+      console.log(json.name)
+      console.log(json.phonenum)
+      userInfo.contact = json.phonenum;
+      userInfo.name = json.name;
 
     } catch (error) {
-        console.error(error);
+      console.error(error);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
-}
-useEffect(() => {
-  getUser();
-}, []);
+  }
+  useEffect(() => {
+    getUser();
+  }, []);
 
 
   let openImagePickerAsync = async () => {
@@ -72,8 +72,6 @@ useEffect(() => {
       <View style={styles.container}>
         <View style={styles.tasksWrapper}>
           <View style={styles.upPart}>
-
-
             <TouchableOpacity onPress={openImagePickerAsync}>
               <View>
                 <Image source={{ uri: selectedImage.localUri }} style={styles.img} />
