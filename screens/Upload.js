@@ -9,17 +9,18 @@ import { useState } from 'react';
 import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 import { useSelector } from 'react-redux';
 
+
 global.control = 0;
 
 const uploadSure = () =>
-  Alert.alert('UPLOAD COMPLETE', 'This item has been uploaded!')
+    Alert.alert('UPLOAD COMPLETE', 'This item has been uploaded!')
 
 //Create an instance that has all the desired field to send to the database
 export default function Upload() {
   const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
   const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
 
-  // Object submitData
+  //Object submitData =  {
   const [itemID, setitemID] = React.useState("");
   const [itemName, setItemName] = React.useState("");
   const [itemPrice, setItemPrice] = React.useState("");
@@ -34,6 +35,10 @@ export default function Upload() {
   const [color6, setColor6] = React.useState(false);
   const [color7, setColor7] = React.useState(false);
 
+
+
+  const id = useSelector((state) => state.userID);
+  // todo: unique key id, image, contacts
   // Item to be written to database
   const newItem = {
     id: "",
@@ -44,11 +49,6 @@ export default function Upload() {
     // image: props.image,
     // contact: props.contact
   };
-
-  // Set the user ID into the new item
-  const userID = useSelector((state) => state.userID);
-  console.log(userID[0]);
-  newItem.id = userID[0];
 
   const dispatch = useDispatch();
 
@@ -217,7 +217,7 @@ export default function Upload() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "userid": 1, // todo
+      "userid": id[0], // todo  : newUser.ID
       "name": newItem.name,
       "time": new Date(),
       "categorynum": itemCategory,
@@ -235,10 +235,30 @@ export default function Upload() {
       const iditem = json.id;
       setitemID(iditem.toString());
       newItem.id = iditem;
-      console.log(`Response Body: ${json}`);
-      console.log(`NewItem.ID: ${newItem.id}`);
-      console.log(`JSON.stringify: ${JSON.stringify(json)}`);
-      console.log(`IDItem: ${iditem}`);
+      console.log(
+        "Response Body -> " + json + "    NewItem.ID:  " + newItem.id + "     JSON.stringify(json):    " + JSON.stringify(json) +    "    iditem:   " + iditem
+      
+       )
+      
+      
+
+
+
+      // await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
+      //   .then(response => response.json()) // response.text()?
+      //   .then((responseData) => {
+
+      //     const item1 = responseData.id;
+      //     // todo: Wonder why but it is not updating id
+      //     setitemID(JSON.stringify(item1)); // setitemID(item1.toString());
+
+      //     console.log(
+      //       "POST Response:",
+      //       `Response Body -> ${responseData + item1} ${newItem.name} ${newItem.id};`
+      //       // "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
+      //     )
+      //     console.log("Successfully written to database.");
+      //   })
     }
     catch (error) {
       console.error(error);
@@ -246,6 +266,8 @@ export default function Upload() {
 
     // Use redux to push item temporarily to user sales history
     dispatch(addToSalesHistory(newItem));
+
+    // todo: toast to tell item has been uploaded
 
     // Reset value and refresh page
     setItemName("");
@@ -323,28 +345,29 @@ export default function Upload() {
         </TouchableOpacity>
       </View>
       {console.log(itemCategory)}
-      <TouchableOpacity onPress={() => {
-        if (itemName == null || itemName == "") {
-          alert("Please Complete All Fields Before Submitting")
-        }
-        else if (itemPrice == null || itemPrice == "") {
-          alert("Please Complete All Fields Before Submitting")
-        }
-        else if (itemDescription == null || itemDescription == "") {
-          alert("Please Complete All Fields Before Submitting")
-        }
-        else if (!color && !color2 && !color3 && !color4 && !color5 && !color6 && !color7) {
-          alert("Please Complete All Fields Before Submitting")
-        }
-        else if (selectedImage == null) {
-          alert("Please Complete All Fields Before Submitting")
-        }
-        else {
-          uploadItem()
-          { uploadSure }
-        }
-
-      }}
+      <TouchableOpacity onPress={() => 
+        {
+          if (itemName == null || itemName == "") {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else if (itemPrice == null || itemPrice == "") {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else if (itemDescription == null || itemDescription == "") {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else if (!color && !color2 && !color3 && !color4 && !color5 && !color6 && !color7) {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else if (selectedImage == null) {
+            alert("Please Complete All Fields Before Submitting")
+          }
+          else {
+            uploadItem()
+            {uploadSure}
+          }
+          
+        }}
         style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>

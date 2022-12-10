@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Settings from './Settings';
 import History from './History';
 import Likes from './Likes';
@@ -8,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image, StyleSheet, Text, View, TextInput, Keyboard, ScrollView, Button, TouchableOpacity, FlatList } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 function ProfileScreen({ navigation }) {
   const [userID, setuserID] = React.useState("");
@@ -18,9 +19,12 @@ function ProfileScreen({ navigation }) {
   // Set the user ID into the user info
   const id = useSelector((state) => state.userID);
   console.log(id[0]);
-  setuserID(id[0]);
+  // setuserID(id[0]);
+  // id[0];
+  const num = id[0];
 
-  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + userID;
+  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + num;
+  console.log(address)
 
   const userInfo = {
     ID: '',
@@ -34,7 +38,7 @@ function ProfileScreen({ navigation }) {
       const json = await response.json();
       setuserName(json.name);
       setusercontact(json.phonenum);
-      console.log(json)
+      console.log(json + "----------aaaa-------")
       console.log(json.name)
       console.log(json.phonenum)
       userInfo.contact = json.phonenum;
@@ -46,10 +50,14 @@ function ProfileScreen({ navigation }) {
       setLoading(false);
     }
   }
-  useEffect(() => {
-    getUser();
-  }, []);
 
+
+ 
+  useFocusEffect(
+    useCallback(() => {
+      getUser();
+    }, [])
+  );
 
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
