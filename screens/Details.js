@@ -1,5 +1,7 @@
+import React from 'react'
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image } from "react-native";
-
+import { useState, useEffect, useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 /*
 TODO: Swipe horizontally to view more images
 */
@@ -7,7 +9,33 @@ TODO: Swipe horizontally to view more images
 //Move from the homepage to details of indiviaual item.
 // This information is fetched from the database and displayed here
 export default function Details({ route }) {
-  const { name, price, description, image, contact } = route.params;
+  const { id, name, price, description, image } = route.params;
+  const [contact, setcontact] = React.useState("");
+
+
+  const numID = id;
+  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + numID;
+
+  const getUser = async () => {
+    try {
+        const response = await fetch(address);
+        const json = await response.json();
+
+        const cont = json.phonenum;
+        setcontact(cont);
+        console.log("this------------------------" + cont ,  contact);
+    } catch (error) {
+        console.error(error);
+    } 
+}
+
+useFocusEffect(
+  useCallback(() => {
+    getUser();
+  }, [])
+);
+
+
 
   return (
     <SafeAreaView style={styles.container}>
