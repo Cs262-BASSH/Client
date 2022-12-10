@@ -83,6 +83,7 @@ useEffect(() => {
             <View style={styles.upPartTextView}>
               <Text style={styles.upPartText}>Name: {userName}</Text>
               <Text style={styles.upPartText}>Phonenum: {usercontact}</Text>
+
             </View>
 
           </View>
@@ -131,6 +132,13 @@ useEffect(() => {
             <Text style={styles.upPartText}>Name: {userName} {userInfo.name}</Text>
             <Text style={styles.upPartText}>contact: {usercontact} {userInfo.contact}</Text>
           </View>
+
+          <TextInput style={styles.typeInput}
+            placeholder = "Name..."
+            value={usercontact}
+          onChangeText={(value) => setUserName(value.trim())}>
+          </TextInput>
+
         </View>
 
         <View style={styles.itemsList}>
@@ -171,6 +179,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black"
   },
+  typeInput: {
+		fontSize: 18,
+		padding: 10,
+		backgroundColor: 'beige',
+		borderWidth: 1,
+		borderRadius: 10,
+		borderColor: "black",
+		marginRight: 20,
+		marginLeft: 20,
+	},
+
   tasksWrapper: {
     paddingHorizontal: 20,
   },
