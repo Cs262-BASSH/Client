@@ -61,6 +61,9 @@ const Sell = (props) => {
             <View>
               <Text style={styles.title}>{props.name}</Text>
             </View>
+            <View>
+              <Text style={styles.title}>{props.contact}</Text>
+            </View>
             <View style={styles.priceAndBookmark}>
               <View>
                 <Text style={styles.price}>${props.price}</Text>
