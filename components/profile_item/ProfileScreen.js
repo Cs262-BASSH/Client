@@ -17,6 +17,7 @@ function ProfileScreen({ navigation }) {
 
   // Set the user ID into the user info
   const id = useSelector((state) => state.userID);
+  console.log(id[0]);
   setuserID(id[0]);
 
   const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + userID;

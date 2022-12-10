@@ -9,7 +9,7 @@ const userIDSlice = createSlice({
     saveUserID(state, action) {
       state[0] = action.payload;
 
-      console.log(`Saving user with ID: ${action.payload.id} inside an array at index 0.`);
+      console.log(`Saving user with ID: ${action.payload} inside an array at index 0.`);
 
       return state;
     },

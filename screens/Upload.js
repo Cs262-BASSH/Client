@@ -47,6 +47,7 @@ export default function Upload() {
 
   // Set the user ID into the new item
   const userID = useSelector((state) => state.userID);
+  console.log(userID[0]);
   newItem.id = userID[0];
 
   const dispatch = useDispatch();
