@@ -86,6 +86,12 @@ export default function Tabs() {
     headerTitleAlign: 'center'
   })
 
+  const helpStyle = () => ({
+    headerTitle: "Help",
+    tabBarBadge: totalItems(Items),
+    headerTitleAlign: 'center'
+  })
+
   const searchStyle = () => ({
     headerShown: false,
 

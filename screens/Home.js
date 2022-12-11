@@ -3,6 +3,8 @@ import Details from '../screens/Details';
 import HistoryDetails from '../screens/HistoryDetails';
 import Welcome from './Welcome';
 import Login from '../components/Login';
+import Header from '../shared/header';
+import Help from './Help';
 
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
@@ -32,6 +34,17 @@ export default function Home() {
         title: "Details",
     })
 
+    const helpStyle = () => ({
+        headerTitleStyle: {
+            color: "#e4000f",
+        },
+        headerStyle: {
+            backgroundColor: "#121212",
+        },
+        headerTintColor: "#e4000f",
+        title: "Help",
+    })
+
     return (
         <View style={styles.container}>
             <NavigationContainer>
@@ -46,7 +59,13 @@ export default function Home() {
                         headerTransparent: true,
                         headerBackImage: () => <Icon name={'arrowLeft'} />
                     }} />  */}
-                    <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
+                    <Stack.Screen name="Tabs" component={Tabs} options={({ navigation }) => ({
+    headerRight: () => (
+        <Header navigation={navigation}/>
+    ),
+    headerTransparent: true, headerTitleStyle: {color:'transparent'}
+})}/>
+                    <Stack.Screen name="Help" component={Help} options={helpStyle}/>
                     <Stack.Screen name="Details" component={Details} options={detailStyle} />
                     <Stack.Screen name="HistoryDetails" component={HistoryDetails} options={detailStyle} />
                 </Stack.Navigator>

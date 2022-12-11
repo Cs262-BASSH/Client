@@ -32,7 +32,7 @@ export default function Example({ route, navigation }) {
             </View>
             <SafeAreaView style={styles.container}>
                 <FlatList data={Items} renderItem={({ item, index }) => (
-                    <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.category} item={Items[index]}></Sell>
+                    <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.imageurl} category={item.category} item={Items[index]}></Sell>
                 )} />
             </SafeAreaView>
         </View>

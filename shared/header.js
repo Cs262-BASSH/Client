@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
-import Help from '../screens/help';
+import Help from '../screens/Help';
 
 export default function Header({ navigation }) {
   return (
