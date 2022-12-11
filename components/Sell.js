@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkSlice';
 
+
 const Sell = (props) => {
   // Determines whether the description and details button is shown or not
   const [hide, setHide] = useState(true);
@@ -26,24 +27,8 @@ const Sell = (props) => {
     contact: props.contact
   };
 
-  const numID = newItem.id;
-  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + numID;
 
-  const getUser = async () => {
-    try {
-      const response = await fetch(address);
-      const json = await response.json();
 
-      const cont = json.phonenum;
-      newItem.contact = cont;
-      console.log("this------------------------" + cont, newItem.contact);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  useEffect(() => {
-    getUser();
-  }, []);
 
   const changeSize = () => {
     setHide(!hide);
@@ -74,7 +59,9 @@ const Sell = (props) => {
       <TouchableOpacity activeOpacity={0.3} style={styles.Sell} onPress={() => changeSize()} >
         <View style={styles.container}>
           <View>
-            <Image source={props.image} style={styles.image}></Image>
+            <Image source={{
+          uri: props.image,
+        }} style={styles.image}></Image>
           </View>
           <View style={styles.information}>
             <View>
