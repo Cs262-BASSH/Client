@@ -80,14 +80,10 @@ export default function Tabs() {
     // tabBarInactiveTintColor: '#990000',
   });
 
-  const totalItems = (items) => {
-    return items.length;
-  }
 
   // Home options
   const homepageStyle = () => ({
     headerTitle: "KnightMarket",
-    tabBarBadge: totalItems(Items),
     headerTitleAlign: 'center'
   })
 
