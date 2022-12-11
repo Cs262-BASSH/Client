@@ -52,7 +52,7 @@ function ProfileScreen({ navigation }) {
   }
 
 
- 
+
   useFocusEffect(
     useCallback(() => {
       getUser();
@@ -141,9 +141,9 @@ function ProfileScreen({ navigation }) {
           </View>
 
           <TextInput style={styles.typeInput}
-            placeholder = "Name..."
+            placeholder="Name..."
             value={usercontact}
-          onChangeText={(value) => setUserName(value.trim())}>
+            onChangeText={(value) => setUserName(value.trim())}>
           </TextInput>
 
         </View>
@@ -187,15 +187,15 @@ const styles = StyleSheet.create({
     backgroundColor: "black"
   },
   typeInput: {
-		fontSize: 18,
-		padding: 10,
-		backgroundColor: 'beige',
-		borderWidth: 1,
-		borderRadius: 10,
-		borderColor: "black",
-		marginRight: 20,
-		marginLeft: 20,
-	},
+    fontSize: 18,
+    padding: 10,
+    backgroundColor: 'beige',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "black",
+    marginRight: 20,
+    marginLeft: 20,
+  },
 
   tasksWrapper: {
     paddingHorizontal: 20,
@@ -204,10 +204,8 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   items: {
-    // flexDirection: 'row',
     fontSize: 18,
     marginLeft: 10
-
   },
   input: {
     paddingVertical: 15,
