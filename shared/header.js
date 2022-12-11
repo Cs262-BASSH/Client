@@ -1,11 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import Help from './help';
 
 export default function Header({ navigation }) {
   return (
 		<View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Upload')}>
-          <Text style={styles.title}>Sell</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Help')}>
+          <Text style={styles.title}>?</Text>
       </TouchableOpacity>
     </View>
   )

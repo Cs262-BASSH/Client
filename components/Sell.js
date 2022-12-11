@@ -36,7 +36,7 @@ const Sell = (props) => {
 
       const cont = json.phonenum;
       newItem.contact = cont;
-      console.log("this------------------------" + cont, newItem.contact);
+      console.log(newItem.contact);
     } catch (error) {
       console.error(error);
     }
