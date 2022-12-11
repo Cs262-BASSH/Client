@@ -99,7 +99,7 @@ export default function Tabs() {
         backgroundColor: "#121212",
     },
     headerTintColor: "#e4000f",
-    title: "Help",
+    title: "Sell",
 })
  
 
@@ -117,8 +117,6 @@ export default function Tabs() {
     headerRight: () => (
         <Header navigation={navigation}/>
     ), SellStyle,
-    headerTransparent: true, headerTitleStyle: {color:'transparent'},
-    headerShown: true,
     headerBackImage: () => <Icon name={'arrowLeft'}/>
 })}/>
        

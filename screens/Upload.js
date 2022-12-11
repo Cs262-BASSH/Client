@@ -283,7 +283,7 @@ export default function Upload() {
 
   return (
 
-    <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"#121212"}>
+    <ScrollView  backgroundColor={"#121212"}>
       
       <View>
         {/* <TouchableOpacity onPress={openImagePickerAsync}>

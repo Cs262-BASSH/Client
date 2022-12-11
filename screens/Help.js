@@ -13,7 +13,7 @@ export default function Help({ navigation }) {
             A good free website you can use to do so is  
             <Text style={{color: '#00B4D8'}}
       onPress={() => Linking.openURL('https://imgbb.com')}> imgbb.com</Text>
-            . You can paste this in the spot for uploading images and we will be able to process this and display your picture
+            . You can paste this in the spot for uploading images and we will be able to process this and display your picture. Copy the image link ending in jpg and paste it in the space for image link
             </Text>
         </View>
     );
