@@ -1,4 +1,5 @@
 import Sell from '../components/Sell';
+import Header from '../shared/header';
 import { StyleSheet, FlatList, SafeAreaView, View, ScrollView, ActivityIndicator } from 'react-native';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
