@@ -8,6 +8,10 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 import { useSelector } from 'react-redux';
+import Header from '../shared/header';
+import Help from './Help';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 global.control = 0;
@@ -17,6 +21,7 @@ const uploadSure = () =>
 
 //Create an instance that has all the desired field to send to the database
 export default function Upload() {
+  const Stack = createNativeStackNavigator();
   const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
   const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
 
@@ -279,6 +284,7 @@ export default function Upload() {
   return (
 
     <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"#121212"}>
+      
       <View>
         <TouchableOpacity onPress={openImagePickerAsync}>
           <Image source={defaultImage} style={styles.defaultImage} />

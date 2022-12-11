@@ -53,7 +53,7 @@ export default function Etc({ route, navigation }) {
                     <FlatList
                         data={data}
                         renderItem={({ item }) => (
-                            <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.categorynum}></Sell>
+                            <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.imageurl} category={item.categorynum}></Sell>
                         )}
                     />
                 )}
