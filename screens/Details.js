@@ -18,7 +18,9 @@ export default function Details({ route }) {
 
   const getUser = async () => {
     try {
+
         const response = await fetch(address);
+
         const json = await response.json();
 
         const cont = json.phonenum;
@@ -43,7 +45,9 @@ useFocusEffect(
         <View>
           <View style={styles.details}>
             <Text style={styles.name}>{name}</Text>
-            <Image source={image} style={styles.image}></Image>
+            <Image source={{
+          uri: image,
+        }} style={styles.image}></Image>
             <Text style={styles.price}>${price}</Text>
           </View>
           <View style={styles.line} />

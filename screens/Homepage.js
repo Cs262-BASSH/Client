@@ -1,4 +1,5 @@
 import Sell from '../components/Sell';
+import Header from '../shared/header';
 import { StyleSheet, FlatList, SafeAreaView, View, ScrollView, ActivityIndicator } from 'react-native';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
@@ -39,7 +40,7 @@ const Homepage = (props) => {
         <FlatList
           data={data}
           renderItem={({ item }) => (
-            <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.imageurl} category={item.categorynum} contact={item.contact}></Sell>
+            <Sell id={item.userid} name={item.name} price={item.price} description={item.description} image={item.imageurl} category={item.categorynum}></Sell>
           )}
         />
       )}

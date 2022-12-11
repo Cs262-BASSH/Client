@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView, Alert} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import UploadImageTemp from "../assets/UploadImageTemp.png"
 import blank from "../assets/black.png"
@@ -363,8 +363,8 @@ export default function Upload() {
             alert("Please Complete All Fields Before Submitting")
           }
           else {
-            uploadItem()
-            {uploadSure}
+            uploadItem();
+            uploadSure();
           }
           
         }}
