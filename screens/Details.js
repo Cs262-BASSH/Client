@@ -18,7 +18,9 @@ export default function Details({ route }) {
 
   const getUser = async () => {
     try {
+
         const response = await fetch(address);
+
         const json = await response.json();
 
         const cont = json.phonenum;

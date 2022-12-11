@@ -39,7 +39,7 @@ const Homepage = (props) => {
         <FlatList
           data={data}
           renderItem={({ item }) => (
-            <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.imageurl} category={item.categorynum} contact={item.contact}></Sell>
+            <Sell id={item.userid} name={item.name} price={item.price} description={item.description} image={item.imageurl} category={item.categorynum}></Sell>
           )}
         />
       )}
