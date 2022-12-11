@@ -50,7 +50,7 @@ export default function Home() {
             <NavigationContainer>
                 <StatusBar barStyle='light-content' hidden={true} />
                 <Stack.Navigator>
-                    <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
+                     <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                     <Stack.Screen name="Login" component={Login} options={{
                         headerTransparent: true,
                         headerBackImage: () => <Icon name={'arrowLeft'} />
