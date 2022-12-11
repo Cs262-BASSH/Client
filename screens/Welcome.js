@@ -19,22 +19,17 @@ export default function Welcome({ navigation }) {
       <View style={styles.footer}>
         <Text style={styles.title}>Welcome!</Text>
         <Text></Text>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <View style={styles.button}>
             <Text style={styles.btn_title}>Log In</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
         <Text></Text>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp') }>
-
-
-
-
-
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <View style={styles.button}>
             <Text style={styles.btn_title}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
       {/* <SignUp/> */}
     </View>
