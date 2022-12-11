@@ -53,6 +53,33 @@ function ProfileScreen({ navigation }) {
 
 
 
+
+const  updateContact = async () => {
+  try {
+    const response = await fetch( address, requestOptions2)
+    const json = await response.json();
+    console.log("works-------------")
+    }
+    catch (error) {
+      console.error(error);
+    }
+
+}
+
+
+const requestOptions2 = {
+  method: 'PUT',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "phonenum": usercontact,
+  })
+};
+
+
+
   useFocusEffect(
     useCallback(() => {
       getUser();
@@ -139,12 +166,29 @@ function ProfileScreen({ navigation }) {
             <Text style={styles.upPartText}>Name: {userName} {userInfo.name}</Text>
             <Text style={styles.upPartText}>contact: {usercontact} {userInfo.contact}</Text>
           </View>
-
+      <View style = {styles.TextInputAndButton}>
           <TextInput style={styles.typeInput}
-            placeholder="Name..."
+            placeholder="Contact..."
             value={usercontact}
-            onChangeText={(value) => setUserName(value.trim())}>
+            onChangeText={(value) => setusercontact(value.trim())}>
           </TextInput>
+          <TouchableOpacity onPress={() => 
+        {
+          if (usercontact == null) {
+            alert("Please type your contact address")
+         
+          }
+          else {
+            updateContact();
+          }
+          
+        }}
+        style={styles.button}>
+        <Text style={styles.buttonText}>Change</Text>
+
+      </TouchableOpacity>
+      </View>
+
 
         </View>
 
@@ -252,5 +296,24 @@ const styles = StyleSheet.create({
   secondery: {
     color: "grey",
     fontSize: 13
+  },
+
+  button: {
+    backgroundColor: "black",
+    padding: 20,
+    borderRadius: 15,
+  },
+
+  buttonText: {
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 10,
+  },
+  TextInputAndButton: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+
   }
 });
