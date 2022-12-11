@@ -22,8 +22,8 @@ const uploadSure = () =>
 //Create an instance that has all the desired field to send to the database
 export default function Upload() {
   const Stack = createNativeStackNavigator();
-  const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
-  const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
+  // const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
+  // const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
 
   //Object submitData =  {
   const [itemID, setitemID] = React.useState("");
@@ -31,7 +31,7 @@ export default function Upload() {
   const [itemPrice, setItemPrice] = React.useState("");
   const [itemDescription, setItemDescription] = React.useState("");
   const [itemCategory, setItemCategory] = React.useState("");
-  const [sellerContact, setSellerContact] = useState("")
+  const [imageLink, setImageLink] = useState("")
   const [color, setColor] = React.useState(false);
   const [color2, setColor2] = React.useState(false);
   const [color3, setColor3] = React.useState(false);
@@ -51,7 +51,7 @@ export default function Upload() {
     price: itemPrice,
     description: itemDescription,
     category: itemCategory,
-    // image: props.image,
+    image: imageLink,
     // contact: props.contact
   };
 
@@ -171,10 +171,10 @@ export default function Upload() {
 
   //}
 
-  if (control === 0) {
-    setDefaultImage(UploadImageTemp);
-    control = 1;
-  }
+  // if (control === 0) {
+  //   setDefaultImage(UploadImageTemp);
+  //   control = 1;
+  // }
 
   // Alert.alert(
   //   title,
@@ -196,24 +196,24 @@ export default function Upload() {
   //   ]
   // );}
 
-  let openImagePickerAsync = async () => {
+  // let openImagePickerAsync = async () => {
 
-    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+  //   let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    if (permissionResult.granted === false) {
-      alert("Permission to access camera roll is required!");
-      return;
-    }
+  //   if (permissionResult.granted === false) {
+  //     alert("Permission to access camera roll is required!");
+  //     return;
+  //   }
 
-    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+  //   let pickerResult = await ImagePicker.launchImageLibraryAsync();
 
-    if (pickerResult.cancelled === true) {
-      return;
-    }
+  //   if (pickerResult.cancelled === true) {
+  //     return;
+  //   }
 
-    setSelectedImage({ localUri: pickerResult.uri });
-    setDefaultImage(blank);
-  };
+  //   setSelectedImage({ localUri: pickerResult.uri });
+  //   setDefaultImage(blank);
+  // };
 
   const requestOptions = {
     method: 'POST',
@@ -228,7 +228,7 @@ export default function Upload() {
       "categorynum": itemCategory,
       "price": newItem.price,
       "description": newItem.description,
-      "imageurl": ""
+      "imageurl": newItem.image
     })
   };
 
@@ -286,11 +286,16 @@ export default function Upload() {
     <ScrollView automaticallyAdjustKeyboardInsets={true} backgroundColor={"#121212"}>
       
       <View>
-        <TouchableOpacity onPress={openImagePickerAsync}>
+        {/* <TouchableOpacity onPress={openImagePickerAsync}>
           <Image source={defaultImage} style={styles.defaultImage} />
           <Image source={{ uri: selectedImage.localUri }}
             style={styles.image} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <Text style={styles.firstHeading}>Image Link</Text>
+        <TextInput style={styles.typeInput}
+          placeholder="Link..."
+          onChangeText={newText => { setImageLink(newText) }}>
+        </TextInput>
         <Text style={styles.firstHeading}>Item Name</Text>
         <TextInput style={styles.typeInput}
           placeholder="Name..."
@@ -365,15 +370,12 @@ export default function Upload() {
           else if (!color && !color2 && !color3 && !color4 && !color5 && !color6 && !color7) {
             alert("Please Complete All Fields Before Submitting")
           }
-          else if (selectedImage == null) {
-            alert("Please Complete All Fields Before Submitting")
-          }
           else {
             uploadItem();
             uploadSure();
           }
           
-        }}
+      }}
         style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
