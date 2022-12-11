@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
-//import Help from './help';
+import Help from '../screens/Help';
 
 export default function Header({ navigation }) {
   return (
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
   },
   title: {
   	padding: 10,
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
   },
 })

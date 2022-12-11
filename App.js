@@ -1,7 +1,7 @@
 import store from './components/redux/store'
 import Home from "./screens/Home";
 
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Header } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
 

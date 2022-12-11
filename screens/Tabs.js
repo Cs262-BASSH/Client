@@ -3,10 +3,14 @@ import Profile from './Profile';
 import Search from './Search';
 import Bookmark from './Bookmark';
 import Items from '../data/item';
+import Help from './Help';
+import Header from '../shared/header';
 
 import { View, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Upload from './Upload';
 
 /*
@@ -15,6 +19,7 @@ TODO: dark and light mode
 */
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 //Navigate between the multiple pages of the app by pressing on the icons
 export default function Tabs() {
@@ -86,6 +91,8 @@ export default function Tabs() {
     headerTitleAlign: 'center'
   })
 
+ 
+
   const searchStyle = () => ({
     headerShown: false,
 
@@ -96,8 +103,15 @@ export default function Tabs() {
         {/* List of tabs */}
         <Tab.Screen name="Home" component={Homepage} options={homepageStyle}/>
 
-        <Tab.Screen name="Sell" component={Upload}/>
-
+        <Tab.Screen name="Sell" component={Upload} options={({ navigation }) => ({
+    headerRight: () => (
+        <Header navigation={navigation}/>
+    ),
+    headerTransparent: true, headerTitleStyle: {color:'transparent'},
+    headerShown: true,
+    headerBackImage: () => <Icon name={'arrowLeft'}/>
+})}/>
+       
         <Tab.Screen name="Search" component={Search} options={searchStyle}/>
 
         <Tab.Screen name="Bookmark" component={Bookmark} />
