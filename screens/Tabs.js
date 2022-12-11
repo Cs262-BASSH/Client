@@ -91,6 +91,16 @@ export default function Tabs() {
     headerTitleAlign: 'center'
   })
 
+  const SellStyle = () => ({
+    headerTitleStyle: {
+        color: "#e4000f",
+    },
+    headerStyle: {
+        backgroundColor: "#121212",
+    },
+    headerTintColor: "#e4000f",
+    title: "Sell",
+})
  
 
   const searchStyle = () => ({
@@ -106,9 +116,7 @@ export default function Tabs() {
         <Tab.Screen name="Sell" component={Upload} options={({ navigation }) => ({
     headerRight: () => (
         <Header navigation={navigation}/>
-    ),
-    headerTransparent: true, headerTitleStyle: {color:'transparent'},
-    headerShown: true,
+    ), SellStyle,
     headerBackImage: () => <Icon name={'arrowLeft'}/>
 })}/>
        

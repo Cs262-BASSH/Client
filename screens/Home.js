@@ -58,7 +58,7 @@ export default function Home() {
                     <Stack.Screen name="SignUp" component={SignUp} options={{
                         headerTransparent: true,
                         headerBackImage: () => <Icon name={'arrowLeft'} />
-                    }} />  */}
+                    }} /> 
                     <Stack.Screen name="Tabs" component={Tabs} options={{headerShown: false}}/>
                     <Stack.Screen name="Help" component={Help} options={helpStyle}/>
                     <Stack.Screen name="Details" component={Details} options={detailStyle} />
