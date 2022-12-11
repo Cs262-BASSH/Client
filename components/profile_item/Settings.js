@@ -34,7 +34,7 @@ const Settings = () => {
               Notification{"\n"}
               <Text style={styles.secondery}>On · Off</Text>
             </Text>
-            <Switch style={{ marginLeft: 100 }}
+            <Switch style={{ marginLeft: 112 }}
               trackColor={{ false: "#767577", true: "#81b0ff" }}
               thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
               ios_backgroundColor="#3e3e3e"
