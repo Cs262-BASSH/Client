@@ -59,12 +59,7 @@ export default function Home() {
                         headerTransparent: true,
                         headerBackImage: () => <Icon name={'arrowLeft'} />
                     }} />  */}
-                    <Stack.Screen name="Tabs" component={Tabs} options={({ navigation }) => ({
-    headerRight: () => (
-        <Header navigation={navigation}/>
-    ),
-    headerTransparent: true, headerTitleStyle: {color:'transparent'}
-})}/>
+                    <Stack.Screen name="Tabs" component={Tabs} options={{headerShown: false}}/>
                     <Stack.Screen name="Help" component={Help} options={helpStyle}/>
                     <Stack.Screen name="Details" component={Details} options={detailStyle} />
                     <Stack.Screen name="HistoryDetails" component={HistoryDetails} options={detailStyle} />
