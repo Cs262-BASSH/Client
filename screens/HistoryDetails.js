@@ -1,16 +1,19 @@
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Button } from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Button, Alert } from "react-native";
+import { useDispatch } from 'react-redux';
+import { removeFromSalesHistory } from '../components/redux/reducer/historySlice';
 
 // The item displayed in sales history
 // Item can be deleted from the service from here
 export default function Details({ route }) {
-  const { id, name, price, description, image, contact } = route.params;
+  const { id, name, price, description, category, image, contact } = route.params;
+  const dispatch = useDispatch();
 
   const newItem = {
     id: id,
     name: name,
     price: price,
     description: description,
-    // category: category,
+    category: category,
     image: image,
     contact: contact
   };
@@ -33,6 +36,10 @@ export default function Details({ route }) {
       const responseData = await response.text();
 
       console.log("Successfully deleted from database.");
+
+      // Remove item in Sales History from redux
+      dispatch(removeFromSalesHistory(newItem));
+      alert("Item successfully removed.");
     }
     catch (error) {
       console.error(error);
