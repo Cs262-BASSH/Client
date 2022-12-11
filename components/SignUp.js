@@ -5,7 +5,7 @@ import MaterialIcons from 'react-native-vector-icons';
 import Home from '../screens/Home';
 
 //navigate when pressed. Create a database instance with the data put in
-export default function SignUp({navigation}) {
+export default function SignUp({ navigation }) {
 
   const [userName, setUserName] = React.useState("");
   const [userPass, setUserPass] = React.useState("");
@@ -43,48 +43,47 @@ export default function SignUp({navigation}) {
       const idItem = json.id;
       newUser.id = idItem;
       console.log(
-        "Response Body -> " + json + "    NewItem.ID:  " + newUser.id + "     JSON.stringify(json):    " + JSON.stringify(json) +    "    iditem:   " + idItem
-      
-       )
+        "Response Body -> " + json + "    NewItem.ID:  " + newUser.id + "     JSON.stringify(json):    " + JSON.stringify(json) + "    iditem:   " + idItem
+
+      )
     }
     catch (error) {
       console.error(error);
     }
-  } 
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.bandTop}></View>
       <View style={styles.center}>
         <Text style={styles.firstHeading}>Username</Text>
-          <TextInput style={styles.typeInput}
-            placeholder = "Name..."
-            value={userName}
+        <TextInput style={styles.typeInput}
+          placeholder="Name..."
+          value={userName}
           onChangeText={(value) => setUserName(value.trim())}>
-          </TextInput>
+        </TextInput>
         <Text style={styles.heading}>Phone Number</Text>
-          <TextInput style={styles.typeInput}
-          keyboardType = 'numeric'
-          placeholder = "61617..."
+        <TextInput style={styles.typeInput}
+          keyboardType='numeric'
+          placeholder="61617..."
           value={userPhone}
           onChangeText={(value) => setUserPhone(value.trim())} >
         </TextInput>
         <Text style={styles.heading}>Email</Text>
-          <TextInput style={styles.typeInput}
-            placeholder = "Email..." 
-            value={userMail}
-            onChangeText={(value) => setUserMail(value.trim())}>
+        <TextInput style={styles.typeInput}
+          placeholder="Email..."
+          value={userMail}
+          onChangeText={(value) => setUserMail(value.trim())}>
         </TextInput>
         <Text style={styles.heading}>Password</Text>
-          <TextInput style={styles.typeInput}
-            placeholder = "Password..." 
-            value={userPass}
-            onChangeText={(value) => setUserPass(value.trim())}>
+        <TextInput style={styles.typeInput}
+          placeholder="Password..."
+          value={userPass}
+          onChangeText={(value) => setUserPass(value.trim())}>
         </TextInput>
         <Text></Text>
-        <View style={styles.button}>
-        <TouchableOpacity onPress={()=> 
-          {{
+        <TouchableOpacity onPress={() => {
+          {
             if (userName == null || userName == "") {
               alert("Please Complete All Fields Before Submitting")
             }
@@ -101,11 +100,14 @@ export default function SignUp({navigation}) {
               uploadUser()
             }
           }
-          
-          navigation.navigate('Tabs')}}>
+          navigation.navigate('Tabs')
+        }}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}> Submit</Text>
-            </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
+
+
       </View>
       <View style={styles.bandBottom}></View>
     </View>
@@ -117,11 +119,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  center : {
+  center: {
     flex: 2,
     backgroundColor: "gray",
     paddingVertical: 10,
-    paddingHorizontal : 30,
+    paddingHorizontal: 30,
     alignItems: 'center',
   },
 
@@ -135,40 +137,40 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
 
-	firstHeading: {
-		padding: 5,
-		fontSize: 16,
-		fontWeight: "bold",
-	},
+  firstHeading: {
+    padding: 5,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 
-	heading: {
-		padding: 5,
-		fontSize: 16,
-		fontWeight: "bold",
-	},
+  heading: {
+    padding: 5,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 
-	typeInput: {
-		fontSize: 18,
-		padding: 10,
-		backgroundColor: 'beige',
-		borderWidth: 1,
-		borderRadius: 10,
-		borderColor: "black",
-		marginRight: 20,
-		marginLeft: 20,
-	},
+  typeInput: {
+    fontSize: 18,
+    padding: 10,
+    backgroundColor: 'beige',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "black",
+    marginRight: 20,
+    marginLeft: 20,
+  },
 
-	button: {
-		backgroundColor: "black",
+  button: {
+    backgroundColor: "black",
     padding: 20,
-		borderRadius: 15,
-	},
+    borderRadius: 15,
+  },
 
-	buttonText: {
-		alignItems: "center",
-		justifyContent: "center",
-		fontWeight: "bold",
-		color: "white",
-		fontSize: 20,
-	},
+  buttonText: {
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 20,
+  },
 });

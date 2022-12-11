@@ -17,7 +17,11 @@ export default function Profile() {
         headerTransparent: true,
         headerBackImage: () => <Icon name={'arrowLeft'} />
       }} />
-      <Stack.Screen name="History" component={History} options={{ headerShown: false }} />
+      <Stack.Screen name="History" component={History} options={{
+        headerTransparent: true,
+        headerBackImage: () => <Icon name={'arrowLeft'} />
+      }}
+      />
       <Stack.Screen name="Likes" component={Likes} />
       <Stack.Screen name="Saved Items" component={SavedItems} />
     </Stack.Navigator>

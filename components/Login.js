@@ -5,8 +5,8 @@ import MaterialIcons from 'react-native-vector-icons';
 import Home from '../screens/Home';
 
 //navigate when pressed. Pull from database for comparison before navigation
-export default function Login({navigation}) {
-  const {height, width} = Dimensions.get("window");
+export default function Login({ navigation }) {
+  const { height, width } = Dimensions.get("window");
 
   const [Username, setuserName] = React.useState("");
   const [userPass, setuserPass] = React.useState("");
@@ -18,100 +18,81 @@ export default function Login({navigation}) {
   }
 
 
-  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/"+ Username + "/" + userPass;
+  const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + Username + "/" + userPass;
 
   const readUser = async () => {
     try {
-        const response = await fetch(address);
-        const json = await response.json();
-        console.log(json)
-        const iduser = json.id;
+      const response = await fetch(address);
+      const json = await response.json();
+      console.log(json)
+      const iduser = json.id;
 
 
-        console.log(json.id)
-        console.log(iduser)
-        newUser.id = iduser;
+      console.log(json.id)
+      console.log(iduser)
+      newUser.id = iduser;
 
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-}
+  }
 
-// const requestOptions = {
-//   method: 'READ',
-//   headers: {
-//     Accept: 'application/json',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify() // todo: delete item here
-// };
+  // const requestOptions = {
+  //   method: 'READ',
+  //   headers: {
+  //     Accept: 'application/json',
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify() // todo: delete item here
+  // };
 
 
 
   return (
     <View style={styles.container}>
       <View style={styles.bandTop}>
-              {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
+        {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
       </View>
       <View style={styles.center}>
         <Text style={styles.firstHeading}>Username</Text>
-          <TextInput style={styles.typeInput}
-            placeholder = "Name..."
-            onChangeText={newText => { setuserName(newText) }}>
-          </TextInput>
+        <TextInput style={styles.typeInput}
+          placeholder="Name..."
+          onChangeText={newText => { setuserName(newText) }}>
+        </TextInput>
 
         <Text style={styles.heading}>Password</Text>
-          <TextInput style={styles.typeInput}
-            placeholder = "Password..."  
-            onChangeText={newText => { setuserPass(newText) }}>
+        <TextInput style={styles.typeInput}
+          placeholder="Password..."
+          onChangeText={newText => { setuserPass(newText) }}>
         </TextInput>
 
         <Text></Text>
-        <View style={styles.button}>
-        <TouchableOpacity onPress={()=> 
-          
-          {
-            console.log(newUser.id)
-            readUser()
 
-
-
-            if (Username == "") {
-              alert("Please Complete All Fields Before Submitting")
-            }
-
-            else {
-              readUser()
-              console.log(newUser.id)
-              if (newUser.id == "") {
-                alert("Please Check your UserID and Password again")
-              }
-              else {
-                navigation.navigate('Tabs')
-  
-              }
-            }
-
-
-          
+        <TouchableOpacity onPress={() => {
+          console.log(newUser.id)
+          readUser()
+          if (Username == "") {
+            alert("Please Complete All Fields Before Submitting")
           }
-          }>
-          
-          
-          
-      
-
-
-
-
-
-
+          else {
+            readUser()
+            console.log(newUser.id)
+            if (newUser.id == "") {
+              alert("Please Check your UserID and Password again")
+            }
+            else {
+              navigation.navigate('Tabs')
+            }
+          }
+        }}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}> Submit</Text>
+          </View>
         </TouchableOpacity>
-        </View>
+
       </View>
       <View style={styles.bandBottom}>
-              {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
+        {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
       </View>
     </View>
   )
@@ -121,11 +102,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  center : {
+  center: {
     flex: 2,
     backgroundColor: "gray",
     paddingVertical: 10,
-    paddingHorizontal : 30,
+    paddingHorizontal: 30,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -137,36 +118,36 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
   },
-	firstHeading: {
-		padding: 5,
-		fontSize: 16,
-		fontWeight: "bold",
-	},
-	heading: {
-		padding: 5,
-		fontSize: 16,
-		fontWeight: "bold",
-	},
-	typeInput: {
-		fontSize: 18,
-		padding: 10,
-		backgroundColor: 'beige',
-		borderWidth: 1,
-		borderRadius: 10,
-		borderColor: "black",
-		marginRight: 20,
-		marginLeft: 20,
-	},
-	button: {
-		backgroundColor: "black",
+  firstHeading: {
+    padding: 5,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  heading: {
+    padding: 5,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  typeInput: {
+    fontSize: 18,
+    padding: 10,
+    backgroundColor: 'beige',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "black",
+    marginRight: 20,
+    marginLeft: 20,
+  },
+  button: {
+    backgroundColor: "black",
     padding: 20,
-		borderRadius: 15,
-	},
-	buttonText: {
-		alignItems: "center",
-		justifyContent: "center",
-		fontWeight: "bold",
-		color: "white",
-		fontSize: 20,
-	},
+    borderRadius: 15,
+  },
+  buttonText: {
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 20,
+  },
 });
