@@ -33,6 +33,13 @@ export default function Login({ navigation }) {
       console.log(iduser)
 
       newUser.id = iduser;
+
+      if (newUser.id == "") {
+        alert("Please Check your UserID and Password again");
+      }
+      else {
+        navigation.navigate('Tabs');
+      }
     } catch (error) {
       console.error(error);
     }
@@ -62,19 +69,14 @@ export default function Login({ navigation }) {
         <Text></Text>
         <TouchableOpacity onPress={() => {
           console.log(newUser.id);
-          readUser();
+          // readUser();
           if (Username == "") {
             alert("Please Complete All Fields Before Submitting");
           }
           else {
-            readUser()
+            readUser();
             console.log(newUser.id)
-            if (newUser.id == "") {
-              alert("Please Check your UserID and Password again");
-            }
-            else {
-              navigation.navigate('Tabs');
-            }
+           
           }
         }}
         >
