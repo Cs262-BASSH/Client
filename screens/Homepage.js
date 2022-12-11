@@ -24,6 +24,10 @@ const Homepage = (props) => {
     }
   }
 
+
+
+
+
   useFocusEffect(
     useCallback(() => {
       getItems();
@@ -36,7 +40,7 @@ const Homepage = (props) => {
         <FlatList
           data={data}
           renderItem={({ item }) => (
-            <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.image} category={item.categorynum} contact={item.contact}></Sell>
+            <Sell id={item.id} name={item.name} price={item.price} description={item.description} image={item.imageurl} category={item.categorynum} contact={item.contact}></Sell>
           )}
         />
       )}
@@ -56,3 +60,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+{/*       <ScrollView>
+          {
+            Object.keys(Categories).map((item, index) => <Sell id={item.id} name={item.name} price={item.price} description={item.description} category={item.category} item={Items[index]}></Sell>)
+          }
+      </ScrollView> */}
