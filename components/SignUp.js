@@ -85,31 +85,31 @@ export default function SignUp({ navigation }) {
           onChangeText={(value) => setUserPass(value.trim())}>
         </TextInput>
         <Text></Text>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={() => {
-            {
-              if (userName == null || userName == "") {
-                alert("Please Complete All Fields Before Submitting");
-              }
-              else if (userPass == null || userPass == "") {
-                alert("Please Complete All Fields Before Submitting");
-              }
-              else if (userMail == null || userMail == "") {
-                alert("Please Complete All Fields Before Submitting");
-              }
-              else if (userPhone == null || userPhone == "") {
-                alert("Please Complete All Fields Before Submitting");
-              }
-              else {
-                uploadUser();
-              }
+        <TouchableOpacity onPress={() => {
+          {
+            if (userName == null || userName == "") {
+              alert("Please Complete All Fields Before Submitting");
             }
+            else if (userPass == null || userPass == "") {
+              alert("Please Complete All Fields Before Submitting");
+            }
+            else if (userMail == null || userMail == "") {
+              alert("Please Complete All Fields Before Submitting");
+            }
+            else if (userPhone == null || userPhone == "") {
+              alert("Please Complete All Fields Before Submitting");
+            }
+            else {
+              uploadUser();
+            }
+          }
 
-            navigation.navigate('Tabs')
-          }}>
+          navigation.navigate('Tabs')
+        }}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}> Submit</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.bandBottom}></View>
     </View>

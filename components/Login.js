@@ -60,28 +60,28 @@ export default function Login({ navigation }) {
         </TextInput>
 
         <Text></Text>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={() => {
-            console.log(newUser.id);
-            readUser();
-            if (Username == "") {
-              alert("Please Complete All Fields Before Submitting");
+        <TouchableOpacity onPress={() => {
+          console.log(newUser.id);
+          readUser();
+          if (Username == "") {
+            alert("Please Complete All Fields Before Submitting");
+          }
+          else {
+            readUser()
+            console.log(newUser.id)
+            if (newUser.id == "") {
+              alert("Please Check your UserID and Password again");
             }
             else {
-              readUser()
-              console.log(newUser.id)
-              if (newUser.id == "") {
-                alert("Please Check your UserID and Password again");
-              }
-              else {
-                navigation.navigate('Tabs');
-              }
+              navigation.navigate('Tabs');
             }
-          }}
-          >
+          }
+        }}
+        >
+          <View style={styles.button}>
             <Text style={styles.buttonText}> Submit</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.bandBottom}>
         {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
