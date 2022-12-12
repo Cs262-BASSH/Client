@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import HistorySell from '../HistorySell';
-import Upload from '../../screens/Upload';
 import { useSelector } from 'react-redux';
 
+/**Display items in sales history */
 export default function History() {
   const history = useSelector((state) => state.history);
 
@@ -42,13 +42,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#121212",
     flex: 1,
   },
-
   container: {
     backgroundColor: "#121212",
     flex: 1,
     justifyContent: 'center'
   },
-
   nothing: {
     color: 'white',
     fontSize: 22,

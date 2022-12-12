@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { View, Switch, StyleSheet, Text, TouchableOpacity, Button, Alert } from "react-native";
+import { View, Switch, StyleSheet, Text, TouchableOpacity, Alert } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+/**Display the settings page of the app */
 const Settings = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
+  /**Alert for deleting account */
   const createTwoButtonAlert = () =>
     Alert.alert('Delete Account', 'Are you sure you want to delete your account?', [
       {
@@ -17,9 +19,11 @@ const Settings = () => {
       { text: 'OK', onPress: () => console.log('OK Pressed') },
     ]);
 
+  /**Account for about page */
   const aboutInfo = () =>
     Alert.alert('KNIGHT MARKET', 'This is an app where you can view items, speak with sellers and negotiate prices for items you want to buy')
 
+  /**Alert for help */
   const helpInfo = () =>
     Alert.alert('For help:', 'Email bee6@calvin.edu')
 
@@ -95,14 +99,9 @@ const Settings = () => {
         </TouchableOpacity>
       </View>
 
-
-
-
     </View>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -115,7 +114,6 @@ const styles = StyleSheet.create({
   danger: {
     paddingHorizontal: 20,
     paddingTop: 20
-
   },
   item: {
     paddingHorizontal: 20,

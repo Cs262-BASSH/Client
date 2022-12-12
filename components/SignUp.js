@@ -1,12 +1,9 @@
 import React from 'react'
-import { StatusBar } from 'expo-status-bar'
-import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, TouchableOpacity } from 'react-native'
-import MaterialIcons from 'react-native-vector-icons';
-import Home from '../screens/Home';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { saveUserID } from '../components/redux/reducer/userIDSlice';
 import { useDispatch } from 'react-redux';
 
-//navigate when pressed. Create a database instance with the data put in
+/**Create user in database, and navigate to homepage */
 export default function SignUp({ navigation }) {
   const dispatch = useDispatch();
 
@@ -120,7 +117,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
   center: {
     flex: 2,
     backgroundColor: "gray",
@@ -128,29 +124,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     alignItems: 'center',
   },
-
   bandTop: {
     flex: 0.5,
     backgroundColor: 'black',
   },
-
   bandBottom: {
     flex: 0.5,
     backgroundColor: 'black',
   },
-
   firstHeading: {
     padding: 5,
     fontSize: 16,
     fontWeight: "bold",
   },
-
   heading: {
     padding: 5,
     fontSize: 16,
     fontWeight: "bold",
   },
-
   typeInput: {
     fontSize: 18,
     padding: 10,

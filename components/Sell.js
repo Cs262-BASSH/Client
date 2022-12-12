@@ -1,11 +1,11 @@
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Button, TouchableHighlight, Pressable, Alert } from 'react-native';
-import { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { addToBookmark, removeFromBookmark, checkItemInBookmark } from './redux/reducer/bookmarkSlice';
+import { addToBookmark, removeFromBookmark } from './redux/reducer/bookmarkSlice';
 
-
+/**Used to display item that is being sold */
 const Sell = (props) => {
   // Determines whether the description and details button is shown or not
   const [hide, setHide] = useState(true);
@@ -100,15 +100,12 @@ const styles = StyleSheet.create({
   background: {
     backgroundColor: '#121212',
   },
-
   container: {
     flexDirection: 'row',
   },
-
   information: {
     width: "69%",
   },
-
   Sell: {
     backgroundColor: 'white',
     marginLeft: "2%",
@@ -119,7 +116,6 @@ const styles = StyleSheet.create({
     padding: "3%",
     borderColor: "grey",
   },
-
   image: {
     height: 100,
     width: 100,
@@ -128,7 +124,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 2,
   },
-
   title: {
     fontSize: 15,
     fontWeight: 'bold',
@@ -136,35 +131,28 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: "-2%",
   },
-
   priceAndBookmark: {
     flexDirection: 'row',
     justifyContent: "space-between",
     marginTop: "1%",
   },
-
   price: {
     fontWeight: 'normal',
     fontSize: 20,
     color: 'maroon',
   },
-
   pressBookmark: {
   },
-
   bookmark: {
     color: "gold",
   },
-
   hide: {
     display: 'none',
   },
-
   description: {
     fontSize: 20,
     marginTop: "2%",
   },
-
   detail: {
     width: "28%",
     fontSize: 20,

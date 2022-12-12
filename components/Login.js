@@ -1,12 +1,9 @@
 import React from 'react'
-import { StatusBar } from 'expo-status-bar'
-import { Button, Text, View, StyleSheet, TextInput, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native'
-import MaterialIcons from 'react-native-vector-icons';
-import Home from '../screens/Home';
+import { Text, View, StyleSheet, TextInput, Dimensions, TouchableOpacity } from 'react-native';
 import { saveUserID } from '../components/redux/reducer/userIDSlice';
 import { useDispatch } from 'react-redux';
 
-//navigate when pressed. Pull from database for comparison before navigation
+/**Pull data from database to compare, navigate to homepage */
 export default function Login({ navigation }) {
   const { height, width } = Dimensions.get("window");
   const dispatch = useDispatch();
@@ -51,7 +48,6 @@ export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.bandTop}>
-        {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
       </View>
       <View style={styles.center}>
         <Text style={styles.firstHeading}>Username</Text>
@@ -76,7 +72,6 @@ export default function Login({ navigation }) {
           else {
             readUser();
             console.log(newUser.id)
-           
           }
         }}
         >
@@ -86,7 +81,6 @@ export default function Login({ navigation }) {
         </TouchableOpacity>
       </View>
       <View style={styles.bandBottom}>
-        {/* <Image source={require('../assets/KNIGHTS.png')} height={100} width={100}/> */}
       </View>
     </View>
   )
