@@ -18,6 +18,7 @@ function ProfileScreen({ navigation }) {
 
   // Set the user ID into the user info
   const id = useSelector((state) => state.userID);
+  const [loading, setLoading] = React.useState(false);
   console.log(id[0]);
   // setuserID(id[0]);
   // id[0];

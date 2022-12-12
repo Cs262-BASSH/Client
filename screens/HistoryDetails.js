@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Button, Alert } from "react-native";
 import { useDispatch } from 'react-redux';
 import { removeFromSalesHistory } from '../components/redux/reducer/historySlice';
+import { useNavigation } from '@react-navigation/native';
 
 // The item displayed in sales history
 // Item can be deleted from the service from here
@@ -30,6 +31,8 @@ export default function Details({ route }) {
 
   const address = "https://quiet-oasis-96937.herokuapp.com/useritem/" + text;
 
+  const navigation = useNavigation();
+
   const deleteItem = async () => { // pass userid as parameter
     try {
       const response = await fetch(address, requestOptions);
@@ -39,7 +42,13 @@ export default function Details({ route }) {
 
       // Remove item in Sales History from redux
       dispatch(removeFromSalesHistory(newItem));
-      alert("Item successfully removed.");
+      Alert.alert(
+        "Alert",
+        "Item successfully removed",
+        [
+          { text: "OK", onPress: () => navigation.navigate("History") }
+        ]
+      );
     }
     catch (error) {
       console.error(error);
