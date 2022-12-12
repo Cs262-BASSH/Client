@@ -32,7 +32,7 @@ const Sell = (props) => {
       <TouchableOpacity activeOpacity={0.3} style={styles.Sell} onPress={() => changeSize()} >
         <View style={styles.container}>
           <View>
-            <Image source={props.image} style={styles.image}></Image>
+            <Image source={{uri: props.image}} style={styles.image}></Image>
           </View>
           <View style={styles.information}>
             <View>
