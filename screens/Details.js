@@ -1,7 +1,10 @@
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image } from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, TouchableOpacity } from "react-native";
 import { useState, useEffect, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 /*
 TODO: Swipe horizontally to view more images
 */
@@ -51,11 +54,14 @@ useFocusEffect(
             <Text style={styles.price}>${price}</Text>
           </View>
           <View style={styles.line} />
-          <Text style={styles.descriptionTitle}>Desciption</Text>
+          <Text style={styles.descriptionTitle}>Description</Text>
           <Text style={styles.description}>{description}</Text>
           <View style={styles.line} />
           <Text style={styles.contactTitle}>Seller Contact</Text>
           <Text style={styles.contact}>{contact}</Text>
+          <TouchableOpacity style={styles.report} onPress={() => alert("Thank you for notifying us! We will take a look at the item ASAP!")}>
+              <Icon name="flag-variant" size={40} style={{ color: "red" }} />
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -66,6 +72,19 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#121212',
     flex: 1,
+  },
+
+  report: {
+    alignContent: "center",
+    flex: 1,
+    borderRadius: 2,
+    borderWidth: 1,
+    borderColor: "red",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
+    marginLeft: 100,
+    marginRight: 100,
   },
 
   scrollView: {

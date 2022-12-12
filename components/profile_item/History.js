@@ -31,7 +31,7 @@ export default function History() {
   else {
     return (
       <View style={styles.container}>
-        <Text style={styles.nothing}>Ops! You are not selling anything.</Text>
+        <Text style={styles.nothing}>Oops! You are not selling anything.</Text>
       </View>
     )
   }

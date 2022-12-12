@@ -275,10 +275,25 @@ export default function Upload() {
     // todo: toast to tell item has been uploaded
 
     // Reset value and refresh page
-    setItemName("");
-    setItemPrice("");
-    setItemDescription("");
-    setItemCategory("");
+    // setItemName("");
+    // setItemPrice("");
+    // setItemDescription("");
+    // setItemCategory("");
+  }
+
+  const reset = () => {
+    setImageLink(null);
+    setItemName(null);
+    setItemPrice(null);
+    setItemCategory(null);
+    setItemDescription(null);
+    setColor(false);
+    setColor2(false);
+    setColor3(false);
+    setColor4(false);
+    setColor5(false);
+    setColor6(false);
+    setColor7(false);
   }
 
   return (
@@ -294,25 +309,29 @@ export default function Upload() {
         <Text style={styles.firstHeading}>Image Link</Text>
         <TextInput style={styles.typeInput}
           placeholder="Link..."
-          onChangeText={newText => { setImageLink(newText) }}>
+          onChangeText={newText => { setImageLink(newText) }}
+          value={imageLink}>
         </TextInput>
         <Text style={styles.firstHeading}>Item Name</Text>
         <TextInput style={styles.typeInput}
           placeholder="Name..."
-          onChangeText={newText => { setItemName(newText) }}>
+          onChangeText={newText => { setItemName(newText) }}
+          value={itemName}>
         </TextInput>
         {console.log(itemName)}
         <Text style={styles.heading}>Price</Text>
         <TextInput style={styles.typeInput}
           keyboardType="numeric"
           placeholder="Price..."
-          onChangeText={newText => setItemPrice(newText)}>
+          onChangeText={newText => setItemPrice(newText)}
+          value={itemPrice}>
         </TextInput>
         {console.log(itemPrice)}
         <Text style={styles.heading}>Description</Text>
         <TextInput style={styles.typeInput}
           placeholder="Description..." multiline={true}
-          onChangeText={newText => setItemDescription(newText)}>
+          onChangeText={newText => setItemDescription(newText)}
+          value={itemDescription}>
         </TextInput>
         {console.log(itemDescription)}
 
@@ -373,6 +392,7 @@ export default function Upload() {
           else {
             uploadItem();
             uploadSure();
+            reset();
           }
           
       }}
