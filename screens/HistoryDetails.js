@@ -33,6 +33,7 @@ export default function Details({ route }) {
       const responseData = await response.text();
 
       console.log("Successfully deleted from database.");
+      //make popup for this
     }
     catch (error) {
       console.error(error);
