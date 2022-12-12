@@ -27,9 +27,6 @@ const Sell = (props) => {
     contact: props.contact
   };
 
-
-
-
   const changeSize = () => {
     setHide(!hide);
   }
@@ -60,8 +57,8 @@ const Sell = (props) => {
         <View style={styles.container}>
           <View>
             <Image source={{
-          uri: props.image,
-        }} style={styles.image}></Image>
+              uri: props.image,
+            }} style={styles.image}></Image>
           </View>
           <View style={styles.information}>
             <View>

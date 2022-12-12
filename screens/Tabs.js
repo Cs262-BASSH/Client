@@ -6,7 +6,7 @@ import Items from '../data/item';
 import Help from './Help';
 import Header from '../shared/header';
 
-import { View, StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -25,7 +25,7 @@ const Stack = createNativeStackNavigator();
 export default function Tabs() {
 
   // Screen Options
-  const screenStyle = ({route}) => ({
+  const screenStyle = ({ route }) => ({
     tabBarIcon: ({ focused, color, size }) => {
       let iconName;
 
@@ -59,7 +59,7 @@ export default function Tabs() {
     },
     headerTitleStyle: {
       color: '#e4000f',
-      
+
     },
     tabBarActiveTintColor: "#ffff33",
     tabBarInactiveTintColor: '#e4000f',
@@ -80,7 +80,6 @@ export default function Tabs() {
     // tabBarInactiveTintColor: '#990000',
   });
 
-
   // Home options
   const homepageStyle = () => ({
     headerTitle: "KnightMarket",
@@ -89,43 +88,41 @@ export default function Tabs() {
 
   const SellStyle = () => ({
     headerTitleStyle: {
-        color: "#e4000f",
+      color: "#e4000f",
     },
     headerStyle: {
-        backgroundColor: "#121212",
+      backgroundColor: "#121212",
     },
     headerTintColor: "#e4000f",
     title: "Sell",
-})
- 
+  })
 
   const searchStyle = () => ({
     headerShown: false,
-
   })
 
   return (
-      <Tab.Navigator style={styles.container} screenOptions={screenStyle}>
-        {/* List of tabs */}
-        <Tab.Screen name="Home" component={Homepage} options={homepageStyle}/>
+    <Tab.Navigator style={styles.container} screenOptions={screenStyle}>
+      {/* List of tabs */}
+      <Tab.Screen name="Home" component={Homepage} options={homepageStyle} />
 
-        <Tab.Screen name="Sell" component={Upload} options={({ navigation }) => ({
-    headerRight: () => (
-        <Header navigation={navigation}/>
-    ), SellStyle,
-    headerBackImage: () => <Icon name={'arrowLeft'}/>
-})}/>
-       
-        <Tab.Screen name="Search" component={Search} options={searchStyle}/>
+      <Tab.Screen name="Sell" component={Upload} options={({ navigation }) => ({
+        headerRight: () => (
+          <Header navigation={navigation} />
+        ), SellStyle,
+        headerBackImage: () => <Icon name={'arrowLeft'} />
+      })} />
 
-        <Tab.Screen name="Bookmark" component={Bookmark} />
+      <Tab.Screen name="Search" component={Search} options={searchStyle} />
 
-        <Tab.Screen name="Profile" component={Profile} />
-      </Tab.Navigator>
+      <Tab.Screen name="Bookmark" component={Bookmark} />
+
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
   )
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
   }
 })
