@@ -1,14 +1,12 @@
 import Sell from '../components/Sell';
-import Header from '../shared/header';
-import { StyleSheet, FlatList, SafeAreaView, View, ScrollView, ActivityIndicator } from 'react-native';
-import React, { useState, useEffect, useCallback } from 'react';
+import { StyleSheet, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
+import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
 
-//Display the items that are fetched from website, by time
+/**Display items fetched from database, by time */
 const Homepage = (props) => {
   const homepage = useSelector((state) => state.homepage);
-
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -23,10 +21,6 @@ const Homepage = (props) => {
       setLoading(false);
     }
   }
-
-
-
-
 
   useFocusEffect(
     useCallback(() => {
@@ -54,15 +48,8 @@ const styles = StyleSheet.create({
   loading: {
 
   },
-
   container: {
     backgroundColor: '#121212',
     flex: 1,
   },
 });
-
-{/*       <ScrollView>
-          {
-            Object.keys(Categories).map((item, index) => <Sell id={item.id} name={item.name} price={item.price} description={item.description} category={item.category} item={Items[index]}></Sell>)
-          }
-      </ScrollView> */}

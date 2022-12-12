@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Button, View, Text, TouchableOpacity, FlatList, StyleSheet, Linking } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import { View, Text, StyleSheet, Linking } from 'react-native';
 
+/**Display help document for users to upload images */
 export default function Help({ navigation }) {
 
   return (

@@ -1,16 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, TouchableOpacity } from "react-native";
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-/*
-TODO: Swipe horizontally to view more images
-*/
-
-//Move from the homepage to details of indiviaual item.
-// This information is fetched from the database and displayed here
+/**Display the details of items from database */
 export default function Details({ route }) {
   const { id, name, price, description, image } = route.params;
   const [contact, setcontact] = React.useState("");
@@ -18,7 +12,7 @@ export default function Details({ route }) {
 
   const numID = id;
   const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + numID;
-
+/**Get user who uploaded item to display their contact */
   const getUser = async () => {
     try {
 
@@ -28,7 +22,7 @@ export default function Details({ route }) {
 
         const cont = json.phonenum;
         setcontact(cont);
-        console.log("this------------------------" + cont ,  contact);
+        console.log(contact);
     } catch (error) {
         console.error(error);
     } 
@@ -39,8 +33,6 @@ useFocusEffect(
     getUser();
   }, [])
 );
-
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -73,7 +65,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#121212',
     flex: 1,
   },
-
   report: {
     alignContent: "center",
     flex: 1,
@@ -86,22 +77,18 @@ const styles = StyleSheet.create({
     marginLeft: 100,
     marginRight: 100,
   },
-
   scrollView: {
     margin: 10,
   },
-
   line: {
     borderWidth: 0.5,
     borderColor: 'white',
     marginTop: 10,
     marginBottom: 10,
   },
-
   details: {
     alignItems: 'center',
   },
-
   image: {
     width: 200,
     height: 200,
@@ -110,40 +97,34 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 2
   },
-
   name: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 40,
   },
-
   price: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 50,
   },
-
   descriptionTitle: {
     color: 'white',
     fontSize: 25,
     textAlign: 'center',
     fontWeight: 'bold',
   },
-
   description: {
     color: 'white',
     textAlign: 'justify',
     fontSize: 20,
     marginBottom: 5,
   },
-
   contactTitle: {
     fontSize: 25,
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold'
   },
-
   contact: {
     color: 'white',
     textAlign: 'justify',

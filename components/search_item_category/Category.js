@@ -1,14 +1,9 @@
 import Items from '../../data/item'
 import Sell from '../Sell'
 
-import { Text, TextInput, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView } from 'react-native';
+import { TextInput, View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import SearchBarIcon from 'react-native-vector-icons/MaterialIcons';
-
-/*
-TODO: output item in the correct category = make multiple files
-TODO: output the search item filter that is in that category
-*/
 
 export default function Example({ route, navigation }) {
     const [search, setSearch] = useState("");
@@ -46,7 +41,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#121212",
     },
-
     searchSection: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -58,11 +52,9 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         height: 40,
     },
-
     searchIcon: {
         padding: 10,
     },
-
     input: {
         flex: 1,
         paddingTop: 10,
@@ -73,13 +65,11 @@ const styles = StyleSheet.create({
         color: '#424242',
         borderRadius: 20,
     },
-
     buttonView: {
         marginTop: 20,
         width: '90%',
         justifyContent: 'flex-start'
     },
-
     boxContainer: {
         flexDirection: 'row',
         marginLeft: 10,
@@ -88,16 +78,13 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
         borderTopLeftRadius: 20,
     },
-
     textContainer: {
         flexDirection: 'column',
         justifyContent: 'center',
     },
-
     itemName: {
         fontWeight: 'bold'
     },
-
     starcontainer: {
         flexDirection: 'row',
         justifyContent: 'flex-end',

@@ -1,10 +1,10 @@
 import Sell from '../components/Sell';
 import { useSelector } from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useFocusEffect } from '@react-navigation/native';
 
+/**Bookmark item to send to the bookmark page */
 const Bookmark = () => {
   const bookmark = useSelector((state) => state.bookmark);
 

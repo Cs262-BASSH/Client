@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import Settings from './Settings';
 import History from './History';
-import Likes from './Likes';
-import SavedItems from './SavedItems';
 import * as ImagePicker from 'expo-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Image, StyleSheet, Text, View, TextInput, Keyboard, ScrollView, Button, TouchableOpacity, FlatList } from 'react-native';
+import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
 function ProfileScreen({ navigation }) {
@@ -20,8 +17,6 @@ function ProfileScreen({ navigation }) {
   const id = useSelector((state) => state.userID);
   const [loading, setLoading] = React.useState(false);
   console.log(id[0]);
-  // setuserID(id[0]);
-  // id[0];
   const num = id[0];
 
   const address = "https://quiet-oasis-96937.herokuapp.com/Marketusers/" + num;
@@ -33,6 +28,7 @@ function ProfileScreen({ navigation }) {
     name: '',
   }
 
+  /**Get user from database to display name and contact */
   const getUser = async () => {
     try {
       const response = await fetch(address);
@@ -52,34 +48,30 @@ function ProfileScreen({ navigation }) {
     }
   }
 
-
-
-
-const  updateContact = async () => {
-  try {
-    const response = await fetch( address, requestOptions2)
-    const json = await response.json();
-    console.log("works-------------")
+  /**Update contact in database */
+  const updateContact = async () => {
+    try {
+      const response = await fetch(address, requestOptions2)
+      const json = await response.json();
+      console.log("works-------------")
     }
     catch (error) {
       console.error(error);
     }
 
-}
+  }
 
-
-const requestOptions2 = {
-  method: 'PUT',
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    "phonenum": usercontact,
-  })
-};
-
-
+  /**Put the updated content in database */
+  const requestOptions2 = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "phonenum": usercontact,
+    })
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -103,7 +95,6 @@ const requestOptions2 = {
     setSelectedImage({ localUri: pickerResult.uri });
   };
 
-
   if (selectedImage !== null) {
     return (
       <View style={styles.container}>
@@ -114,7 +105,6 @@ const requestOptions2 = {
                 <Image source={{ uri: selectedImage.localUri }} style={styles.img} />
               </View>
             </TouchableOpacity>
-
             <View style={styles.upPartTextView}>
               <Text style={styles.upPartText}>Name: {userName}</Text>
               <Text style={styles.upPartText}>Phonenum: {usercontact}</Text>
@@ -167,34 +157,29 @@ const requestOptions2 = {
             <Text style={styles.upPartText}>Name: {userName} {userInfo.name}</Text>
             <Text style={styles.upPartText}>contact: {usercontact} {userInfo.contact}</Text>
           </View>
-      <View style = {styles.TextInputAndButton}>
-          <TextInput style={styles.typeInput}
-            placeholder="Contact..."
-            value={usercontact}
-            onChangeText={(value) => setusercontact(value.trim())}>
-          </TextInput>
-          <TouchableOpacity onPress={() => 
-        {
-          if (usercontact == null) {
-            alert("Please type your contact address")
-         
-          }
-          else {
-            updateContact();
-          }
-          
-        }}
-        style={styles.button}>
-        <Text style={styles.buttonText}>Change</Text>
+          <View style={styles.TextInputAndButton}>
+            <TextInput style={styles.typeInput}
+              placeholder="Contact..."
+              value={usercontact}
+              onChangeText={(value) => setusercontact(value.trim())}>
+            </TextInput>
+            <TouchableOpacity onPress={() => {
+              if (usercontact == null) {
+                alert("Please type your contact address")
 
-      </TouchableOpacity>
-      </View>
+              }
+              else {
+                updateContact();
+              }
 
+            }}
+              style={styles.button}>
+              <Text style={styles.buttonText}>Change</Text>
 
+            </TouchableOpacity>
+          </View>
         </View>
-
         <View style={styles.itemsList}>
-
           {/* Touch Event */}
           <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
             <View style={styles.itemTabs}>
@@ -205,9 +190,7 @@ const requestOptions2 = {
               </Text>
             </View>
           </TouchableOpacity>
-
           <TouchableOpacity onPress={() => navigation.navigate('History')}>
-
             <View style={styles.itemTabs}>
               <View style={styles.icons}><Ionicons name="document-text" size={30} color="#a4de02" /></View>
               <Text style={styles.items} >
@@ -216,14 +199,11 @@ const requestOptions2 = {
               </Text>
             </View>
           </TouchableOpacity>
-
-
         </View>
       </View>
     </View>
   );
 }
-
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
@@ -241,7 +221,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: 20,
   },
-
   tasksWrapper: {
     paddingHorizontal: 20,
   },

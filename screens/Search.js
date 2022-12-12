@@ -6,18 +6,12 @@ import LapComs from '../components/search_item_category/LapComs';
 import Sofa from '../components/search_item_category/Sofa';
 import Etc from '../components/search_item_category/Etc';
 import { useState } from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchBarIcon from 'react-native-vector-icons/MaterialIcons';
 
-/*
-TODO: change the header name of category to match it's respective name
-TODO: output the search item filter
-*/
-
-//Appropriately use the search bar to search for an item
-//Items with name similar to inserted text will be displayed
+/**Create a search bar to search for items */
 function SearchScreen({ navigation }) {
   const [categoryState, setCategoryState] = useState(true);
   const [search, setSearch] = useState("");
@@ -82,7 +76,6 @@ function SearchScreen({ navigation }) {
           </View>
         ) :
           <View>
-            {/* TODO */}
           </View>
       }
     </View>
@@ -126,7 +119,6 @@ export default function Search() {
     headerStyle: { backgroundColor: "#121212" },
     headerTitleAlign: 'center'
   })
-
 
   const ElectronicsHeader = ({ route }) => ({
     headerTitle: "Electronics",
@@ -178,11 +170,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#121212',
-    // flexDirection: 'column',
-    // justifyContent: 'space-evenly',
-    // alignItems: 'center'
   },
-
   searchSection: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -194,11 +182,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     height: 40,
   },
-
   searchIcon: {
     padding: 10,
   },
-
   input: {
     flex: 1,
     paddingTop: 10,
@@ -209,32 +195,20 @@ const styles = StyleSheet.create({
     color: '#424242',
     borderRadius: 20,
   },
-
-  IconsRawsContainer: {
-    // flexDirection: 'column',
-    // justifyContent: 'space-between',
-    // alignItems: 'center'
-  },
-
   buttonraw: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 30,
   },
-
   buttonView: {
     width: '25%',
     padding: 5,
     alignItems: 'center',
     justifyContent: 'space-around'
   },
-
   icontext: {
     justifyContent: 'center',
     color: 'white'
-  },
-
-  Iconsview: {
   }
 })
 

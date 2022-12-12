@@ -1,18 +1,10 @@
-import Items from '../../data/item'
 import Sell from '../Sell'
-
-import { Text, TextInput, View, TouchableOpacity, StyleSheet, ScrollView, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
-import SearchBarIcon from 'react-native-vector-icons/MaterialIcons';
+import { View, StyleSheet, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
 import React, { useState, useEffect } from 'react';
 
-/*
-TODO: output item in the correct category
-TODO: output the search item filter that is in that category
-*/
-
+/**Display items in Sofa category */
 export default function Sofa({ route, navigation }) {
     const [search, setSearch] = useState("");
-
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
@@ -32,22 +24,8 @@ export default function Sofa({ route, navigation }) {
         getItems();
     }, []);
 
-
-
-
     return (
         <View style={styles.container}>
-            {/* SearchBar */}
-            <View style={styles.searchSection}>
-                <SearchBarIcon style={styles.searchIcon} name="search" size={20} color="#000" />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Search for an item!"
-                    underlineColorAndroid="transparent"
-                    value={search}
-                    onChangeText={(text) => searchItem(text)}
-                />
-            </View>
             <SafeAreaView style={styles.container}>
                 {isLoading ? <ActivityIndicator /> : (
                     <FlatList
@@ -69,7 +47,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#121212",
     },
-
     searchSection: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -81,11 +58,9 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         height: 40,
     },
-
     searchIcon: {
         padding: 10,
     },
-
     input: {
         flex: 1,
         paddingTop: 10,
@@ -96,13 +71,11 @@ const styles = StyleSheet.create({
         color: '#424242',
         borderRadius: 20,
     },
-
     buttonView: {
         marginTop: 20,
         width: '90%',
         justifyContent: 'flex-start'
     },
-
     boxContainer: {
         flexDirection: 'row',
         marginLeft: 10,
@@ -111,16 +84,13 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
         borderTopLeftRadius: 20,
     },
-
     textContainer: {
         flexDirection: 'column',
         justifyContent: 'center',
     },
-
     itemName: {
         fontWeight: 'bold'
     },
-
     starcontainer: {
         flexDirection: 'row',
         justifyContent: 'flex-end',

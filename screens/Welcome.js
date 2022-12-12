@@ -1,11 +1,6 @@
-import { View, StyleSheet, Image, Button, Dimensions, Alert, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, Text, TouchableOpacity } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation, NavigationContainer, NavigationContainerRefContext } from '@react-navigation/native';
-
-/* sell, search, buy */
-
 const Stack = createNativeStackNavigator();
-
 
 //Choose between signup and login upon entering the app and navigate to the desired page
 export default function Welcome({ navigation }) {
@@ -31,7 +26,6 @@ export default function Welcome({ navigation }) {
           </View>
         </TouchableOpacity>
       </View>
-      {/* <SignUp/> */}
     </View>
   )
 }
@@ -55,12 +49,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    // fontFamily: 'Optima',
     fontSize: 30,
   },
   btn_title: {
     fontWeight: 'bold',
-    //fontFamily: 'Optima',
     fontSize: 20,
   },
   button: {

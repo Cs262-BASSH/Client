@@ -2,24 +2,14 @@ import Homepage from './Homepage';
 import Profile from './Profile';
 import Search from './Search';
 import Bookmark from './Bookmark';
-import Items from '../data/item';
-import Help from './Help';
 import Header from '../shared/header';
 
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Upload from './Upload';
 
-/*
-TODO: make the header font bigger
-TODO: dark and light mode
-*/
-
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
 
 //Navigate between the multiple pages of the app by pressing on the icons
 export default function Tabs() {
@@ -63,21 +53,6 @@ export default function Tabs() {
     },
     tabBarActiveTintColor: "#ffff33",
     tabBarInactiveTintColor: '#e4000f',
-
-    // Light mode
-    // tabBarStyle: {
-    //   backgroundColor: "#FFFFF7",
-    //   paddingBottom: "1%",
-    //   paddingTop: "1%"
-    // },
-    // headerStyle: {
-    //   backgroundColor: '#FFFFF7',
-    // },
-    // headerTitleStyle: {
-    //   color: '#990000',
-    // },
-    // tabBarActiveTintColor: "#4267B2",
-    // tabBarInactiveTintColor: '#990000',
   });
 
   // Home options

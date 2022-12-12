@@ -2,10 +2,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-/*
-TODO: how image is passed
-*/
-
+/**Displays item in sales history */
 const Sell = (props) => {
   // Determines whether the description and details button is shown or not
   const [hide, setHide] = useState(true);
@@ -19,7 +16,7 @@ const Sell = (props) => {
     category: props.category,
     image: props.image,
     contact: props.contact
-  };
+  }; 
 
   const changeSize = () => {
     setHide(!hide);

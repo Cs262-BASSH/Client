@@ -1,30 +1,17 @@
 import React from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView, Alert} from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import UploadImageTemp from "../assets/UploadImageTemp.png"
-import blank from "../assets/black.png"
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addToSalesHistory } from '../components/redux/reducer/historySlice';
 import { useSelector } from 'react-redux';
-import Header from '../shared/header';
-import Help from './Help';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-global.control = 0;
-
+/**Function for pop-up to alert that upload is complete*/
 const uploadSure = () =>
-    Alert.alert('UPLOAD COMPLETE', 'This item has been uploaded!')
+  Alert.alert('UPLOAD COMPLETE', 'This item has been uploaded!')
 
 //Create an instance that has all the desired field to send to the database
 export default function Upload() {
-  const Stack = createNativeStackNavigator();
-  // const [selectedImage, setSelectedImage] = React.useState(UploadImageTemp);
-  // const [defaultImage, setDefaultImage] = React.useState(UploadImageTemp);
-
   //Object submitData =  {
   const [itemID, setitemID] = React.useState("");
   const [itemName, setItemName] = React.useState("");
@@ -41,18 +28,14 @@ export default function Upload() {
   const [color7, setColor7] = React.useState(false);
 
 
-
   const id = useSelector((state) => state.userID);
-  // todo: unique key id, image, contacts
-  // Item to be written to database
   const newItem = {
     id: "",
     name: itemName,
     price: itemPrice,
     description: itemDescription,
     category: itemCategory,
-    image: imageLink,
-    // contact: props.contact
+    image: imageLink
   };
 
   const dispatch = useDispatch();
@@ -169,52 +152,7 @@ export default function Upload() {
     }
   };
 
-  //}
-
-  // if (control === 0) {
-  //   setDefaultImage(UploadImageTemp);
-  //   control = 1;
-  // }
-
-  // Alert.alert(
-  //   title,
-  //   msg,
-  //   [
-  //     {
-  //       text: "Cancel",
-  //       style: "cancel"
-  //     },
-  //     {
-  //       text: "Confirm",
-  //       onPress: () => {
-  //         let pickerResult = ImagePicker.launchImageLibraryAsync();
-
-  //         setSelectedImage({ localUri: pickerResult.uri });
-  //         setDefaultImage(blank);
-  //       }
-  //     }
-  //   ]
-  // );}
-
-  // let openImagePickerAsync = async () => {
-
-  //   let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-  //   if (permissionResult.granted === false) {
-  //     alert("Permission to access camera roll is required!");
-  //     return;
-  //   }
-
-  //   let pickerResult = await ImagePicker.launchImageLibraryAsync();
-
-  //   if (pickerResult.cancelled === true) {
-  //     return;
-  //   }
-
-  //   setSelectedImage({ localUri: pickerResult.uri });
-  //   setDefaultImage(blank);
-  // };
-
+  /**Post method to upload item to database */
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -222,7 +160,7 @@ export default function Upload() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "userid": id[0], // todo  : newUser.ID
+      "userid": id[0],
       "name": newItem.name,
       "time": new Date(),
       "categorynum": itemCategory,
@@ -241,29 +179,8 @@ export default function Upload() {
       setitemID(iditem.toString());
       newItem.id = iditem;
       console.log(
-        "Response Body -> " + json + "    NewItem.ID:  " + newItem.id + "     JSON.stringify(json):    " + JSON.stringify(json) +    "    iditem:   " + iditem
-      
-       )
-      
-      
-
-
-
-      // await fetch("https://quiet-oasis-96937.herokuapp.com/useritem", requestOptions)
-      //   .then(response => response.json()) // response.text()?
-      //   .then((responseData) => {
-
-      //     const item1 = responseData.id;
-      //     // todo: Wonder why but it is not updating id
-      //     setitemID(JSON.stringify(item1)); // setitemID(item1.toString());
-
-      //     console.log(
-      //       "POST Response:",
-      //       `Response Body -> ${responseData + item1} ${newItem.name} ${newItem.id};`
-      //       // "Response Body -> " + responseData + item1 + "         " + newItem.name + "         " + newItem.id + ";"
-      //     )
-      //     console.log("Successfully written to database.");
-      //   })
+        "Response Body -> " + json + "    NewItem.ID:  " + newItem.id + "     JSON.stringify(json):    " + JSON.stringify(json) + "    iditem:   " + iditem
+      )
     }
     catch (error) {
       console.error(error);
@@ -271,14 +188,6 @@ export default function Upload() {
 
     // Use redux to push item temporarily to user sales history
     dispatch(addToSalesHistory(newItem));
-
-    // todo: toast to tell item has been uploaded
-
-    // Reset value and refresh page
-    // setItemName("");
-    // setItemPrice("");
-    // setItemDescription("");
-    // setItemCategory("");
   }
 
   const reset = () => {
@@ -297,15 +206,8 @@ export default function Upload() {
   }
 
   return (
-
-    <ScrollView  backgroundColor={"#121212"}>
-      
+    <ScrollView backgroundColor={"#121212"}>
       <View>
-        {/* <TouchableOpacity onPress={openImagePickerAsync}>
-          <Image source={defaultImage} style={styles.defaultImage} />
-          <Image source={{ uri: selectedImage.localUri }}
-            style={styles.image} />
-        </TouchableOpacity> */}
         <Text style={styles.firstHeading}>Image Link</Text>
         <TextInput style={styles.typeInput}
           placeholder="Link..."
@@ -375,26 +277,25 @@ export default function Upload() {
         </TouchableOpacity>
       </View>
       {console.log(itemCategory)}
-      <TouchableOpacity onPress={() => 
-        {
-          if (itemName == null || itemName == "") {
-            alert("Please Complete All Fields Before Submitting")
-          }
-          else if (itemPrice == null || itemPrice == "") {
-            alert("Please Complete All Fields Before Submitting")
-          }
-          else if (itemDescription == null || itemDescription == "") {
-            alert("Please Complete All Fields Before Submitting")
-          }
-          else if (!color && !color2 && !color3 && !color4 && !color5 && !color6 && !color7) {
-            alert("Please Complete All Fields Before Submitting")
-          }
-          else {
-            uploadItem();
-            uploadSure();
-            reset();
-          }
-          
+      <TouchableOpacity onPress={() => {
+        if (itemName == null || itemName == "") {
+          alert("Please Complete All Fields Before Submitting")
+        }
+        else if (itemPrice == null || itemPrice == "") {
+          alert("Please Complete All Fields Before Submitting")
+        }
+        else if (itemDescription == null || itemDescription == "") {
+          alert("Please Complete All Fields Before Submitting")
+        }
+        else if (!color && !color2 && !color3 && !color4 && !color5 && !color6 && !color7) {
+          alert("Please Complete All Fields Before Submitting")
+        }
+        else {
+          uploadItem();
+          uploadSure();
+          reset();
+        }
+
       }}
         style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
@@ -409,13 +310,11 @@ const styles = StyleSheet.create({
     height: 300,
     position: "absolute",
   },
-
   image: {
     width: "100%",
     height: 300,
     resizeMode: "contain",
   },
-
   firstHeading: {
     padding: 10,
     paddingLeft: 20,
@@ -423,7 +322,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
-
   heading: {
     padding: 10,
     paddingLeft: 20,
@@ -431,7 +329,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
-
   typeInput: {
     fontSize: 18,
     paddingLeft: 15,
@@ -444,7 +341,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: 20,
   },
-
   button: {
     backgroundColor: "black",
     padding: 15,
@@ -457,19 +353,16 @@ const styles = StyleSheet.create({
     marginRight: 100,
     marginBottom: 10,
   },
-
   buttonText: {
     fontWeight: "bold",
     color: "red",
     fontSize: 20,
   },
-
   buttonraw: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 30,
   },
-
   buttonView: {
     width: '25%',
     padding: 5,

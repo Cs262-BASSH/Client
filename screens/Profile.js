@@ -1,14 +1,11 @@
 import Settings from '../components/profile_item/Settings';
 import History from '../components/profile_item/History';
-import Likes from '../components/profile_item/Likes';
-import SavedItems from '../components/profile_item/SavedItems';
 import ProfileScreen from '../components/profile_item/ProfileScreen'
-
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
+/**Navigate screens in the profile */
 export default function Profile() {
   return (
     <Stack.Navigator>
@@ -24,8 +21,6 @@ export default function Profile() {
         },
         headerBackImage: () => <Icon name={'arrowLeft'} />
       }} />
-      <Stack.Screen name="Likes" component={Likes} />
-      <Stack.Screen name="Saved Items" component={SavedItems} />
     </Stack.Navigator>
   );
 }

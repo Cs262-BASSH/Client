@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { removeFromSalesHistory } from '../components/redux/reducer/historySlice';
 import { useNavigation } from '@react-navigation/native';
 
-// The item displayed in sales history
-// Item can be deleted from the service from here
+/**Item is displayed in sales history */
 export default function Details({ route }) {
   const { id, name, price, description, category, image, contact } = route.params;
   const dispatch = useDispatch();
@@ -19,6 +18,7 @@ export default function Details({ route }) {
     contact: contact
   };
 
+  /**Delete item from database upload by user given in user id*/
   const requestOptions = {
     method: 'DELETE',
     headers: {
@@ -87,22 +87,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#121212',
     flex: 1,
   },
-
   scrollView: {
     margin: 10,
   },
-
   line: {
     borderWidth: 0.5,
     borderColor: 'white',
     marginTop: 10,
     marginBottom: 10,
   },
-
   details: {
     alignItems: 'center',
   },
-
   image: {
     width: 200,
     height: 200,
@@ -111,46 +107,39 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 2
   },
-
   name: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 40,
   },
-
   price: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 50,
   },
-
   descriptionTitle: {
     color: 'white',
     fontSize: 25,
     textAlign: 'center',
     fontWeight: 'bold',
   },
-
   description: {
     color: 'white',
     textAlign: 'justify',
     fontSize: 20,
     marginBottom: 5,
   },
-
   contactTitle: {
     fontSize: 25,
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold'
   },
-
   contact: {
     color: 'white',
     textAlign: 'justify',
     fontSize: 20,
   },
-
   button: {
     backgroundColor: 'tomato',
     padding: 10,
